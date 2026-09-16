@@ -5,6 +5,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  ACTIONS_NODE20_DEPRECATION_WARNING: "false"
+
 on:
   workflow_dispatch:
 
