@@ -176,28 +176,40 @@ After executing tests, generate and view the Allure report:
 
 ## GitHub Actions Workflow (Jenkins-Style Dispatch)
 
-The repository includes a GitHub Actions workflow located at `.github/workflows/playwright.yml`. It functions like a **Jenkins parameterized build job**, allowing you to trigger runs manually with custom parameters from the GitHub UI.
+The framework uses a single unified workflow file located at `.github/workflows/playwright.yml`, functioning like a **Jenkins parameterized build job**.
+
+### Workflow Inputs Guide
+
+When triggering a run manually via **GitHub Actions -> Playwright Automation Tests (Jenkins-Style) -> Run workflow**, each field is explicitly labeled with tags indicating which module requires it:
+
+1. **`1️⃣ SELECT MODULE / SUITE`**: Pick test suite (`objectwaysSanity`, `newCompanySanity`, `AnnotatorReviewer`, `datasets`, `files`, `projects`, `templates`, `users`, `workflows`, or `all`).
+2. **`2️⃣ TARGET URL`**: Target QA/Staging environment URL *(All Modules)*.
+3. **`3️⃣ / 4️⃣ COMPANY ADMIN EMAIL & PASSWORD`**: Company Admin credentials *(ObjectwaysSanity, AnnotatorReviewer & Other Modules)*.
+4. **`5️⃣ / 6️⃣ SUPERUSER EMAIL & PASSWORD`**: Superuser credentials *(newCompanySanity ONLY)*.
+5. **`7️⃣ / 8️⃣ ANNOTATOR 1 EMAIL & PASSWORD`**: Annotator 1 credentials *(ObjectwaysSanity & AnnotatorReviewer ONLY)*.
+6. **`9️⃣ / 🔟 ANNOTATOR 2 EMAIL & PASSWORD`**: Annotator 2 credentials *(ObjectwaysSanity & AnnotatorReviewer ONLY)*.
+7. **`1️⃣1️⃣ / 1️⃣2️⃣ REVIEWER 1 EMAIL & PASSWORD`**: Reviewer 1 credentials *(ObjectwaysSanity & AnnotatorReviewer ONLY)*.
+8. **`1️⃣3️⃣ / 1️⃣4️⃣ OTP EMAIL & PASSWORD`**: OTP authentication credentials *(ObjectwaysSanity & newCompanySanity ONLY)*.
+9. **`1️⃣5️⃣ COMPANY NAME`**: Company name *(ObjectwaysSanity, AnnotatorReviewer & Other Modules)*.
+
+---
 
 ### How to Trigger a Run Manually:
 
 1. Navigate to your repository on **GitHub**.
 2. Click on the **Actions** tab.
-3. Select **Playwright Automation Tests (Jenkins-Style Dispatch)** from the left sidebar.
+3. Select **Playwright Automation Tests (Jenkins-Style)** from the left sidebar.
 4. Click **Run workflow** dropdown on the right.
-5. Configure your desired run parameters:
-   - **Select Test Suite / Folder**: Choose from `objectwaysSanity`, `newCompanySanity`, `AnnotatorReviewer`, `datasets`, `files`, `projects`, `templates`, `users`, `workflows`, or `all`.
-   - **Target Execution URL**: Provide the target application URL.
-   - **Company Admin Username & Password**: For `objectwaysSanity` or other module folders.
-   - **Annotator 1 Username & Password**: For `objectwaysSanity`.
-   - **Annotator 2 Email & Password**: For `objectwaysSanity`.
-   - **Reviewer 1 Username & Password**: For `objectwaysSanity`.
-   - **Superuser Username & Password**: For `newCompanySanity`.
-   - **OTP Email & Password**: For OTP verification steps.
+5. Select your target module in **SELECT MODULE / SUITE** and fill in the required credential fields for that module.
 6. Click **Run workflow**.
+
+---
 
 ### Accessing Test Reports in GitHub Actions:
 
 Once the workflow finishes executing:
 1. Click on the completed workflow run.
 2. Scroll down to the **Artifacts** section.
-3. Download the `allure-report-<suite>` zip file to view the full interactive Allure HTML report.
+3. Download the `allure-report-<suite>` zip file to view the interactive Allure HTML report.
+
+

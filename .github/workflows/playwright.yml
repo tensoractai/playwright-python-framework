@@ -1,10 +1,10 @@
-name: Playwright Automation Tests (Jenkins-Style Dispatch)
+name: Playwright Automation Tests (Jenkins-Style)
 
 on:
   workflow_dispatch:
     inputs:
       test_suite:
-        description: "Select Test Suite / Folder to execute"
+        description: "1️⃣ SELECT MODULE / SUITE"
         required: true
         default: "objectwaysSanity"
         type: choice
@@ -21,91 +21,90 @@ on:
           - "all"
 
       execution_url:
-        description: "Target Execution URL"
+        description: "2️⃣ TARGET URL [All Modules]"
         required: true
         default: "https://fmn-qa1.tensoract.com"
+        type: choice
+        options:
+          - "https://fmn-qa.tensoract.com/"
+          - "https://fmn-qa1.tensoract.com"
+          - "https://fmn-staging.tensoract.com/"
         type: string
 
-      # Credentials for ObjectwaysSanity & Other folders
       company_username:
-        description: "Company Admin Username (Email) [ObjectwaysSanity / Other Folders]"
+        description: "3️⃣ COMPANY ADMIN EMAIL [ObjectwaysSanity, AnnotatorReviewer & Other Modules]"
         required: false
         default: "admin@liceum.ai"
         type: string
 
       company_password:
-        description: "Company Admin Password [ObjectwaysSanity / Other Folders]"
+        description: "4️⃣ COMPANY ADMIN PASSWORD [ObjectwaysSanity, AnnotatorReviewer & Other Modules]"
         required: false
         default: "Admin123!"
         type: string
 
-      # Annotator 1 Credentials (for ObjectwaysSanity)
-      annotator1_username:
-        description: "Annotator 1 Username (Email) [ObjectwaysSanity]"
-        required: false
-        default: "annotator1@objectways.com"
-        type: string
-
-      annotator1_password:
-        description: "Annotator 1 Password [ObjectwaysSanity]"
-        required: false
-        default: "Annotator123!"
-        type: string
-
-      # Annotator 2 Credentials (for ObjectwaysSanity)
-      annotator2_username:
-        description: "Annotator 2 Email/Username [ObjectwaysSanity]"
-        required: false
-        default: "annotator2@objectways.com"
-        type: string
-
-      annotator2_password:
-        description: "Annotator 2 Password [ObjectwaysSanity]"
-        required: false
-        default: "Annotator123!"
-        type: string
-
-      # Reviewer 1 Credentials (for ObjectwaysSanity)
-      reviewer1_username:
-        description: "Reviewer 1 Username (Email) [ObjectwaysSanity]"
-        required: false
-        default: "reviewer@objectways.com"
-        type: string
-
-      reviewer1_password:
-        description: "Reviewer 1 Password [ObjectwaysSanity]"
-        required: false
-        default: "Reviewer123!"
-        type: string
-
-      # Superuser Credentials (for newCompanySanity)
       superuser_username:
-        description: "Superuser Username (Email) [newCompanySanity]"
+        description: "5️⃣ SUPERUSER EMAIL [For newCompanySanity ONLY]"
         required: false
         default: ""
         type: string
 
       superuser_password:
-        description: "Superuser Password [newCompanySanity]"
+        description: "6️⃣ SUPERUSER PASSWORD [For newCompanySanity ONLY]"
         required: false
         default: ""
         type: string
 
-      # OTP & Company Meta Data
+      annotator1_username:
+        description: "7️⃣ ANNOTATOR 1 EMAIL [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        required: false
+        default: "annotator1@objectways.com"
+        type: string
+
+      annotator1_password:
+        description: "8️⃣ ANNOTATOR 1 PASSWORD [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        required: false
+        default: "Annotator123!"
+        type: string
+
+      annotator2_username:
+        description: "9️⃣ ANNOTATOR 2 EMAIL [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        required: false
+        default: "annotator2@objectways.com"
+        type: string
+
+      annotator2_password:
+        description: "🔟 ANNOTATOR 2 PASSWORD [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        required: false
+        default: "Annotator123!"
+        type: string
+
+      reviewer1_username:
+        description: "1️⃣1️⃣ REVIEWER 1 EMAIL [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        required: false
+        default: "reviewer@objectways.com"
+        type: string
+
+      reviewer1_password:
+        description: "1️⃣2️⃣ REVIEWER 1 PASSWORD [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        required: false
+        default: "Reviewer123!"
+        type: string
+
       different_email_for_otp:
-        description: "OTP Email (different_email_for_otp)"
+        description: "1️⃣3️⃣ OTP EMAIL [ObjectwaysSanity & newCompanySanity ONLY]"
         required: false
         default: "worthy58@web-library.net"
         type: string
 
       different_email_for_otp_password:
-        description: "OTP Email Password"
+        description: "1️⃣4️⃣ OTP EMAIL PASSWORD [ObjectwaysSanity & newCompanySanity ONLY]"
         required: false
         default: "$6y1q=(gLq"
         type: string
 
       company_name:
-        description: "Company Name"
+        description: "1️⃣5️⃣ COMPANY NAME [ObjectwaysSanity, AnnotatorReviewer & Other Modules]"
         required: false
         default: "Objectways"
         type: string
@@ -147,8 +146,17 @@ jobs:
           COMP_PASS="${{ inputs.company_password }}"
           SUPER_USER="${{ inputs.superuser_username }}"
           SUPER_PASS="${{ inputs.superuser_password }}"
+          ANN1_USER="${{ inputs.annotator1_username }}"
+          ANN1_PASS="${{ inputs.annotator1_password }}"
+          ANN2_USER="${{ inputs.annotator2_username }}"
+          ANN2_PASS="${{ inputs.annotator2_password }}"
+          REV1_USER="${{ inputs.reviewer1_username }}"
+          REV1_PASS="${{ inputs.reviewer1_password }}"
+          OTP_EMAIL="${{ inputs.different_email_for_otp }}"
+          OTP_PASS="${{ inputs.different_email_for_otp_password }}"
+          COMP_NAME="${{ inputs.company_name }}"
 
-          # If newCompanySanity selected & superuser username provided, override company admin credentials
+          # If newCompanySanity selected and superuser credentials provided, use superuser as company_Username
           if [ "${{ inputs.test_suite }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
             COMP_USER="$SUPER_USER"
             COMP_PASS="$SUPER_PASS"
@@ -159,17 +167,17 @@ jobs:
           QA_url_2="${EXEC_URL}"
           QA_url_Staging="${EXEC_URL}"
           Execution_url="${EXEC_URL}"
-          different_email_for_otp="${{ inputs.different_email_for_otp }}"
-          different_email_for_otp_password="${{ inputs.different_email_for_otp_password }}"
           company_Username="${COMP_USER}"
           company_Password="${COMP_PASS}"
-          annotator_Username="${{ inputs.annotator1_username }}"
-          annotator_Password="${{ inputs.annotator1_password }}"
-          annotator_Username_2="${{ inputs.annotator2_username }}"
-          annotator_Password_2="${{ inputs.annotator2_password }}"
-          reviewer_Username="${{ inputs.reviewer1_username }}"
-          reviewer_Password="${{ inputs.reviewer1_password }}"
-          company_Name="${{ inputs.company_name }}"
+          annotator_Username="${ANN1_USER}"
+          annotator_Password="${ANN1_PASS}"
+          annotator_Username_2="${ANN2_USER}"
+          annotator_Password_2="${ANN2_PASS}"
+          reviewer_Username="${REV1_USER}"
+          reviewer_Password="${REV1_PASS}"
+          different_email_for_otp="${OTP_EMAIL}"
+          different_email_for_otp_password="${OTP_PASS}"
+          company_Name="${COMP_NAME}"
           EOF
 
       - name: Run Playwright Tests
