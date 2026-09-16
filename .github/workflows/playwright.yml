@@ -2,22 +2,47 @@ name: Playwright Automation Tests
 
 on:
   workflow_dispatch:
+
     inputs:
 
       # ============================================================
-      # 1. TEST PATH / MODULE / FILE / PATTERN
+      # 1. MODULE SELECTION
       # ============================================================
-      test_path:
-        description: "TEST PATH / MODULE / FILE / PATTERN / MULTIPLE PATHS"
+
+      test_module:
+        description: "1️⃣ SELECT MODULE"
         required: true
         default: "objectwaysSanity"
+        type: choice
+        options:
+          - objectwaysSanity
+          - newCompanySanity
+          - AnnotatorReviewer
+          - datasets
+          - files
+          - projects
+          - templates
+          - users
+          - workflows
+          - all
+          - custom
+
+      # ============================================================
+      # 2. CUSTOM TEST PATH
+      # ============================================================
+
+      test_path:
+        description: "2️⃣ CUSTOM TEST PATH / FILE / PATTERN / MULTIPLE MODULES (Optional)"
+        required: false
+        default: ""
         type: string
 
       # ============================================================
-      # 2. TARGET URL
+      # 3. TARGET URL
       # ============================================================
+
       execution_url:
-        description: "TARGET URL"
+        description: "3️⃣ TARGET URL"
         required: true
         default: "https://fmn-qa1.tensoract.com"
         type: choice
@@ -27,108 +52,111 @@ on:
           - "https://fmn-staging.tensoract.com/"
 
       # ============================================================
-      # 3. COMPANY ADMIN
+      # 4. COMPANY ADMIN
       # ============================================================
+
       company_username:
-        description: "COMPANY ADMIN EMAIL"
+        description: "4️⃣ COMPANY ADMIN EMAIL"
         required: false
         default: "admin@liceum.ai"
         type: string
 
       company_password:
-        description: "COMPANY ADMIN PASSWORD"
+        description: "5️⃣ COMPANY ADMIN PASSWORD"
         required: false
         default: "Admin123!"
         type: string
 
       # ============================================================
-      # 4. SUPERUSER
+      # 5. SUPERUSER
       # ============================================================
+
       superuser_username:
-        description: "SUPERUSER EMAIL"
+        description: "6️⃣ SUPERUSER EMAIL"
         required: false
         default: ""
         type: string
 
       superuser_password:
-        description: "SUPERUSER PASSWORD"
+        description: "7️⃣ SUPERUSER PASSWORD"
         required: false
         default: ""
         type: string
 
       # ============================================================
-      # 5. ANNOTATOR 1
+      # 6. ANNOTATOR 1
       # ============================================================
+
       annotator1_username:
-        description: "ANNOTATOR 1 EMAIL"
+        description: "8️⃣ ANNOTATOR 1 EMAIL"
         required: false
         default: "annotator1@objectways.com"
         type: string
 
       annotator1_password:
-        description: "ANNOTATOR 1 PASSWORD"
+        description: "9️⃣ ANNOTATOR 1 PASSWORD"
         required: false
         default: "Annotator123!"
         type: string
 
       # ============================================================
-      # 6. ANNOTATOR 2
+      # 7. ANNOTATOR 2
       # ============================================================
+
       annotator2_username:
-        description: "ANNOTATOR 2 EMAIL"
+        description: "🔟 ANNOTATOR 2 EMAIL"
         required: false
         default: "annotator2@objectways.com"
         type: string
 
       annotator2_password:
-        description: "ANNOTATOR 2 PASSWORD"
+        description: "1️⃣1️⃣ ANNOTATOR 2 PASSWORD"
         required: false
         default: "Annotator123!"
         type: string
 
       # ============================================================
-      # 7. REVIEWER
+      # 8. REVIEWER
       # ============================================================
+
       reviewer1_username:
-        description: "REVIEWER 1 EMAIL"
+        description: "1️⃣2️⃣ REVIEWER 1 EMAIL"
         required: false
         default: "reviewer@objectways.com"
         type: string
 
       reviewer1_password:
-        description: "REVIEWER 1 PASSWORD"
+        description: "1️⃣3️⃣ REVIEWER 1 PASSWORD"
         required: false
         default: "Reviewer123!"
         type: string
 
       # ============================================================
-      # 8. OTP EMAIL
+      # 9. OTP
       # ============================================================
+
       different_email_for_otp:
-        description: "OTP EMAIL"
+        description: "1️⃣4️⃣ OTP EMAIL"
         required: false
         default: "worthy58@web-library.net"
         type: string
 
       different_email_for_otp_password:
-        description: "OTP EMAIL PASSWORD"
+        description: "1️⃣5️⃣ OTP EMAIL PASSWORD"
         required: false
         default: "$6y1q=(gLq"
         type: string
 
       # ============================================================
-      # 9. COMPANY NAME
+      # 10. COMPANY NAME
       # ============================================================
+
       company_name:
-        description: "COMPANY NAME"
+        description: "1️⃣6️⃣ COMPANY NAME"
         required: false
         default: "Objectways"
         type: string
 
-
-# ==================================================================
-# JOB
-# ==================================================================
 
 jobs:
 
@@ -158,24 +186,23 @@ jobs:
           python-version: "3.11"
 
           # Cache pip dependencies
-          cache: "pip"
+          cache: pip
           cache-dependency-path: requirements.txt
 
 
       # ============================================================
-      # JAVA
-      # Required for Allure CLI
+      # JAVA FOR ALLURE
       # ============================================================
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: "temurin"
+          distribution: temurin
           java-version: "17"
 
 
       # ============================================================
-      # ALLURE CLI
+      # INSTALL ALLURE CLI
       # ============================================================
 
       - name: Install Allure CLI
@@ -184,20 +211,18 @@ jobs:
 
 
       # ============================================================
-      # PYTHON DEPENDENCIES
+      # INSTALL PYTHON DEPENDENCIES
       # ============================================================
 
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-          # Install Chromium and required Linux dependencies
           playwright install --with-deps chromium
 
 
       # ============================================================
-      # CREATE .ENV FILE
+      # CREATE .ENV
       # ============================================================
 
       - name: Create Environment File
@@ -227,20 +252,21 @@ jobs:
           COMP_NAME="${{ inputs.company_name }}"
 
 
-          # ========================================================
+          # --------------------------------------------------------
           # NEW COMPANY SANITY
-          # Use Superuser as Company Admin
-          # ========================================================
+          # --------------------------------------------------------
 
-          if [ "${{ inputs.test_path }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
+          if [ "${{ inputs.test_module }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
+
             COMP_USER="$SUPER_USER"
             COMP_PASS="$SUPER_PASS"
+
           fi
 
 
-          # ========================================================
-          # CREATE .ENV
-          # ========================================================
+          # --------------------------------------------------------
+          # CREATE ENV FILE
+          # --------------------------------------------------------
 
           cat <<EOF > .env
 
@@ -271,21 +297,72 @@ jobs:
 
 
       # ============================================================
-      # SHOW SELECTED TEST PATH
+      # DETERMINE TEST PATH
       # ============================================================
 
-      - name: Show Test Selection
+      - name: Determine Tests To Run
+        shell: bash
+
+        env:
+          TEST_MODULE: ${{ inputs.test_module }}
+          CUSTOM_PATH: ${{ inputs.test_path }}
+
         run: |
 
           echo "=============================================="
-          echo "TEST EXECUTION"
+          echo "TEST SELECTION"
           echo "=============================================="
 
-          echo "Selected Test Path:"
-          echo "${{ inputs.test_path }}"
+          echo "Selected Module : $TEST_MODULE"
+          echo "Custom Path     : $CUSTOM_PATH"
 
-          echo "Target URL:"
-          echo "${{ inputs.execution_url }}"
+          echo "=============================================="
+
+
+          # --------------------------------------------------------
+          # CUSTOM PATH PROVIDED
+          # --------------------------------------------------------
+
+          if [ -n "$CUSTOM_PATH" ]; then
+
+            echo "Custom test path provided."
+
+            # Convert Windows paths to Linux paths
+            CUSTOM_PATH="${CUSTOM_PATH//\\//}"
+
+            echo "Normalized path:"
+            echo "$CUSTOM_PATH"
+
+            echo "$CUSTOM_PATH" > test_execution_path.txt
+
+
+          # --------------------------------------------------------
+          # ALL
+          # --------------------------------------------------------
+
+          elif [ "$TEST_MODULE" = "all" ]; then
+
+            echo "Running ALL test modules."
+
+            echo "tests" > test_execution_path.txt
+
+
+          # --------------------------------------------------------
+          # NORMAL MODULE
+          # --------------------------------------------------------
+
+          else
+
+            echo "Running selected module."
+
+            echo "tests/$TEST_MODULE" > test_execution_path.txt
+
+          fi
+
+
+          echo ""
+          echo "Final Test Selection:"
+          cat test_execution_path.txt
 
           echo "=============================================="
 
@@ -298,87 +375,54 @@ jobs:
         shell: bash
 
         env:
-          TEST_PATH: ${{ inputs.test_path }}
           HEADLESS: "true"
 
         run: |
 
+          TEST_SELECTION=$(cat test_execution_path.txt)
+
           echo "=============================================="
-          echo "Preparing Test Execution"
+          echo "RUNNING TESTS"
           echo "=============================================="
 
-          # --------------------------------------------------------
-          # Convert Windows "\" path to Linux "/" path
-          # --------------------------------------------------------
+          echo "Test Selection:"
+          echo "$TEST_SELECTION"
 
-          TEST_PATH="${TEST_PATH//\\//}"
-
-          echo "Normalized Input:"
-          echo "$TEST_PATH"
+          echo "=============================================="
 
 
           # --------------------------------------------------------
           # Split multiple paths by comma
-          #
-          # Example:
-          #
-          # tests/objectwaysSanity,tests/datasets,tests/files
-          #
-          # becomes:
-          #
-          # tests/objectwaysSanity
-          # tests/datasets
-          # tests/files
           # --------------------------------------------------------
 
-          IFS=',' read -ra TEST_PATHS <<< "$TEST_PATH"
+          IFS=',' read -ra TEST_PATHS <<< "$TEST_SELECTION"
 
-
-          # --------------------------------------------------------
-          # Build pytest arguments
-          # --------------------------------------------------------
 
           PYTEST_ARGS=()
 
 
           for path in "${TEST_PATHS[@]}"; do
 
-            # Remove leading/trailing spaces
+            # Remove spaces
             path=$(echo "$path" | xargs)
 
-            # Skip empty values
+            # Skip empty path
             if [ -z "$path" ]; then
               continue
             fi
 
-
-            # ------------------------------------------------------
-            # ALL
-            # ------------------------------------------------------
-
-            if [ "$path" = "all" ]; then
-
-              echo "Running ALL test modules"
-
-              PYTEST_ARGS+=("tests")
-
-              continue
-
-            fi
+            # Convert Windows path
+            path="${path//\\//}"
 
 
             # ------------------------------------------------------
-            # MODULE NAME
+            # If user entered only module name
             #
-            # objectwaysSanity
             # datasets
-            # files
             #
-            # becomes:
+            # becomes
             #
-            # tests/objectwaysSanity
             # tests/datasets
-            # tests/files
             # ------------------------------------------------------
 
             if [[ "$path" != tests/* ]]; then
@@ -388,7 +432,7 @@ jobs:
             fi
 
 
-            echo "Adding Test Path:"
+            echo "Adding:"
             echo "$path"
 
             PYTEST_ARGS+=("$path")
@@ -397,7 +441,7 @@ jobs:
 
 
           # --------------------------------------------------------
-          # Display final pytest command
+          # Show final command
           # --------------------------------------------------------
 
           echo ""
@@ -411,13 +455,13 @@ jobs:
             printf '"%s" ' "$arg"
           done
 
-          printf '%s\n' "--alluredir=allure-results"
+          echo "--alluredir=allure-results"
 
           echo "=============================================="
 
 
           # --------------------------------------------------------
-          # Execute tests
+          # Execute
           # --------------------------------------------------------
 
           pytest "${PYTEST_ARGS[@]}" --alluredir=allure-results
@@ -432,9 +476,9 @@ jobs:
 
         run: |
 
-          echo "Generating Allure Report..."
-
           if [ -d "allure-results" ]; then
+
+            echo "Generating Allure Report..."
 
             allure generate \
               allure-results \
@@ -452,7 +496,7 @@ jobs:
       # UPLOAD ALLURE REPORT
       # ============================================================
 
-      - name: Upload Allure Report Artifact
+      - name: Upload Allure Report
         if: always()
 
         uses: actions/upload-artifact@v4
@@ -464,7 +508,7 @@ jobs:
 
 
       # ============================================================
-      # UPLOAD RAW TEST RESULTS
+      # UPLOAD RAW ALLURE RESULTS
       # ============================================================
 
       - name: Upload Allure Results
