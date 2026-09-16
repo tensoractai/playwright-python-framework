@@ -1,0 +1,6 @@
+{
+  "source-ref": "s3://objectways-transcribe/granicus/la_30_min_sample.mp3",
+  "streams": {
+    "Transcription": []
+  }
+}

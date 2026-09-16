@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#090d16"/>
+<title>Template 2 - 2nd Annotator Review Studio</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes" />
+
+<!-- Google Fonts for Modern Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Third Party Libraries -->
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- Objectways Core Stylesheets -->
+<link rel="stylesheet" href="https://objectways-video-transcription.s3.amazonaws.com/v9/css/videolang.css">
+<link rel="stylesheet" href="https://objectways-video-transcription.s3.amazonaws.com/v9/css/hierarchy-select.min.css">
+
+<style>
+:root {
+    --bg-base: #090d16;
+    --bg-surface: #121824;
+    --bg-surface-hover: #182030;
+    --bg-card: #1c2638;
+    --bg-input: #0e1420;
+    
+    --border-subtle: #222d3d;
+    --border-strong: #2c3b50;
+    --border-emerald: rgba(16, 185, 129, 0.4);
+    
+    --accent-emerald: #10b981;
+    --accent-teal: #14b8a6;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #8b5cf6;
+    --accent-amber: #f59e0b;
+    --accent-rose: #f43f5e;
+    
+    --text-main: #f8fafc;
+    --text-sub: #94a3b8;
+    --text-muted: #64748b;
+    
+    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden !important;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+body#demo-app { display: flex; flex-direction: column; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(9, 13, 22, 0.8); }
+::-webkit-scrollbar-thumb { background: #253346; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-emerald); }
+
+.review-navbar {
+    height: 52px; background: #0d121c; border-bottom: 1px solid var(--border-subtle);
+    padding: 0 20px; display: flex; align-items: center; justify-content: space-between; z-index: 1000; flex-shrink: 0;
+}
+
+.review-brand { display: flex; align-items: center; gap: 12px; }
+
+.review-logo {
+    width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-emerald), var(--accent-teal));
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    color: #ffffff; font-size: 14px; box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+.review-title-text { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin: 0; }
+
+.asset-badge-review {
+    background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25);
+    color: var(--accent-emerald); font-size: 0.76rem; font-weight: 600; padding: 3px 10px; border-radius: 12px;
+}
+
+.timecode-display {
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600;
+    background: var(--bg-input); border: 1px solid var(--border-subtle);
+    padding: 4px 14px; border-radius: var(--radius-sm); color: var(--accent-cyan);
+}
+
+.review-nav-actions { display: flex; align-items: center; gap: 10px; }
+
+.status-pill-review {
+    display: flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.3); color: var(--accent-emerald); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+}
+
+.status-dot-review { width: 6px; height: 6px; background-color: var(--accent-emerald); border-radius: 50%; box-shadow: 0 0 6px var(--accent-emerald); }
+
+.btn-review-action {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+    color: var(--text-sub); font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-sm); cursor: pointer;
+}
+.btn-review-action:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-main); }
+
+.btn-approve-all { background: rgba(16, 185, 129, 0.15) !important; border-color: var(--accent-emerald) !important; color: var(--accent-emerald) !important; }
+.btn-approve-all:hover { background: var(--accent-emerald) !important; color: #ffffff !important; }
+
+/* Hero Media Workstation Bar */
+.media-hero-section {
+    background: #06080d; border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 20px; display: flex; flex-direction: column; gap: 8px; flex-shrink: 0;
+}
+
+.workspace-toolbar {
+    background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);
+    padding: 6px 12px; display: flex; align-items: center; justify-content: space-between;
+}
+
+.toolbar-group { display: flex; align-items: center; gap: 8px; }
+
+.btn-tb {
+    background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-main);
+    border-radius: var(--radius-sm); padding: 5px 12px; font-size: 0.78rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+}
+
+.btn-record-toggle {
+    background: rgba(244, 63, 94, 0.12); border: 1px solid rgba(244, 63, 94, 0.3); color: var(--accent-rose);
+}
+.btn-record-toggle:hover {
+    background: rgba(244, 63, 94, 0.25); border-color: var(--accent-rose); color: #fff;
+}
+.btn-record-toggle.recording-active {
+    background: var(--accent-rose) !important; color: #ffffff !important; border-color: var(--accent-rose) !important;
+    box-shadow: 0 0 14px rgba(244, 63, 94, 0.5);
+}
+.record-pulse { animation: rec-pulse 1s infinite; }
+@keyframes rec-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.tb-select {
+    background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-main);
+    border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.78rem; outline: none; cursor: pointer;
+}
+
+#videowraper { display: none; }
+#video, #audio { width: 100%; max-height: 180px; }
+
+.wavecontainer {
+    background: #05070c !important; border: 1px solid var(--border-strong) !important;
+    border-radius: var(--radius-md); padding: 8px;
+}
+
+#waveform { cursor: pointer; min-height: 80px; }
+
+#subtitles {
+    background: rgba(18, 24, 36, 0.9); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm); padding: 6px 12px; color: var(--text-main); font-size: 0.82rem; text-align: center;
+}
+
+.timeline-scroll-area { max-height: 140px; overflow-y: auto; }
+
+.app-workspace-grid {
+    flex: 1; display: grid; grid-template-columns: 1fr 420px; overflow: hidden;
+}
+
+.segments-left-col {
+    background: var(--bg-base); border-right: 1px solid var(--border-subtle);
+    display: flex; flex-direction: column; overflow-y: auto; padding: 16px; gap: 14px;
+}
+
+.col-header-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);
+}
+
+.col-title-text { font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin: 0; }
+
+.dual-seg-card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md); padding: 14px; display: flex; flex-direction: column; gap: 10px;
+    transition: all 0.15s ease;
+}
+.dual-seg-card.approved-card { border-color: var(--accent-emerald); background: rgba(16, 185, 129, 0.06); }
+
+.reviewer-trans-input {
+    width: 100%; background: var(--bg-input); border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.86rem; padding: 10px; min-height: 65px; outline: none; resize: vertical;
+}
+
+.qa-right-col {
+    background: var(--bg-surface); display: flex; flex-direction: column; overflow-y: auto; padding: 16px; gap: 14px;
+}
+
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.spec-card { background: rgba(10, 14, 22, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 9px; }
+.spec-card-lbl { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+.spec-card-val { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent-emerald); }
+</style>
+</head>
+
+<body id="demo-app">
+
+    <!-- Review Navbar -->
+    <header class="review-navbar">
+        <div class="review-brand">
+            <div class="review-logo"><i class="fa-solid fa-user-check"></i></div>
+            <h1 class="review-title-text">Template 2 - 2nd Annotator Review Studio</h1>
+            <span class="asset-badge-review" id="headerAssetBadge"><i class="fa-solid fa-file-audio"></i> Test Audio.mp3</span>
+        </div>
+
+        <div class="review-nav-center">
+            <div class="timecode-display" id="navTimecode">00:00:00.00 / 00:00:00.00</div>
+        </div>
+
+        <div class="review-nav-actions">
+            <div class="status-pill-review"><span class="status-dot-review"></span><span>Review Active</span></div>
+            <button type="button" class="btn-review-action btn-approve-all" id="btnApproveAll"><i class="fa-solid fa-check-double mr-1"></i> Approve All</button>
+            <button type="button" class="btn-review-action" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-keyboard mr-1"></i> Shortcuts</button>
+        </div>
+    </header>
+
+    <!-- Shortcuts Modal -->
+    <div id="myModal" class="modal fade" role="dialog" style="z-index: 100000">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content style-modal" style="background:#0d121c; border:1px solid #222d3d; border-radius:12px; color:#fff;">
+                <div class="modal-header" style="border-bottom:1px solid #222d3d;">
+                    <h5 class="modal-title" style="font-size:1rem; font-weight:700;"><i class="fa-solid fa-circle-info text-info mr-2"></i> 2nd Annotator Shortcuts</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" style="font-size:0.85rem; color:#94a3b8;">
+                    <div style="display:flex; justify-content:space-between; padding:6px 0;"><span>Play / Pause</span> <kbd>Space</kbd></div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0;"><span>Start / Stop Recording</span> <kbd>Shift+R</kbd></div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0;"><span>Approve All Segments</span> <kbd>Shift+A</kbd></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Media Workstation Bar -->
+    <section class="media-hero-section">
+        <div class="workspace-toolbar">
+            <div class="toolbar-group">
+                <button class="btn-tb btnMasterPlay"><i class="fa-solid fa-play iconMasterPlay"></i> Play / Pause</button>
+                
+                <button class="btn-tb btn-record-toggle" id="btnRecordToggle" title="Click to begin recording segment time range">
+                    <i class="fa-solid fa-circle text-rose" id="recordIcon"></i>
+                    <span id="recordLabel">Start Recording</span>
+                </button>
+
+                <button class="btn-tb btnSeekBack"><i class="fa-solid fa-rotate-left"></i> -1s</button>
+                <button class="btn-tb btnSeekFwd"><i class="fa-solid fa-rotate-right"></i> +1s</button>
+            </div>
+
+            <div class="toolbar-group">
+                <span style="font-size:0.75rem; color:var(--text-sub);">Speed:</span>
+                <select class="tb-select selectSpeed" id="selectSpeed">
+                    <option value="0.5">0.5x</option>
+                    <option value="0.75">0.75x</option>
+                    <option value="1.0" selected>1.0x</option>
+                    <option value="1.25">1.25x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2.0">2.0x</option>
+                </select>
+
+                <button class="btn-tb ml-2" id="btnZoomIn" title="Zoom Waveform In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                <button class="btn-tb" id="btnZoomOut" title="Zoom Waveform Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                <button class="btn-tb text-danger ml-2" id="btnClearTracks" title="Clear all segment tracks"><i class="fa-solid fa-eraser"></i> Clear Tracks</button>
+            </div>
+        </div>
+
+        <div id="videowraper">
+            <video id="video"></video>
+            <audio id="audio" ssrc="mira640.mp4"></audio>
+        </div>
+
+        <div class="wavecontainer">
+            <div id="waveform" style="width: 100%"></div>
+        </div>
+
+        <div id="subtitles">
+            <i class="fa-solid fa-closed-captioning text-muted mr-2"></i> Subtitles will display here during review playback...
+        </div>
+
+        <div class="timeline-scroll-area">
+            <div id="videotrackanotate"></div>
+        </div>
+    </section>
+
+    <!-- Hidden Metadata -->
+    <TEXTAREA id='document-metadata' style="display: none;">
+{
+  "Test Audio.mp3": {
+    "duration": 180.5,
+    "audio-metadata": {
+      "format": "MP3",
+      "sample_rate": 44100,
+      "channels": 2,
+      "channel_layout": "stereo",
+      "bit_rate": 192000,
+      "bit_depth": 16,
+      "codec": "MP3",
+      "language": "English",
+      "annotation_type": "temporal",
+      "segments": [
+        { "start": 0.0, "end": 15.5, "label": "Speech" },
+        { "start": 15.5, "end": 32.8, "label": "Background Noise" },
+        { "start": 32.8, "end": 58.2, "label": "Music" }
+      ]
+    }
+  },
+  "audioSource": "https://objectways-transcribe.s3.amazonaws.com/granicus/la_30_min_sample.mp3",
+  "transcriptionMode": true,
+  "streams": {{task.input.streams | default: "[]"}}
+}
+    </TEXTAREA>
+
+    <TEXTAREA id='document-videodata' style="display: none;">{}</TEXTAREA>
+
+    <crowd-form>
+        <input name="annotations" id="annotations" type="hidden">
+        <crowd-button form-action="submit" style="display: none;"></crowd-button>
+    </crowd-form>
+
+    <!-- Main Workspace Grid -->
+    <main class="app-workspace-grid">
+        <section class="segments-left-col">
+            <div class="col-header-bar">
+                <h2 class="col-title-text"><i class="fa-solid fa-code-compare text-emerald"></i> 2nd Annotator Review Segments (<span id="segCount">0</span>)</h2>
+                <span style="font-size:0.75rem; color:var(--text-sub);">Review & verify baseline text</span>
+            </div>
+            <div id="dualSegmentsContainer" style="display:flex; flex-direction:column; gap:12px;"></div>
+        </section>
+
+        <aside class="qa-right-col">
+            <div class="spec-card">
+                <div style="font-weight:700; color:var(--accent-emerald);" class="mb-2"><i class="fa-solid fa-microchip"></i> Audio Specs</div>
+                <div class="spec-grid" id="dawSpecGrid"></div>
+            </div>
+
+            <div id="submitBox" class="mt-auto">
+                <button id="submitButton" type="button" class="btn btn-success w-100">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Submit 2nd Review
+                </button>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        var tagData = {};
+        try { tagData = JSON.parse($('#document-metadata').val()); } catch(e) {}
+        var descriptor = tagData;
+    </script>
+
+    <!-- External Scripts & AWS DRM -->
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/js/hierarchy-select.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/crypto-js.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/xml2js.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/amazon-cognito-identity.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/aws-iot-sdk-bundle.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/dash.all.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/src/lib/js/app.js" type="module"></script>
+    
+    <script>
+        (function() {
+            function patchWaveSurfer() {
+                if (window.WaveSurfer && WaveSurfer.create && !WaveSurfer._purplePatched) {
+                    var origCreate = WaveSurfer.create;
+                    WaveSurfer.create = function(options) {
+                        options.waveColor = options.waveColor || '#10b981';
+                        options.progressColor = options.progressColor || '#06b6d4';
+                        options.cursorColor = options.cursorColor || '#f59e0b';
+                        options.barWidth = options.barWidth || 2;
+                        options.barGap = options.barGap || 1;
+                        options.barRadius = options.barRadius || 2;
+                        return origCreate.call(this, options);
+                    };
+                    WaveSurfer._purplePatched = true;
+                }
+            }
+            patchWaveSurfer();
+            document.addEventListener('DOMContentLoaded', patchWaveSurfer);
+        })();
+    </script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/js/videotrackanotate_mini.js"></script>
+
+    <!-- Master Controller Script for Template 2 -->
+    <script>
+        $(document).ready(function() {
+            var reviewerTexts = {};
+            var segmentVerdicts = {};
+
+            var isRecording = false;
+            var recordStartTime = 0;
+
+            var parsedMeta = {
+                fileName: "Test Audio.mp3",
+                duration: 180.5,
+                format: "MP3",
+                sample_rate: 44100,
+                channels: 2,
+                channel_layout: "stereo",
+                bit_rate: 192000,
+                bit_depth: 16,
+                codec: "MP3",
+                language: "English",
+                annotation_type: "temporal",
+                segments: [
+                    { start: 0.0, end: 15.5, label: "Speech" },
+                    { start: 15.5, end: 32.8, label: "Background Noise" },
+                    { start: 32.8, end: 58.2, label: "Music" }
+                ]
+            };
+
+            function extractMetadata() {
+                if (!tagData) return;
+                var keys = Object.keys(tagData);
+                for (var i = 0; i < keys.length; i++) {
+                    var k = keys[i];
+                    if (tagData[k] && tagData[k]['audio-metadata']) {
+                        parsedMeta.fileName = k;
+                        parsedMeta.duration = tagData[k].duration || 180.5;
+                        var am = tagData[k]['audio-metadata'];
+                        parsedMeta.format = am.format || "MP3";
+                        parsedMeta.sample_rate = am.sample_rate || 44100;
+                        parsedMeta.channels = am.channels || 2;
+                        parsedMeta.channel_layout = am.channel_layout || "stereo";
+                        parsedMeta.bit_rate = am.bit_rate || 192000;
+                        parsedMeta.bit_depth = am.bit_depth || 16;
+                        parsedMeta.codec = am.codec || "MP3";
+                        parsedMeta.language = am.language || "English";
+                        parsedMeta.annotation_type = am.annotation_type || "temporal";
+                        if (am.segments && am.segments.length) parsedMeta.segments = am.segments;
+                        break;
+                    }
+                }
+                parsedMeta.segments.forEach(function(s, idx) {
+                    if (reviewerTexts[idx] === undefined) reviewerTexts[idx] = s.transcript || "";
+                });
+            }
+
+            extractMetadata();
+
+            function formatTC(secs) {
+                if (isNaN(secs)) return "00:00.00";
+                var m = Math.floor(secs / 60);
+                var s = Math.floor(secs % 60);
+                var ms = Math.floor((secs % 1) * 100);
+                return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s + '.' + (ms < 10 ? '0' : '') + ms;
+            }
+
+            function renderSpecs() {
+                var html = '';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Format</span><span class="spec-card-val">' + parsedMeta.format + '</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Sample Rate</span><span class="spec-card-val">' + (parsedMeta.sample_rate / 1000).toFixed(1) + ' kHz</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Channels</span><span class="spec-card-val">' + parsedMeta.channels + '</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Bit Rate</span><span class="spec-card-val">' + Math.round(parsedMeta.bit_rate / 1000) + ' kbps</span></div>';
+                $('#dawSpecGrid').html(html);
+                $('#headerAssetBadge').html('<i class="fa-solid fa-file-audio"></i> ' + parsedMeta.fileName);
+            }
+
+            renderSpecs();
+
+            var lastCount = -1;
+            function buildSegmentDOM() {
+                var ranges = $('.trackrange');
+                var count = ranges.length;
+
+                var items = [];
+                if (count > 0) {
+                    ranges.each(function(idx) {
+                        var $el = $(this);
+                        var baseText = $el.text() || '';
+                        if (baseText === ('Segment ' + (idx + 1))) baseText = '';
+                        if (reviewerTexts[idx] === undefined) reviewerTexts[idx] = baseText;
+                        var metaSeg = parsedMeta.segments[idx] || { start: idx * 10, end: (idx + 1) * 10, label: "Speech" };
+                        items.push({ idx: idx, meta: metaSeg });
+                    });
+                } else {
+                    parsedMeta.segments.forEach(function(s, idx) {
+                        items.push({ idx: idx, meta: s });
+                    });
+                }
+
+                $('#segCount').text(items.length);
+                if (items.length === lastCount) return;
+                lastCount = items.length;
+
+                var html = '';
+                items.forEach(function(item) {
+                    var idx = item.idx;
+                    var metaSeg = item.meta;
+                    var curText = reviewerTexts[idx] !== undefined ? reviewerTexts[idx] : "";
+                    var v = segmentVerdicts[idx] || 'pending';
+
+                    html += '<div class="dual-seg-card ' + (v==='approved'?'approved-card':'') + '" data-idx="' + idx + '">';
+                    html += '  <div style="display:flex; justify-content:space-between; align-items:center;">';
+                    html += '    <span class="spec-card-val"><i class="fa-solid fa-user-tag"></i> Segment ' + (idx + 1) + ' (' + metaSeg.label + ') • ' + formatTC(metaSeg.start) + ' - ' + formatTC(metaSeg.end) + '</span>';
+                    html += '    <div style="display:flex; gap:6px;">';
+                    html += '      <button type="button" class="btn-review-action btnSegPlay" data-idx="' + idx + '"><i class="fa-solid fa-play"></i> Play</button>';
+                    html += '      <button type="button" class="btn-review-action btn-approve" data-idx="' + idx + '"><i class="fa-solid fa-check"></i> Approve</button>';
+                    html += '    </div>';
+                    html += '  </div>';
+                    html += '  <textarea class="reviewer-trans-input reviewerTransInput" data-idx="' + idx + '" placeholder="Review 2nd annotator correction...">' + curText + '</textarea>';
+                    html += '</div>';
+                });
+
+                $('#dualSegmentsContainer').html(html);
+            }
+
+            $(document).on('input', '.reviewerTransInput', function() {
+                var idx = $(this).data('idx');
+                var val = $(this).val();
+                reviewerTexts[idx] = val;
+
+                var ranges = $('.trackrange');
+                if (ranges.eq(idx).length) {
+                    ranges.eq(idx).text(val || ('Segment ' + (idx + 1)));
+                }
+                updateAnnotationsPayload();
+            });
+
+            function updateAnnotationsPayload() {
+                var result = [];
+                var count = $('.trackrange').length || parsedMeta.segments.length;
+                for (var i = 0; i < count; i++) {
+                    var s = parsedMeta.segments[i] || { start: i * 10, end: (i + 1) * 10, label: "Speech" };
+                    result.push({
+                        segment_id: i + 1,
+                        start: s.start,
+                        end: s.end,
+                        label: s.label || "Speech",
+                        transcript: reviewerTexts[i] || "",
+                        verdict: segmentVerdicts[i] || "pending"
+                    });
+                }
+                $('#annotations').val(JSON.stringify(result));
+            }
+
+            var audioElem = document.getElementById('audio') || document.getElementById('video');
+
+            // Start / Stop Segment Recording Controller
+            $('#btnRecordToggle').on('click', function() {
+                if (!audioElem) return;
+
+                if (!isRecording) {
+                    isRecording = true;
+                    recordStartTime = audioElem.currentTime;
+                    if (audioElem.paused) audioElem.play();
+
+                    $('#recordIcon').removeClass('fa-circle text-rose').addClass('fa-square text-danger record-pulse');
+                    $('#recordLabel').text('Stop Recording (00:00)');
+                    $('#btnRecordToggle').addClass('recording-active');
+                } else {
+                    isRecording = false;
+                    var recordEndTime = audioElem.currentTime;
+                    $('#recordIcon').removeClass('fa-square text-danger record-pulse').addClass('fa-circle text-rose');
+                    $('#recordLabel').text('Start Recording');
+                    $('#btnRecordToggle').removeClass('recording-active');
+
+                    if (recordEndTime > recordStartTime + 0.2) {
+                        var newSeg = {
+                            start: parseFloat(recordStartTime.toFixed(2)),
+                            end: parseFloat(recordEndTime.toFixed(2)),
+                            label: "Speech",
+                            transcript: ""
+                        };
+                        parsedMeta.segments.push(newSeg);
+
+                        var trackAddBtn = $('.trackaddbutton').first();
+                        if (trackAddBtn.length) {
+                            trackAddBtn.trigger('click');
+                        }
+
+                        lastCount = -1;
+                        buildSegmentDOM();
+                        updateAnnotationsPayload();
+                    }
+                }
+            });
+
+            // Clear All Tracks
+            $('#btnClearTracks').on('click', function() {
+                if (confirm("Are you sure you want to clear all audio segment tracks?")) {
+                    parsedMeta.segments = [];
+                    reviewerTexts = {};
+                    segmentVerdicts = {};
+                    $('.trackrange').remove();
+                    lastCount = -1;
+                    buildSegmentDOM();
+                    updateAnnotationsPayload();
+                }
+            });
+
+            // Speed Selector Handler
+            $('#selectSpeed, .selectSpeed').on('change', function() {
+                var spd = parseFloat($(this).val());
+                if (audioElem) audioElem.playbackRate = spd;
+                if (window.wavesurfer) window.wavesurfer.setPlaybackRate(spd);
+            });
+
+            $(document).on('click', '.btnSegPlay', function() {
+                var idx = $(this).data('idx');
+                var s = parsedMeta.segments[idx] || { start: idx * 10 };
+                if (audioElem) {
+                    audioElem.currentTime = s.start;
+                    audioElem.play();
+                }
+            });
+
+            $(document).on('click', '.btn-approve', function() {
+                var idx = $(this).data('idx');
+                segmentVerdicts[idx] = segmentVerdicts[idx] === 'approved' ? 'pending' : 'approved';
+                $(this).closest('.dual-seg-card').toggleClass('approved-card', segmentVerdicts[idx] === 'approved');
+                updateAnnotationsPayload();
+            });
+
+            $('#btnApproveAll').on('click', function() {
+                parsedMeta.segments.forEach(function(s, idx) { segmentVerdicts[idx] = 'approved'; });
+                $('.dual-seg-card').addClass('approved-card');
+                updateAnnotationsPayload();
+            });
+
+            $('#submitButton').on('click', function() {
+                updateAnnotationsPayload();
+                alert("2nd Review Submitted Successfully!\nPayload: " + $('#annotations').val());
+                if ($('crowd-form').length) {
+                    try { $('crowd-form')[0].submit(); } catch(e) {}
+                }
+            });
+
+            if (audioElem) {
+                audioElem.addEventListener('timeupdate', function() {
+                    var tc = formatTC(audioElem.currentTime) + ' / ' + formatTC(audioElem.duration);
+                    $('#navTimecode').text(tc);
+
+                    if (isRecording) {
+                        var dur = audioElem.currentTime - recordStartTime;
+                        $('#recordLabel').text('Stop Recording (' + formatTC(dur) + ')');
+                    }
+                });
+            }
+
+            setInterval(function() {
+                buildSegmentDOM();
+            }, 500);
+
+            buildSegmentDOM();
+        });
+    </script>
+</body>
+</html>

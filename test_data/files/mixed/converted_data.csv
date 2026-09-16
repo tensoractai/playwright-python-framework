@@ -1,0 +1,722 @@
+Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3
+TagName ,TagCode,TagTree,TagGroup
+Amusement and Theme Parks,mural_iab_0151,Contextual > IAB > Attractions > Amusement and Theme Parks,Attractions
+Bars & Restaurants,mural_iab_0179,Contextual > IAB > Attractions > Bars & Restaurants,Attractions
+Casinos & Gambling,mural_iab_0181,Contextual > IAB > Attractions > Casinos & Gambling,Attractions
+Cinemas & Events,mural_iab_0182,Contextual > IAB > Attractions > Cinemas & Events,Attractions
+Comedy Events,mural_iab_0183,Contextual > IAB > Attractions > Comedy Events,Attractions
+Concerts & Music Events,mural_iab_0184,Contextual > IAB > Attractions > Concerts & Music Events,Attractions
+Fashion Events,mural_iab_0152,Contextual > IAB > Attractions > Fashion Events,Attractions
+Historic Site & Landmark Tours,mural_iab_0153,Contextual > IAB > Attractions > Historic Site & Landmark Tours,Attractions
+Malls & Shopping Centers,mural_iab_0154,Contextual > IAB > Attractions > Malls & Shopping Centers,Attractions
+Museums & Galleries,mural_iab_0155,Contextual > IAB > Attractions > Museums & Galleries,Attractions
+Nightclubs,mural_iab_0158,Contextual > IAB > Attractions > Nightclubs,Attractions
+Outdoor Attractions,mural_iab_0159,Contextual > IAB > Attractions > Outdoor Attractions,Attractions
+Parks,mural_iab_0160,Contextual > IAB > Attractions > Parks,Attractions
+Party Supplies and Decorations,mural_iab_0161,Contextual > IAB > Attractions > Party Supplies and Decorations,Attractions
+Political Event,mural_iab_0174,Contextual > IAB > Attractions > Political Event,Attractions
+Religious Events,mural_iab_0175,Contextual > IAB > Attractions > Religious Events,Attractions
+Sporting Events,mural_iab_0176,Contextual > IAB > Attractions > Sporting Events,Attractions
+Theater Venues,mural_iab_0177,Contextual > IAB > Attractions > Theater Venues,Attractions
+Zoos & Aquariums,mural_iab_0178,Contextual > IAB > Attractions > Zoos & Aquariums,Attractions
+Commercial Trucks,mural_iab_0003,Contextual > IAB > Automotive > Auto Body Styles > Commercial Trucks,Auto Body Styles
+Convertible,mural_iab_0008,Contextual > IAB > Automotive > Auto Body Styles > Convertible,Auto Body Styles
+Coupe,mural_iab_0009,Contextual > IAB > Automotive > Auto Body Styles > Coupe,Auto Body Styles
+Crossover,mural_iab_0010,Contextual > IAB > Automotive > Auto Body Styles > Crossover,Auto Body Styles
+Hatchback,mural_iab_0011,Contextual > IAB > Automotive > Auto Body Styles > Hatchback,Auto Body Styles
+Microcar,mural_iab_0012,Contextual > IAB > Automotive > Auto Body Styles > Microcar,Auto Body Styles
+Minivan,mural_iab_0013,Contextual > IAB > Automotive > Auto Body Styles > Minivan,Auto Body Styles
+Off-Road Vehicles,mural_iab_0014,Contextual > IAB > Automotive > Auto Body Styles > Off-Road Vehicles,Auto Body Styles
+Pickup Trucks,mural_iab_0015,Contextual > IAB > Automotive > Auto Body Styles > Pickup Trucks,Auto Body Styles
+Sedan,mural_iab_0004,Contextual > IAB > Automotive > Auto Body Styles > Sedan,Auto Body Styles
+Station Wagon,mural_iab_0005,Contextual > IAB > Automotive > Auto Body Styles > Station Wagon,Auto Body Styles
+SUV,mural_iab_0006,Contextual > IAB > Automotive > Auto Body Styles > SUV,Auto Body Styles
+Van,mural_iab_0007,Contextual > IAB > Automotive > Auto Body Styles > Van,Auto Body Styles
+Auto Buying and Selling,mural_iab_0030,Contextual > IAB > Automotive > Auto Buying and Selling,Automotive
+Auto Insurance,mural_iab_0031,Contextual > IAB > Automotive > Auto Insurance,Automotive
+Auto Parts,mural_iab_0032,Contextual > IAB > Automotive > Auto Parts,Automotive
+Auto Recalls,mural_iab_0033,Contextual > IAB > Automotive > Auto Recalls,Automotive
+Auto Rentals,mural_iab_0041,Contextual > IAB > Automotive > Auto Rentals,Automotive
+Auto Repair,mural_iab_0034,Contextual > IAB > Automotive > Auto Repair,Automotive
+Auto Safety,mural_iab_0035,Contextual > IAB > Automotive > Auto Safety,Automotive
+Auto Shows,mural_iab_0036,Contextual > IAB > Automotive > Auto Shows,Automotive
+Car Culture,mural_iab_0025,Contextual > IAB > Automotive > Car Culture,Automotive
+Dash Cam Videos,mural_iab_0026,Contextual > IAB > Automotive > Dash Cam Videos,Automotive
+Motorcycles,mural_iab_0027,Contextual > IAB > Automotive > Motorcycles,Automotive
+Road-Side Assistance,mural_iab_0028,Contextual > IAB > Automotive > Road-Side Assistance,Automotive
+Scooters,mural_iab_0029,Contextual > IAB > Automotive > Scooters,Automotive
+Auto Infotainment Technologies,mural_iab_0038,Contextual > IAB > Automotive > Auto Technology > Auto Infotainment Technologies,Auto Technology
+Auto Navigation Systems,mural_iab_0039,Contextual > IAB > Automotive > Auto Technology > Auto Navigation Systems,Auto Technology
+Auto Safety Technologies,mural_iab_0040,Contextual > IAB > Automotive > Auto Technology > Auto Safety Technologies,Auto Technology
+Budget Cars,mural_iab_0017,Contextual > IAB > Automotive > Auto Type > Budget Cars,Auto Type
+Certified Pre-Owned Cars,mural_iab_0018,Contextual > IAB > Automotive > Auto Type > Certified Pre-Owned Cars,Auto Type
+Classic Cars,mural_iab_0019,Contextual > IAB > Automotive > Auto Type > Classic Cars,Auto Type
+Concept Cars,mural_iab_0020,Contextual > IAB > Automotive > Auto Type > Concept Cars,Auto Type
+Driverless Cars,mural_iab_0021,Contextual > IAB > Automotive > Auto Type > Driverless Cars,Auto Type
+Green Vehicles,mural_iab_0022,Contextual > IAB > Automotive > Auto Type > Green Vehicles,Auto Type
+Luxury Cars,mural_iab_0023,Contextual > IAB > Automotive > Auto Type > Luxury Cars,Auto Type
+Performance Cars,mural_iab_0024,Contextual > IAB > Automotive > Auto Type > Performance Cars,Auto Type
+Art and Photography Books,mural_iab_0043,Contextual > IAB > Books and Literature > Art and Photography Books,Books and Literature
+Children's Literature,mural_iab_0045,Contextual > IAB > Books and Literature > Children's Literature,Books and Literature
+Comics and Graphic Novels,mural_iab_0046,Contextual > IAB > Books and Literature > Comics and Graphic Novels,Books and Literature
+Cookbooks,mural_iab_0047,Contextual > IAB > Books and Literature > Cookbooks,Books and Literature
+Fiction,mural_iab_0048,Contextual > IAB > Books and Literature > Fiction,Books and Literature
+Poetry,mural_iab_0049,Contextual > IAB > Books and Literature > Poetry,Books and Literature
+Travel Books,mural_iab_0050,Contextual > IAB > Books and Literature > Travel Books,Books and Literature
+Business Accounting & Finance,mural_iab_0054,Contextual > IAB > Business and Finance > Business > Business Accounting & Finance,Business
+Business Administration,mural_iab_0062,Contextual > IAB > Business and Finance > Business > Business Administration,Business
+Business Banking & Finance,mural_iab_0063,Contextual > IAB > Business and Finance > Business > Business Banking & Finance,Business
+Angel Investment,mural_iab_0064,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Angel Investment,Business
+Bankruptcy,mural_iab_0065,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Bankruptcy,Business
+Business Loans,mural_iab_0066,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Business Loans,Business
+Debt Factoring & Invoice Discounting,mural_iab_0067,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Debt Factoring & Invoice Discounting,Business
+Mergers and Acquisitions,mural_iab_0068,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Mergers and Acquisitions,Business
+Private Equity,mural_iab_0069,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Private Equity,Business
+Sale & Lease Back,mural_iab_0070,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Sale & Lease Back,Business
+Venture Capital,mural_iab_0071,Contextual > IAB > Business and Finance > Business > Busines Banking & Finance > Venture Capital,Business
+Business I.T.,mural_iab_0072,Contextual > IAB > Business and Finance > Business > Business I.T.,Business
+Business Operations,mural_iab_0073,Contextual > IAB > Business and Finance > Business > Business Operations,Business
+Consumer Issues,mural_iab_0074,Contextual > IAB > Business and Finance > Business > Consumer Issues,Business
+Recalls,mural_iab_0075,Contextual > IAB > Business and Finance > Business > Consumer Issues > Recalls,Business
+Executive Leadership & Management,mural_iab_0076,Contextual > IAB > Business and Finance > Business > Executive Leadership & Management,Business
+Government Business,mural_iab_0077,Contextual > IAB > Business and Finance > Business > Government Business,Business
+Green Solutions,mural_iab_0078,Contextual > IAB > Business and Finance > Business > Green Solutions,Business
+Human Resources,mural_iab_0055,Contextual > IAB > Business and Finance > Business > Human Resources,Business
+Large Business,mural_iab_0056,Contextual > IAB > Business and Finance > Business > Large Business,Business
+Logistics,mural_iab_0057,Contextual > IAB > Business and Finance > Business > Logistics,Business
+Marketing and Advertising,mural_iab_0058,Contextual > IAB > Business and Finance > Business > Marketing and Advertising,Business
+Sales,mural_iab_0059,Contextual > IAB > Business and Finance > Business > Sales,Business
+Small and Medium-sized Business,mural_iab_0060,Contextual > IAB > Business and Finance > Business > Small and Medium-sized Business,Business
+Startups,mural_iab_0061,Contextual > IAB > Business and Finance > Business > Startups,Business
+Commodities,mural_iab_0081,Contextual > IAB > Business and Finance > Economy > Commodities,Economy
+Currencies,mural_iab_0082,Contextual > IAB > Business and Finance > Economy > Currencies,Economy
+Financial Crisis,mural_iab_0083,Contextual > IAB > Business and Finance > Economy > Financial Crisis,Economy
+Financial Reform,mural_iab_0084,Contextual > IAB > Business and Finance > Economy > Financial Reform,Economy
+Financial Regulation,mural_iab_0085,Contextual > IAB > Business and Finance > Economy > Financial Regulation,Economy
+Gasoline Prices,mural_iab_0086,Contextual > IAB > Business and Finance > Economy > Gasoline Prices,Economy
+Housing Market,mural_iab_0087,Contextual > IAB > Business and Finance > Economy > Housing Market,Economy
+Interest Rates,mural_iab_0088,Contextual > IAB > Business and Finance > Economy > Interest Rates,Economy
+Job Market,mural_iab_0089,Contextual > IAB > Business and Finance > Economy > Job Market,Economy
+Apprenticeships,mural_iab_0124,Contextual > IAB > Careers > Apprenticeships,Careers
+Career Advice,mural_iab_0125,Contextual > IAB > Careers > Career Advice,Careers
+Career Planning,mural_iab_0126,Contextual > IAB > Careers > Career Planning,Careers
+Job Search,mural_iab_0127,Contextual > IAB > Careers > Job Search,Careers
+Job Fairs,mural_iab_0128,Contextual > IAB > Careers > Job Search > Job Fairs,Careers
+Resume Writing and Advice,mural_iab_0129,Contextual > IAB > Careers > Job Search > Resume Writing and Advice,Careers
+Remote Working,mural_iab_0130,Contextual > IAB > Careers > Remote Working,Careers
+Vocational Training,mural_iab_0131,Contextual > IAB > Careers > Vocational Training,Careers
+Email,mural_iab_0623,Contextual > IAB > Content Channel > Email,Content Channel
+Forum/Community,mural_iab_1003,Contextual > IAB > Content Channel > Forum/Community,Content Channel
+Game,mural_iab_1004,Contextual > IAB > Content Channel > Game,Content Channel
+Marketplace/eCommerce,mural_iab_1005,Contextual > IAB > Content Channel > Marketplace/eCommerce,Content Channel
+Search Engine/Listings,mural_iab_1006,Contextual > IAB > Content Channel > Search Engine/Listings,Content Channel
+Social,mural_iab_1007,Contextual > IAB > Content Channel > Social,Content Channel
+Utility/Online Tool,mural_iab_1008,Contextual > IAB > Content Channel > Utility/Online Tool,Content Channel
+Adult Education,mural_iab_0133,Contextual > IAB > Education > Adult Education,Education
+Early Childhood Education,mural_iab_0142,Contextual > IAB > Education > Early Childhood Education,Education
+Educational Assessment,mural_iab_0143,Contextual > IAB > Education > Educational Assessment,Education
+Standardized Testing,mural_iab_0144,Contextual > IAB > Education > Educational Assessment > Standardized Testing,Education
+Homeschooling,mural_iab_0145,Contextual > IAB > Education > Homeschooling,Education
+Homework and Study,mural_iab_0146,Contextual > IAB > Education > Homework and Study,Education
+Language Learning,mural_iab_0147,Contextual > IAB > Education > Language Learning,Education
+Online Education,mural_iab_0148,Contextual > IAB > Education > Online Education,Education
+Primary Education,mural_iab_0149,Contextual > IAB > Education > Primary Education,Education
+Private School,mural_iab_0134,Contextual > IAB > Education > Private School,Education
+Secondary Education,mural_iab_0135,Contextual > IAB > Education > Secondary Education,Education
+Special Education,mural_iab_0136,Contextual > IAB > Education > Special Education,Education
+College Planning,mural_iab_0138,Contextual > IAB > Education > College Education > College Planning,College Education
+Postgraduate Education,mural_iab_0139,Contextual > IAB > Education > College Education > Postgraduate Education,College Education
+Professional School,mural_iab_0140,Contextual > IAB > Education > College Education > Postgraduate Education > Professional School,College Education
+Undergraduate Education,mural_iab_0141,Contextual > IAB > Education > College Education > Undergraduate Education,College Education
+Animation Movies,mural_iab_0329,Contextual > IAB > Entertainment > Movies > Animation Movies,Movies
+Comedy Movies,mural_iab_0330,Contextual > IAB > Entertainment > Movies > Comedy Movies,Movies
+Drama Movies,mural_iab_0333,Contextual > IAB > Entertainment > Movies > Drama Movies,Movies
+Family and Children Movies,mural_iab_0334,Contextual > IAB > Entertainment > Movies > Family and Children Movies,Movies
+Science Fiction Movies,mural_iab_0327,Contextual > IAB > Entertainment > Movies > Science Fiction Movies,Movies
+Special Interest Movies,mural_iab_0328,Contextual > IAB > Entertainment > Movies > Special Interest Movies,Movies
+World Movies,mural_iab_0337,Contextual > IAB > Entertainment > Movies > World Movies,Movies
+Adult Album Alternative,mural_iab_0342,Contextual > IAB > Entertainment > Music > Adult Album Alternative,Music
+Adult Contemporary Music,mural_iab_0339,Contextual > IAB > Entertainment > Music > Adult Contemporary Music,Music
+Alternative Music,mural_iab_0343,Contextual > IAB > Entertainment > Music > Alternative Music,Music
+Blues,mural_iab_0360,Contextual > IAB > Entertainment > Music > Blues,Music
+Children's Music,mural_iab_0344,Contextual > IAB > Entertainment > Music > Children's Music,Music
+Classic Hits,mural_iab_0345,Contextual > IAB > Entertainment > Music > Classic Hits,Music
+Classical Music,mural_iab_0346,Contextual > IAB > Entertainment > Music > Classical Music,Music
+College Radio,mural_iab_0347,Contextual > IAB > Entertainment > Music > College Radio,Music
+Comedy (Music and Audio),mural_iab_0348,Contextual > IAB > Entertainment > Music > Comedy (Music and Audio),Music
+Contemporary Hits/Pop/Top 40,mural_iab_0349,Contextual > IAB > Entertainment > Music > Contemporary Hits/Pop/Top 40,Music
+Country Music,mural_iab_0350,Contextual > IAB > Entertainment > Music > Country Music,Music
+Dance and Electronic Music,mural_iab_0351,Contextual > IAB > Entertainment > Music > Dance and Electronic Music,Music
+Gospel Music,mural_iab_0354,Contextual > IAB > Entertainment > Music > Gospel Music,Music
+Hip Hop Music,mural_iab_0355,Contextual > IAB > Entertainment > Music > Hip Hop Music,Music
+Inspirational/New Age Music,mural_iab_0356,Contextual > IAB > Entertainment > Music > Inspirational/New Age Music,Music
+Jazz,mural_iab_0357,Contextual > IAB > Entertainment > Music > Jazz,Music
+Oldies/Adult Standards,mural_iab_0358,Contextual > IAB > Entertainment > Music > Oldies/Adult Standards,Music
+R&B/Soul/Funk,mural_iab_0362,Contextual > IAB > Entertainment > Music > R&B/Soul/Funk,Music
+Reggae,mural_iab_0359,Contextual > IAB > Entertainment > Music > Reggae,Music
+Religious (Music and Audio),mural_iab_0361,Contextual > IAB > Entertainment > Music > Religious (Music and Audio),Music
+Rock Music,mural_iab_0363,Contextual > IAB > Entertainment > Music > Rock Music,Music
+Alternative Rock,mural_iab_0365,Contextual > IAB > Entertainment > Music > Rock Music > Alternative Rock,Music
+Hard Rock,mural_iab_0367,Contextual > IAB > Entertainment > Music > Rock Music > Hard Rock,Music
+Soft Rock,mural_iab_0368,Contextual > IAB > Entertainment > Music > Rock Music > Soft Rock,Music
+Songwriters/Folk,mural_iab_0353,Contextual > IAB > Entertainment > Music > Songwriters/Folk,Music
+"Soundtracks, TV and Showtunes",mural_iab_0369,"Contextual > IAB > Entertainment > Music > Soundtracks, TV and Showtunes",Music
+Urban Contemporary Music,mural_iab_0377,Contextual > IAB > Entertainment > Music > Urban Contemporary Music,Music
+Variety (Music and Audio),mural_iab_0378,Contextual > IAB > Entertainment > Music > Variety (Music and Audio),Music
+World/International Music,mural_iab_0352,Contextual > IAB > Entertainment > Music > World/International Music,Music
+Sports TV,mural_iab_0644,Contextual > IAB > Entertainment > Television > Sports TV,Television
+Awards Shows,mural_iab_0162,Contextual > IAB > Events > Awards Shows,Events
+Business Expos & Conferences,mural_iab_0180,Contextual > IAB > Events > Business Expos & Conferences,Events
+Fan Conventions,mural_iab_0185,Contextual > IAB > Events > Fan Conventions,Events
+Bereavement,mural_iab_0187,Contextual > IAB > Family and Relationships > Bereavement,Family and Relationships
+Dating,mural_iab_0188,Contextual > IAB > Family and Relationships > Dating,Family and Relationships
+Divorce,mural_iab_0189,Contextual > IAB > Family and Relationships > Divorce,Family and Relationships
+Eldercare,mural_iab_0190,Contextual > IAB > Family and Relationships > Eldercare,Family and Relationships
+Marriage and Civil Unions,mural_iab_0191,Contextual > IAB > Family and Relationships > Marriage and Civil Unions,Family and Relationships
+Single Life,mural_iab_0200,Contextual > IAB > Family and Relationships > Single Life,Family and Relationships
+Adoption and Fostering,mural_iab_0193,Contextual > IAB > Family and Relationships > Parenting > Adoption and Fostering,Parenting
+Daycare and Pre-School,mural_iab_0194,Contextual > IAB > Family and Relationships > Parenting > Daycare and Pre-School,Parenting
+Internet Safety,mural_iab_0195,Contextual > IAB > Family and Relationships > Parenting > Internet Safety,Parenting
+Parenting Babies and Toddlers,mural_iab_0196,Contextual > IAB > Family and Relationships > Parenting > Parenting Babies and Toddlers,Parenting
+Parenting Children Aged 4-11,mural_iab_0197,Contextual > IAB > Family and Relationships > Parenting > Parenting Children Aged 4-11,Parenting
+Parenting Teens,mural_iab_0198,Contextual > IAB > Family and Relationships > Parenting > Parenting Teens,Parenting
+Special Needs Kids,mural_iab_0199,Contextual > IAB > Family and Relationships > Parenting > Special Needs Kids,Parenting
+Costume,mural_iab_0202,Contextual > IAB > Fine Art > Costume,Fine Art
+Dance,mural_iab_0203,Contextual > IAB > Fine Art > Dance,Fine Art
+Design,mural_iab_0204,Contextual > IAB > Fine Art > Design,Fine Art
+Digital Arts,mural_iab_0205,Contextual > IAB > Fine Art > Digital Arts,Fine Art
+Fine Art Photography,mural_iab_0206,Contextual > IAB > Fine Art > Fine Art Photography,Fine Art
+Modern Art,mural_iab_0207,Contextual > IAB > Fine Art > Modern Art,Fine Art
+Opera,mural_iab_0208,Contextual > IAB > Fine Art > Opera,Fine Art
+Theater,mural_iab_0209,Contextual > IAB > Fine Art > Theater,Fine Art
+Alcoholic Beverages,mural_iab_0211,Contextual > IAB > Food & Drink > Alcoholic Beverages,Food and Drink
+Barbecues and Grilling,mural_iab_0215,Contextual > IAB > Food & Drink > Barbecues and Grilling,Food and Drink
+Cooking,mural_iab_0216,Contextual > IAB > Food & Drink > Cooking,Food and Drink
+Desserts and Baking,mural_iab_0217,Contextual > IAB > Food & Drink > Desserts and Baking,Food and Drink
+Dining Out,mural_iab_0218,Contextual > IAB > Food & Drink > Dining Out,Food and Drink
+Food Allergies,mural_iab_0219,Contextual > IAB > Food & Drink > Food Allergies,Food and Drink
+Food Movements,mural_iab_0220,Contextual > IAB > Food & Drink > Food Movements,Food and Drink
+Healthy Cooking and Eating,mural_iab_0221,Contextual > IAB > Food & Drink > Healthy Cooking and Eating,Food and Drink
+Non-Alcoholic Beverages,mural_iab_0222,Contextual > IAB > Food & Drink > Non-Alcoholic Beverages,Food and Drink
+Vegan Diets,mural_iab_0212,Contextual > IAB > Food & Drink > Vegan Diets,Food and Drink
+Vegetarian Diets,mural_iab_0213,Contextual > IAB > Food & Drink > Vegetarian Diets,Food and Drink
+World Cuisines,mural_iab_0214,Contextual > IAB > Food & Drink > World Cuisines,Food and Drink
+Action/Adventure,mural_iab_0325,Contextual > IAB > Genre > Action/Adventure,Genres
+Animation & Anime,mural_iab_0641,Contextual > IAB > Genre > Animation & Anime,Genres
+Awards,mural_iabgenre_44,Contextual > IAB > Genres > Awards,Genres
+Biographies,mural_iab_0044,Contextual > IAB > Genre > Biographies,Genres
+Business & Finance,mural_iabgenre_52,Contextual > IAB > Genres > Business & Finance,Genres
+Comedy,mural_iab_0646,Contextual > IAB > Genre > Comedy,Genres
+Competition,mural_iabgenre_58,Contextual > IAB > Genres > Competition,Genres
+Cooking,mural_iabgenre_4,Contextual > IAB > Genre > Cooking,Genres
+Do It Yourself,mural_iabgenre_59,Contextual > IAB > Genres > Do It Yourself,Genres
+Documentary,mural_iab_0332,Contextual > IAB > Genre > Documentary,Genres
+Drama,mural_iab_0647,Contextual > IAB > Genre > Drama,Genres
+Educational,mural_iabgenre_45,Contextual > IAB > Genres > Educational,Genres
+Entertainment,mural_iabgenre_53,Contextual > IAB > Genre > Entertainment,Genres
+Event,mural_iabgenre_54,Contextual > IAB > Genres > Event,Genres
+Factual,mural_iab_0648,Contextual > IAB > Genre > Factual,Genres
+Family/Children,mural_iab_0645,Contextual > IAB > Genre > Family/Children,Genres
+Fantasy,mural_iab_0335,Contextual > IAB > Genre > Fantasy,Genres
+Fashion,mural_iabgenre_61,Contextual > IAB > Genre > Fashion,Genres
+Foreign Language,mural_iabgenre_46,Contextual > IAB > Genres > Foreign Language,Genres
+Game Show,mural_iabgenre_47,Contextual > IAB > Genres > Game Show,Genres
+Health & Medicine,mural_iabgenre_55,Contextual > IAB > Genres > Health & Medicine,Genres
+History,mural_iabgenre_38,Contextual > IAB > Genre > History,Genres
+Holiday,mural_iab_0649,Contextual > IAB > Genre > Holiday,Genres
+Home & Garden/Home Improvement,mural_iabgenre_10,Contextual > IAB > Genres > Home & Garden/Home Improvement,Genres
+Home Shopping,mural_iabgenre_48,Contextual > IAB > Genres > Home Shopping,Genres
+Horror,mural_iab_0336,Contextual > IAB > Genre > Horror,Genres
+Instructional,mural_iabgenre_57,Contextual > IAB > Genres > Instructional,Genres
+Lifestyle,mural_iabgenre_39,Contextual > IAB > Genre > Lifestyle,Genres
+Musicals,mural_iab_0156,Contextual > IAB > Genre > Musicals,Genres
+Mystery,mural_iab_0331,Contextual > IAB > Genre > Mystery,Genres
+Nature,mural_iabgenre_43,Contextual > IAB > Genre > Nature,Genres
+News,mural_iabgenre_15,Contextual > IAB > Genres > News,Genres
+Paid Programming,mural_iabgenre_49,Contextual > IAB > Genres > Paid Programming,Genres
+Performance,mural_iabgenre_60,Contextual > IAB > Genres > Performance,Genres
+Politics/Public Affairs,mural_iabgenre_18,Contextual > IAB > Genres > Politics/Public Affairs,Genres
+Profile,mural_iabgenre_56,Contextual > IAB > Genres > Profile,Genres
+Reality TV,mural_iab_0651,Contextual > IAB > Genre > Reality TV,Genres
+Religious,mural_iabgenre_20,Contextual > IAB > Genres > Religious,Genres
+Romance,mural_iab_0326,Contextual > IAB > Genre > Romance,Genres
+Science Fiction,mural_iab_0652,Contextual > IAB > Genre > Science Fiction,Genres
+Soap Opera,mural_iab_0642,Contextual > IAB > Genre > Soap Opera,Genres
+Special Interest (Indie/Art House),mural_iab_0643,Contextual > IAB > Genre > Special Interest (Indie/Art House),Genres
+Sports,mural_iabgenre_24,Contextual > IAB > Genre > Sports,Genres
+Talk Show,mural_iabgenre_25,Contextual > IAB > Genre > Talk Show,Genres
+Thriller,mural_iabgenre_50,Contextual > IAB > Genre > Thriller,Genres
+Travel,mural_iabgenre_26,Contextual > IAB > Genre > Travel,Genres
+True Crime,mural_iab_1526,Contextual > IAB > Genre > True Crime,Genres
+Western,mural_iabgenre_40,Contextual > IAB > Genre > Western,Genres
+Young Adult Literature,mural_iab_0051,Contextual > IAB > Genre > Young Adult Literature,Genres
+Children's Health,mural_iab_0224,Contextual > IAB > Healthy Living > Children's Health,Healthy Living
+Men's Health,mural_iab_0228,Contextual > IAB > Healthy Living > Men's Health,Healthy Living
+Nutrition,mural_iab_0229,Contextual > IAB > Healthy Living > Nutrition,Healthy Living
+Senior Health,mural_iab_0230,Contextual > IAB > Healthy Living > Senior Health,Healthy Living
+Weight Loss,mural_iab_0231,Contextual > IAB > Healthy Living > Weight Loss,Healthy Living
+Women's Health,mural_iab_0238,Contextual > IAB > Healthy Living > Women's Health,Healthy Living
+Participant Sports,mural_iab_0226,Contextual > IAB > Healthy Living > Fitness and Exercise > Participant Sports,Fitness and Exercise
+Running and Jogging,mural_iab_0227,Contextual > IAB > Healthy Living > Fitness and Exercise > Running and Jogging,Fitness and Exercise
+Herbs and Supplements,mural_iab_0234,Contextual > IAB > Healthy Living > Wellness > Alternative Medicine > Herbs and Supplements,Wellness
+Holistic Health,mural_iab_0235,Contextual > IAB > Healthy Living > Wellness > Alternative Medicine > Holistic Health,Wellness
+Physical Therapy,mural_iab_0236,Contextual > IAB > Healthy Living > Wellness > Physical Therapy,Wellness
+Smoking Cessation,mural_iab_0237,Contextual > IAB > Healthy Living > Wellness > Smoking Cessation,Wellness
+Antiquing and Antiques,mural_iab_0240,Contextual > IAB > Hobbies & Interests > Antiquing and Antiques,Hobbies & Interests
+Beekeeping,mural_iab_0258,Contextual > IAB > Hobbies & Interests > Beekeeping,Hobbies & Interests
+Birdwatching,mural_iab_0259,Contextual > IAB > Hobbies & Interests > Birdwatching,Hobbies & Interests
+Cigars,mural_iab_0260,Contextual > IAB > Hobbies & Interests > Cigars,Hobbies & Interests
+Genealogy and Ancestry,mural_iab_0273,Contextual > IAB > Hobbies & Interests > Genealogy and Ancestry,Hobbies & Interests
+Magic and Illusion,mural_iab_0241,Contextual > IAB > Hobbies & Interests > Magic and Illusion,Hobbies & Interests
+Model Toys,mural_iab_0242,Contextual > IAB > Hobbies & Interests > Model Toys,Hobbies & Interests
+Musical Instruments,mural_iab_0243,Contextual > IAB > Hobbies & Interests > Musical Instruments,Hobbies & Interests
+Paranormal Phenomena,mural_iab_0244,Contextual > IAB > Hobbies & Interests > Paranormal Phenomena,Hobbies & Interests
+Radio Control,mural_iab_0245,Contextual > IAB > Hobbies & Interests > Radio Control,Hobbies & Interests
+Sci-fi and Fantasy,mural_iab_0246,Contextual > IAB > Hobbies & Interests > Sci-fi and Fantasy,Hobbies & Interests
+Workshops and Classes,mural_iab_0247,Contextual > IAB > Hobbies & Interests > Workshops and Classes,Hobbies & Interests
+Beadwork,mural_iab_0249,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Beadwork,Arts and Crafts
+Candle and Soap Making,mural_iab_0250,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Candle and Soap Making,Arts and Crafts
+Drawing and Sketching,mural_iab_0251,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Drawing and Sketching,Arts and Crafts
+Jewelry Making,mural_iab_0252,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Jewelry Making,Arts and Crafts
+Needlework,mural_iab_0253,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Needlework,Arts and Crafts
+Painting,mural_iab_0254,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Painting,Arts and Crafts
+Photography,mural_iab_0255,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Photography,Arts and Crafts
+Scrapbooking,mural_iab_0256,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Scrapbooking,Arts and Crafts
+Woodworking,mural_iab_0257,Contextual > IAB > Hobbies & Interests > Arts and Crafts > Woodworking,Arts and Crafts
+Comic Books,mural_iab_0262,Contextual > IAB > Hobbies & Interests > Collecting > Comic Books,Collecting
+Stamps and Coins,mural_iab_0263,Contextual > IAB > Hobbies & Interests > Collecting > Stamps and Coins,Collecting
+Audio Production,mural_iab_0265,Contextual > IAB > Hobbies & Interests > Content Production > Audio Production,Content Production
+Freelance Writing,mural_iab_0266,Contextual > IAB > Hobbies & Interests > Content Production > Freelance Writing,Content Production
+Screenwriting,mural_iab_0267,Contextual > IAB > Hobbies & Interests > Content Production > Screenwriting,Content Production
+Video Production,mural_iab_0268,Contextual > IAB > Hobbies & Interests > Content Production > Video Production,Content Production
+Games and Puzzles,mural_iab_0269,Contextual > IAB > Hobbies & Interests > Games and Puzzles,Content Production
+Board Games and Puzzles,mural_iab_0270,Contextual > IAB > Hobbies & Interests > Games and Puzzles > Board Games and Puzzles,Content Production
+Card Games,mural_iab_0271,Contextual > IAB > Hobbies & Interests > Games and Puzzles > Card Games,Content Production
+Roleplaying Games,mural_iab_0272,Contextual > IAB > Hobbies & Interests > Games and Puzzles > Roleplaying Games,Content Production
+National & Civic Holidays,mural_iab_0157,Contextual > IAB > Holidays > National & Civic Holidays,Content Production
+Gardening,mural_iab_0275,Contextual > IAB > Home & Garden > Gardening,Home & Garden
+Home Appliances,mural_iab_0278,Contextual > IAB > Home & Garden > Home Appliances,Home & Garden
+Home Entertaining,mural_iab_0279,Contextual > IAB > Home & Garden > Home Entertaining,Home & Garden
+Home Improvement,mural_iab_0280,Contextual > IAB > Home & Garden > Home Improvement,Home & Garden
+Home Security,mural_iab_0281,Contextual > IAB > Home & Garden > Home Security,Home & Garden
+Indoor Environmental Quality,mural_iab_0282,Contextual > IAB > Home & Garden > Indoor Environmental Quality,Home & Garden
+Interior Decorating,mural_iab_0283,Contextual > IAB > Home & Garden > Interior Decorating,Home & Garden
+Landscaping,mural_iab_0284,Contextual > IAB > Home & Garden > Landscaping,Home & Garden
+Outdoor Decorating,mural_iab_0285,Contextual > IAB > Home & Garden > Outdoor Decorating,Home & Garden
+Remodeling & Construction,mural_iab_0276,Contextual > IAB > Home & Garden > Remodeling & Construction,Home & Garden
+Smart Home,mural_iab_0277,Contextual > IAB > Home & Garden > Smart Home,Home & Garden
+Cosmetic Medical Services,mural_iab_0323,Contextual > IAB > Medical Health > Cosmetic Medical Services,Medical Health
+Medical Tests,mural_iab_0319,Contextual > IAB > Medical Health > Medical Tests,Medical Health
+Pharmaceutical Drugs,mural_iab_0320,Contextual > IAB > Medical Health > Pharmaceutical Drugs,Medical Health
+Surgery,mural_iab_0321,Contextual > IAB > Medical Health > Surgery,Medical Health
+Vaccines,mural_iab_0322,Contextual > IAB > Medical Health > Vaccines,Medical Health
+Allergies,mural_iab_0288,Contextual > IAB > Medical Health > Diseases and Conditions > Allergies,Diseases and Conditions
+Blood Disorders,mural_iab_0306,Contextual > IAB > Medical Health > Diseases and Conditions > Blood Disorders,Diseases and Conditions
+Bone and Joint Conditions,mural_iab_0312,Contextual > IAB > Medical Health > Diseases and Conditions > Bone and Joint Conditions,Diseases and Conditions
+Brain and Nervous System Disorders,mural_iab_0313,Contextual > IAB > Medical Health > Diseases and Conditions > Brain and Nervous System Disorders,Diseases and Conditions
+Chronic Fatigue Syndrome,mural_iab_7711,Contextual > IAB > Medical Health > Diseases and Conditions > Brain and Nervous System Disorders > Chronic Fatigue Syndrome,Diseases and Conditions
+Chronic Pain,mural_iab_7712,Contextual > IAB > Medical Health > Diseases and Conditions > Brain and Nervous System Disorders > Chronic Pain,Diseases and Conditions
+Headaches/Migraines,mural_iab_7722,Contextual > IAB > Medical Health > Diseases and Conditions > Brain and Nervous System Disorders > Headaches/Migraines,Diseases and Conditions
+Cancer,mural_iab_0314,Contextual > IAB > Medical Health > Diseases and Conditions > Cancer,Diseases and Conditions
+Cold and Flu,mural_iab_0315,Contextual > IAB > Medical Health > Diseases and Conditions > Cold and Flu,Diseases and Conditions
+Dental Health,mural_iab_0316,Contextual > IAB > Medical Health > Diseases and Conditions > Dental Health,Diseases and Conditions
+Diabetes,mural_iab_0317,Contextual > IAB > Medical Health > Diseases and Conditions > Diabetes,Diseases and Conditions
+Digestive Disorders,mural_iab_0318,Contextual > IAB > Medical Health > Diseases and Conditions > Digestive Disorders,Diseases and Conditions
+"Ear, Nose and Throat Conditions",mural_iab_0289,"Contextual > IAB > Medical Health > Diseases and Conditions > Ear, Nose and Throat Conditions",Diseases and Conditions
+Endocrine and Metabolic Diseases,mural_iab_0290,Contextual > IAB > Medical Health > Diseases and Conditions > Endocrine and Metabolic Diseases,Diseases and Conditions
+Hormonal Disorders,mural_iab_0291,Contextual > IAB > Medical Health > Diseases and Conditions > Endocrine and Metabolic Diseases > Hormonal Disorders,Diseases and Conditions
+Menopause,mural_iab_0292,Contextual > IAB > Medical Health > Diseases and Conditions > Endocrine and Metabolic Diseases > Menopause,Diseases and Conditions
+Thyroid Disorders,mural_iab_0293,Contextual > IAB > Medical Health > Diseases and Conditions > Endocrine and Metabolic Diseases > Thyroid Disorders,Diseases and Conditions
+Eye and Vision Conditions,mural_iab_0294,Contextual > IAB > Medical Health > Diseases and Conditions > Eye and Vision Conditions,Diseases and Conditions
+Foot Health,mural_iab_0295,Contextual > IAB > Medical Health > Diseases and Conditions > Foot Health,Diseases and Conditions
+Heart and Cardiovascular Diseases,mural_iab_0296,Contextual > IAB > Medical Health > Diseases and Conditions > Heart and Cardiovascular Diseases,Diseases and Conditions
+Infectious Diseases,mural_iab_0297,Contextual > IAB > Medical Health > Diseases and Conditions > Infectious Diseases,Diseases and Conditions
+Injuries,mural_iab_0298,Contextual > IAB > Medical Health > Diseases and Conditions > Injuries,Diseases and Conditions
+First Aid,mural_iab_0299,Contextual > IAB > Medical Health > Diseases and Conditions > Injuries > First Aid,Diseases and Conditions
+Lung and Respiratory Health,mural_iab_0300,Contextual > IAB > Medical Health > Diseases and Conditions > Lung and Respiratory Health,Diseases and Conditions
+Mental Health,mural_iab_0301,Contextual > IAB > Medical Health > Diseases and Conditions > Mental Health,Diseases and Conditions
+Reproductive Health,mural_iab_0302,Contextual > IAB > Medical Health > Diseases and Conditions > Reproductive Health,Diseases and Conditions
+Birth Control,mural_iab_0303,Contextual > IAB > Medical Health > Diseases and Conditions > Reproductive Health > Birth Control,Diseases and Conditions
+Infertility,mural_iab_0304,Contextual > IAB > Medical Health > Diseases and Conditions > Reproductive Health > Infertility,Diseases and Conditions
+Pregnancy,mural_iab_0305,Contextual > IAB > Medical Health > Diseases and Conditions > Reproductive Health > Pregnancy,Diseases and Conditions
+Sexual Health,mural_iab_0307,Contextual > IAB > Medical Health > Diseases and Conditions > Sexual Health,Diseases and Conditions
+Sexual Conditions,mural_iab_0308,Contextual > IAB > Medical Health > Diseases and Conditions > Sexual Health > Sexual Conditions,Diseases and Conditions
+Skin and Dermatology,mural_iab_0309,Contextual > IAB > Medical Health > Diseases and Conditions > Skin and Dermatology,Diseases and Conditions
+Sleep Disorders,mural_iab_0310,Contextual > IAB > Medical Health > Diseases and Conditions > Sleep Disorders,Diseases and Conditions
+Substance Abuse,mural_iab_0311,Contextual > IAB > Medical Health > Diseases and Conditions > Substance Abuse,Diseases and Conditions
+International News,mural_iab_0382,Contextual > IAB > News and Politics > International News,News and Politics
+Local News,mural_iab_0384,Contextual > IAB > News and Politics > Local News,News and Politics
+National News,mural_iab_0385,Contextual > IAB > News and Politics > National News,News and Politics
+Anniversary,mural_iab_0164,Contextual > IAB > Personal Celebrations and Life Events > Anniversary,Personal Celebrations and Life Events
+Baby Shower,mural_iab_0166,Contextual > IAB > Personal Celebrations and Life Events > Baby Shower,Personal Celebrations and Life Events
+Bachelor Party,mural_iab_0167,Contextual > IAB > Personal Celebrations and Life Events > Bachelor Party,Personal Celebrations and Life Events
+Bachelorette Party,mural_iab_0168,Contextual > IAB > Personal Celebrations and Life Events > Bachelorette Party,Personal Celebrations and Life Events
+Birth,mural_iab_0169,Contextual > IAB > Personal Celebrations and Life Events > Birth,Personal Celebrations and Life Events
+Birthday,mural_iab_0170,Contextual > IAB > Personal Celebrations and Life Events > Birthday,Personal Celebrations and Life Events
+Funeral,mural_iab_0171,Contextual > IAB > Personal Celebrations and Life Events > Funeral,Personal Celebrations and Life Events
+Graduation,mural_iab_0172,Contextual > IAB > Personal Celebrations and Life Events > Graduation,Personal Celebrations and Life Events
+Prom,mural_iab_0173,Contextual > IAB > Personal Celebrations and Life Events > Prom,Personal Celebrations and Life Events
+Wedding,mural_iab_0165,Contextual > IAB > Personal Celebrations and Life Events > Wedding,Personal Celebrations and Life Events
+Consumer Banking,mural_iab_0392,Contextual > IAB > Personal Finance > Consumer Banking,Personal Finance
+Financial Assistance,mural_iab_0393,Contextual > IAB > Personal Finance > Financial Assistance,Personal Finance
+Government Support and Welfare,mural_iab_0394,Contextual > IAB > Personal Finance > Financial Assistance > Government Support and Welfare,Personal Finance
+Student Financial Aid,mural_iab_0395,Contextual > IAB > Personal Finance > Financial Assistance > Student Financial Aid,Personal Finance
+Financial Planning,mural_iab_0396,Contextual > IAB > Personal Finance > Financial Planning,Personal Finance
+Frugal Living,mural_iab_0397,Contextual > IAB > Personal Finance > Frugal Living,Personal Finance
+Gas and Electric,mural_iab_0418,Contextual > IAB > Personal Finance > Home Utilities > Gas and Electric,Home Utilities
+Internet Service Providers,mural_iab_0419,Contextual > IAB > Personal Finance > Home Utilities > Internet Service Providers,Home Utilities
+Phone Services,mural_iab_0420,Contextual > IAB > Personal Finance > Home Utilities > Phone Services,Home Utilities
+Water Services,mural_iab_0421,Contextual > IAB > Personal Finance > Home Utilities > Water Services,Home Utilities
+Health Insurance,mural_iab_0399,Contextual > IAB > Personal Finance > Insurance > Health Insurance,Insurance
+Home Insurance,mural_iab_0400,Contextual > IAB > Personal Finance > Insurance > Home Insurance,Insurance
+Life Insurance,mural_iab_0401,Contextual > IAB > Personal Finance > Insurance > Life Insurance,Insurance
+Motor Insurance,mural_iab_0402,Contextual > IAB > Personal Finance > Insurance > Motor Insurance,Insurance
+Pet Insurance,mural_iab_0403,Contextual > IAB > Personal Finance > Insurance > Pet Insurance,Insurance
+Travel Insurance,mural_iab_0404,Contextual > IAB > Personal Finance > Insurance > Travel Insurance,Insurance
+Credit Cards,mural_iab_0406,Contextual > IAB > Personal Finance > Personal Debt > Credit Cards,Personal Debt
+Home Financing,mural_iab_0407,Contextual > IAB > Personal Finance > Personal Debt > Home Financing,Personal Debt
+Personal Loans,mural_iab_0408,Contextual > IAB > Personal Finance > Personal Debt > Personal Loans,Personal Debt
+Student Loans,mural_iab_0409,Contextual > IAB > Personal Finance > Personal Debt > Student Loans,Personal Debt
+Hedge Funds,mural_iab_0411,Contextual > IAB > Personal Finance > Personal Investing > Hedge Funds,Personal Investing
+Mutual Funds,mural_iab_0412,Contextual > IAB > Personal Finance > Personal Investing > Mutual Funds,Personal Investing
+Options,mural_iab_0413,Contextual > IAB > Personal Finance > Personal Investing > Options,Personal Investing
+Stocks and Bonds,mural_iab_0414,Contextual > IAB > Personal Finance > Personal Investing > Stocks and Bonds,Personal Investing
+Personal Taxes,mural_iab_0415,Contextual > IAB > Personal Finance > Personal Taxes,Personal Investing
+Retirement Planning,mural_iab_0416,Contextual > IAB > Personal Finance > Retirement Planning,Personal Investing
+Birds,mural_iab_0423,Contextual > IAB > Pets > Birds,Pets
+Cats,mural_iab_0424,Contextual > IAB > Pets > Cats,Pets
+Dogs,mural_iab_0425,Contextual > IAB > Pets > Dogs,Pets
+Fish and Aquariums,mural_iab_0426,Contextual > IAB > Pets > Fish and Aquariums,Pets
+Large Animals,mural_iab_0427,Contextual > IAB > Pets > Large Animals,Pets
+Pet Adoptions,mural_iab_0428,Contextual > IAB > Pets > Pet Adoptions,Pets
+Pet Supplies,mural_iab_0431,Contextual > IAB > Pets > Pet Supplies,Pets
+Reptiles,mural_iab_0429,Contextual > IAB > Pets > Reptiles,Pets
+Veterinary Medicine,mural_iab_0430,Contextual > IAB > Pets > Veterinary Medicine,Pets
+Elections,mural_iab_0387,Contextual > IAB > Politics > Elections,Politics
+Political Issues & Policy,mural_iab_0388,Contextual > IAB > Politics > Political Issues & Policy,Politics
+Celebrity Deaths,mural_iab_0433,Contextual > IAB > Pop Culture > Celebrity Deaths,Pop Culture
+Celebrity Families,mural_iab_0434,Contextual > IAB > Pop Culture > Celebrity Families,Pop Culture
+Celebrity Homes,mural_iab_0435,Contextual > IAB > Pop Culture > Celebrity Homes,Pop Culture
+Celebrity Pregnancy,mural_iab_0436,Contextual > IAB > Pop Culture > Celebrity Pregnancy,Pop Culture
+Celebrity Relationships,mural_iab_0437,Contextual > IAB > Pop Culture > Celebrity Relationships,Pop Culture
+Celebrity Scandal,mural_iab_0438,Contextual > IAB > Pop Culture > Celebrity Scandal,Pop Culture
+Celebrity Style,mural_iab_0439,Contextual > IAB > Pop Culture > Celebrity Style,Pop Culture
+Humor and Satire,mural_iab_0440,Contextual > IAB > Pop Culture > Humor and Satire,Pop Culture
+Apartments,mural_iab_0442,Contextual > IAB > Real Estate > Apartments,Real Estate
+Developmental Sites,mural_iab_0445,Contextual > IAB > Real Estate > Developmental Sites,Real Estate
+Hotel Properties,mural_iab_0446,Contextual > IAB > Real Estate > Hotel Properties,Real Estate
+Houses,mural_iab_0447,Contextual > IAB > Real Estate > Houses,Real Estate
+Industrial Property,mural_iab_0448,Contextual > IAB > Real Estate > Industrial Property,Real Estate
+Land and Farms,mural_iab_0449,Contextual > IAB > Real Estate > Land and Farms,Real Estate
+Office Property,mural_iab_0450,Contextual > IAB > Real Estate > Office Property,Real Estate
+Real Estate Buying and Selling,mural_iab_0451,Contextual > IAB > Real Estate > Real Estate Buying and Selling,Real Estate
+Real Estate Renting and Leasing,mural_iab_0452,Contextual > IAB > Real Estate > Real Estate Renting and Leasing,Real Estate
+Retail Property,mural_iab_0443,Contextual > IAB > Real Estate > Retail Property,Real Estate
+Vacation Properties,mural_iab_0444,Contextual > IAB > Real Estate > Vacation Properties,Real Estate
+Agnosticism,mural_iab_0454,Contextual > IAB > Religion and Spirituality > Agnosticism,Religion and Spirituality
+Astrology,mural_iab_0456,Contextual > IAB > Religion and Spirituality > Astrology,Religion and Spirituality
+Atheism,mural_iab_0457,Contextual > IAB > Religion and Spirituality > Atheism,Religion and Spirituality
+Buddhism,mural_iab_0458,Contextual > IAB > Religion and Spirituality > Buddhism,Religion and Spirituality
+Christianity,mural_iab_0459,Contextual > IAB > Religion and Spirituality > Christianity,Religion and Spirituality
+Hinduism,mural_iab_0460,Contextual > IAB > Religion and Spirituality > Hinduism,Religion and Spirituality
+Islam,mural_iab_0461,Contextual > IAB > Religion and Spirituality > Islam,Religion and Spirituality
+Judaism,mural_iab_0462,Contextual > IAB > Religion and Spirituality > Judaism,Religion and Spirituality
+Sikhism,mural_iab_0463,Contextual > IAB > Religion and Spirituality > Sikhism,Religion and Spirituality
+Spirituality,mural_iab_0455,Contextual > IAB > Religion and Spirituality > Spirituality,Religion and Spirituality
+Biological Sciences,mural_iab_0465,Contextual > IAB > Science > Biological Sciences,Science
+Chemistry,mural_iab_0466,Contextual > IAB > Science > Chemistry,Science
+Environment,mural_iab_0467,Contextual > IAB > Science > Environment,Science
+Genetics,mural_iab_0468,Contextual > IAB > Science > Genetics,Science
+Geography,mural_iab_0469,Contextual > IAB > Science > Geography,Science
+Geology,mural_iab_0470,Contextual > IAB > Science > Geology,Science
+Physics,mural_iab_0471,Contextual > IAB > Science > Physics,Science
+Space and Astronomy,mural_iab_0472,Contextual > IAB > Science > Space and Astronomy,Science
+Weather,mural_iab_0390,Contextual > IAB > Science > Weather,Science
+Children's Games and Toys,mural_iab_0482,Contextual > IAB > Shopping > Children's Games and Toys,Shopping
+Coupons and Discounts,mural_iab_0474,Contextual > IAB > Shopping > Coupons and Discounts,Shopping
+Flower Shopping,mural_iab_0475,Contextual > IAB > Shopping > Flower Shopping,Shopping
+Gifts and Greetings Cards,mural_iab_0476,Contextual > IAB > Shopping > Gifts and Greetings Cards,Shopping
+Grocery Shopping,mural_iab_0477,Contextual > IAB > Shopping > Grocery Shopping,Shopping
+Holiday Shopping,mural_iab_0478,Contextual > IAB > Shopping > Holiday Shopping,Shopping
+Household Supplies,mural_iab_0479,Contextual > IAB > Shopping > Household Supplies,Shopping
+Lotteries and Scratchcards,mural_iab_0480,Contextual > IAB > Shopping > Lotteries and Scratchcards,Shopping
+Sales and Promotions,mural_iab_0481,Contextual > IAB > Shopping > Sales and Promotions,Shopping
+American Football,mural_iab_0484,Contextual > IAB > Sports > American Football,Sports
+Australian Rules Football,mural_iab_0507,Contextual > IAB > Sports > Australian Rules Football,Sports
+Auto Racing,mural_iab_0518,Contextual > IAB > Sports > Auto Racing,Sports
+Motorcycle Sports,mural_iab_0519,Contextual > IAB > Sports > Auto Racing > Motorcycle Sports,Sports
+Badminton,mural_iab_0534,Contextual > IAB > Sports > Badminton,Sports
+Baseball,mural_iab_0545,Contextual > IAB > Sports > Baseball,Sports
+Basketball,mural_iab_0547,Contextual > IAB > Sports > Basketball,Sports
+Beach Volleyball,mural_iab_0548,Contextual > IAB > Sports > Beach Volleyball,Sports
+Bodybuilding,mural_iab_0549,Contextual > IAB > Sports > Bodybuilding,Sports
+Bowling,mural_iab_0550,Contextual > IAB > Sports > Bowling,Sports
+Boxing,mural_iab_0485,Contextual > IAB > Sports > Boxing,Sports
+Cheerleading,mural_iab_0486,Contextual > IAB > Sports > Cheerleading,Sports
+Cricket,mural_iab_0491,Contextual > IAB > Sports > Cricket,Sports
+Cycling,mural_iab_0492,Contextual > IAB > Sports > Cycling,Sports
+Darts,mural_iab_0493,Contextual > IAB > Sports > Darts,Sports
+Disabled Sports,mural_iab_0494,Contextual > IAB > Sports > Disabled Sports,Sports
+Diving,mural_iab_0495,Contextual > IAB > Sports > Diving,Sports
+Equine Sports,mural_iab_0496,Contextual > IAB > Sports > Equine Sports,Sports
+Horse Racing,mural_iab_0497,Contextual > IAB > Sports > Equine Sports > Horse Racing,Sports
+Fantasy Sports,mural_iab_0508,Contextual > IAB > Sports > Fantasy Sports,Sports
+Field Hockey,mural_iab_0509,Contextual > IAB > Sports > Field Hockey,Sports
+Figure Skating,mural_iab_0510,Contextual > IAB > Sports > Figure Skating,Sports
+Fishing Sports,mural_iab_0511,Contextual > IAB > Sports > Fishing Sports,Sports
+Golf,mural_iab_0512,Contextual > IAB > Sports > Golf,Sports
+Gymnastics,mural_iab_0513,Contextual > IAB > Sports > Gymnastics,Sports
+Hunting and Shooting,mural_iab_0514,Contextual > IAB > Sports > Hunting and Shooting,Sports
+Ice Hockey,mural_iab_0515,Contextual > IAB > Sports > Ice Hockey,Sports
+Inline Skating,mural_iab_0516,Contextual > IAB > Sports > Inline Skating,Sports
+Lacrosse,mural_iab_0517,Contextual > IAB > Sports > Lacrosse,Sports
+Martial Arts,mural_iab_0520,Contextual > IAB > Sports > Martial Arts,Sports
+Poker and Professional Gambling,mural_iab_0524,Contextual > IAB > Sports > Poker and Professional Gambling,Sports
+Rodeo,mural_iab_0525,Contextual > IAB > Sports > Rodeo,Sports
+Rowing,mural_iab_0526,Contextual > IAB > Sports > Rowing,Sports
+Rugby,mural_iab_0527,Contextual > IAB > Sports > Rugby,Sports
+Rugby League,mural_iab_0528,Contextual > IAB > Sports > Rugby > Rugby League,Sports
+Rugby Union,mural_iab_0529,Contextual > IAB > Sports > Rugby > Rugby Union,Sports
+Sailing,mural_iab_0530,Contextual > IAB > Sports > Sailing,Sports
+Skiing,mural_iab_0531,Contextual > IAB > Sports > Skiing,Sports
+Snooker/Pool/Billiards,mural_iab_0532,Contextual > IAB > Sports > Snooker/Pool/Billiards,Sports
+Soccer,mural_iab_0533,Contextual > IAB > Sports > Soccer,Sports
+Softball,mural_iab_0535,Contextual > IAB > Sports > Softball,Sports
+Sports Equipment,mural_iab_0551,Contextual > IAB > Sports > Sports Equipment,Sports
+Squash,mural_iab_0536,Contextual > IAB > Sports > Squash,Sports
+Swimming,mural_iab_0537,Contextual > IAB > Sports > Swimming,Sports
+Table Tennis,mural_iab_0538,Contextual > IAB > Sports > Table Tennis,Sports
+Tennis,mural_iab_0539,Contextual > IAB > Sports > Tennis,Sports
+Track and Field,mural_iab_0540,Contextual > IAB > Sports > Track and Field,Sports
+Volleyball,mural_iab_0541,Contextual > IAB > Sports > Volleyball,Sports
+Walking,mural_iab_0542,Contextual > IAB > Sports > Walking,Sports
+Water Polo,mural_iab_0543,Contextual > IAB > Sports > Water Polo,Sports
+Weightlifting,mural_iab_0544,Contextual > IAB > Sports > Weightlifting,Sports
+Wrestling,mural_iab_0546,Contextual > IAB > Sports > Wrestling,Sports
+College Baseball,mural_iab_0490,Contextual > IAB > Sports > College Sports > College Baseball,College Sports
+College Basketball,mural_iab_0489,Contextual > IAB > Sports > College Sports > College Basketball,College Sports
+College Football,mural_iab_0488,Contextual > IAB > Sports > College Sports > College Football,College Sports
+Canoeing and Kayaking,mural_iab_0499,Contextual > IAB > Sports > Extreme Sports > Canoeing and Kayaking,Extreme Sports
+Climbing,mural_iab_0500,Contextual > IAB > Sports > Extreme Sports > Climbing,Extreme Sports
+Paintball,mural_iab_0501,Contextual > IAB > Sports > Extreme Sports > Paintball,Extreme Sports
+Scuba Diving,mural_iab_0502,Contextual > IAB > Sports > Extreme Sports > Scuba Diving,Extreme Sports
+Skateboarding,mural_iab_0503,Contextual > IAB > Sports > Extreme Sports > Skateboarding,Extreme Sports
+Snowboarding,mural_iab_0504,Contextual > IAB > Sports > Extreme Sports > Snowboarding,Extreme Sports
+Surfing and Bodyboarding,mural_iab_0505,Contextual > IAB > Sports > Extreme Sports > Surfing and Bodyboarding,Extreme Sports
+Waterskiing and Wakeboarding,mural_iab_0506,Contextual > IAB > Sports > Extreme Sports > Waterskiing and Wakeboarding,Extreme Sports
+Summer Olympic Sports,mural_iab_0522,Contextual > IAB > Sports > Olympic Sports > Summer Olympic Sports,Olympic Sports
+Winter Olympic Sports,mural_iab_0523,Contextual > IAB > Sports > Olympic Sports > Winter Olympic Sports,Olympic Sports
+Hair Care,mural_iab_0554,Contextual > IAB > Style & Fashion > Beauty > Hair Care,Beauty
+Makeup and Accessories,mural_iab_0555,Contextual > IAB > Style & Fashion > Beauty > Makeup and Accessories,Beauty
+Nail Care,mural_iab_0556,Contextual > IAB > Style & Fashion > Beauty > Nail Care,Beauty
+Natural and Organic Beauty,mural_iab_0557,Contextual > IAB > Style & Fashion > Beauty > Natural and Organic Beauty,Beauty
+Perfume and Fragrance,mural_iab_0558,Contextual > IAB > Style & Fashion > Beauty > Perfume and Fragrance,Beauty
+Skin Care,mural_iab_0559,Contextual > IAB > Style & Fashion > Beauty > Skin Care,Beauty
+Body Art,mural_iab_0574,Contextual > IAB > Style & Fashion > Body Art,Style and Fashion
+Children's Clothing,mural_iab_0575,Contextual > IAB > Style & Fashion > Children's Clothing,Style and Fashion
+Designer Clothing,mural_iab_0576,Contextual > IAB > Style & Fashion > Designer Clothing,Style and Fashion
+Fashion Trends,mural_iab_0577,Contextual > IAB > Style & Fashion > Fashion Trends,Style and Fashion
+High Fashion,mural_iab_0578,Contextual > IAB > Style & Fashion > High Fashion,Style and Fashion
+Street Style,mural_iab_0595,Contextual > IAB > Style & Fashion > Street Style,Style and Fashion
+Men's Accessories,mural_iab_0580,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Accessories,Men's Fashion
+Men's Jewelry and Watches,mural_iab_0581,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Accessories > Men's Jewelry and Watches,Men's Fashion
+Men's Clothing,mural_iab_0582,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Clothing,Men's Fashion
+Men's Business Wear,mural_iab_0583,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Clothing > Men's Business Wear,Men's Fashion
+Men's Casual Wear,mural_iab_0584,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Clothing > Men's Casual Wear,Men's Fashion
+Men's Formal Wear,mural_iab_0585,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Clothing > Men's Formal Wear,Men's Fashion
+Men's Outerwear,mural_iab_0586,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Clothing > Men's Outerwear,Men's Fashion
+Men's Sportswear,mural_iab_0587,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Clothing > Men's Sportswear,Men's Fashion
+Men's Underwear and Sleepwear,mural_iab_0588,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Clothing > Men's Underwear and Sleepwear,Men's Fashion
+Men's Shoes and Footwear,mural_iab_0589,Contextual > IAB > Style & Fashion > Men's Fashion > Men's Shoes and Footwear,Men's Fashion
+Bath and Shower,mural_iab_0591,Contextual > IAB > Style & Fashion > Personal Care > Bath and Shower,Personal Care
+Deodorant and Antiperspirant,mural_iab_0592,Contextual > IAB > Style & Fashion > Personal Care > Deodorant and Antiperspirant,Personal Care
+Oral care,mural_iab_0593,Contextual > IAB > Style & Fashion > Personal Care > Oral care,Personal Care
+Shaving,mural_iab_0594,Contextual > IAB > Style & Fashion > Personal Care > Shaving,Personal Care
+Women's Accessories,mural_iab_0561,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Accessories,Women's Fashion
+Women's Glasses,mural_iab_0562,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Accessories > Women's Glasses,Women's Fashion
+Women's Handbags and Wallets,mural_iab_0563,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Accessories > Women's Handbags and Wallets,Women's Fashion
+Women's Hats and Scarves,mural_iab_0564,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Accessories > Women's Hats and Scarves,Women's Fashion
+Women's Jewelry and Watches,mural_iab_0565,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Accessories > Women's Jewelry and Watches,Women's Fashion
+Women's Clothing,mural_iab_0566,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Clothing,Women's Fashion
+Women's Business Wear,mural_iab_0567,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Clothing > Women's Business Wear,Women's Fashion
+Women's Casual Wear,mural_iab_0568,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Clothing > Women's Casual Wear,Women's Fashion
+Women's Formal Wear,mural_iab_0569,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Clothing > Women's Formal Wear,Women's Fashion
+Women's Intimates and Sleepwear,mural_iab_0570,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Clothing > Women's Intimates and Sleepwear,Women's Fashion
+Women's Outerwear,mural_iab_0571,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Clothing > Women's Outerwear,Women's Fashion
+Women's Sportswear,mural_iab_0572,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Clothing > Women's Sportswear,Women's Fashion
+Women's Shoes and Footwear,mural_iab_0573,Contextual > IAB > Style & Fashion > Women's Fashion > Women's Shoes and Footwear,Women's Fashion
+Artificial Intelligence,mural_iab_0597,Contextual > IAB > Technology & Computing > Artificial Intelligence,Technology and Computing
+Augmented Reality,mural_iab_0598,Contextual > IAB > Technology & Computing > Augmented Reality,Technology and Computing
+Robotics,mural_iab_0638,Contextual > IAB > Technology & Computing > Robotics,Technology and Computing
+Virtual Reality,mural_iab_0639,Contextual > IAB > Technology & Computing > Virtual Reality,Technology and Computing
+Computer Networking,mural_iab_0600,Contextual > IAB > Technology & Computing > Computing > Computer Networking,Computing
+Computer Peripherals,mural_iab_0601,Contextual > IAB > Technology & Computing > Computing > Computer Peripherals,Computing
+Data Storage and Warehousing,mural_iab_0616,Contextual > IAB > Technology & Computing > Computing > Data Storage and Warehousing,Computing
+Desktops,mural_iab_0617,Contextual > IAB > Technology & Computing > Computing > Desktops,Computing
+Information and Network Security,mural_iab_0618,Contextual > IAB > Technology & Computing > Computing > Information and Network Security,Computing
+Programming Languages,mural_iab_0631,Contextual > IAB > Technology & Computing > Computing > Programming Languages,Computing
+3-D Graphics,mural_iab_0603,Contextual > IAB > Technology & Computing > Computing > Software and Applications > 3-D Graphics,Software and Applications
+Antivirus Software,mural_iab_0608,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Antivirus Software,Software and Applications
+Browsers,mural_iab_0609,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Browsers,Software and Applications
+Computer Animation,mural_iab_0610,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Computer Animation,Software and Applications
+Databases,mural_iab_0611,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Databases,Software and Applications
+Desktop Publishing,mural_iab_0612,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Desktop Publishing,Software and Applications
+Digital Audio,mural_iab_0613,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Digital Audio,Software and Applications
+Graphics Software,mural_iab_0614,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Graphics Software,Software and Applications
+Operating Systems,mural_iab_0615,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Operating Systems,Software and Applications
+Photo Editing Software,mural_iab_0604,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Photo Editing Software,Software and Applications
+Shareware and Freeware,mural_iab_0605,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Shareware and Freeware,Software and Applications
+Video Software,mural_iab_0606,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Video Software,Software and Applications
+Web Conferencing,mural_iab_0607,Contextual > IAB > Technology & Computing > Computing > Software and Applications > Web Conferencing,Software and Applications
+Cloud Computing,mural_iab_0620,Contextual > IAB > Technology & Computing > Computing > Internet > Cloud Computing,Internet
+Email,mural_iab_0623,Contextual > IAB > Technology & Computing > Computing > Internet > Email,Internet
+Internet for Beginners,mural_iab_0624,Contextual > IAB > Technology & Computing > Computing > Internet > Internet for Beginners,Internet
+Internet of Things,mural_iab_0625,Contextual > IAB > Technology & Computing > Computing > Internet > Internet of Things,Internet
+IT and Internet Support,mural_iab_0626,Contextual > IAB > Technology & Computing > Computing > Internet > IT and Internet Support,Internet
+Search,mural_iab_0627,Contextual > IAB > Technology & Computing > Computing > Internet > Search,Internet
+Social Networking,mural_iab_0628,Contextual > IAB > Technology & Computing > Computing > Internet > Social Networking,Internet
+Web Design and HTML,mural_iab_0629,Contextual > IAB > Technology & Computing > Computing > Internet > Web Design and HTML,Internet
+Web Development,mural_iab_0621,Contextual > IAB > Technology & Computing > Computing > Internet > Web Development,Internet
+Web Hosting,mural_iab_0622,Contextual > IAB > Technology & Computing > Computing > Internet > Web Hosting,Internet
+Cameras and Camcorders,mural_iab_0633,Contextual > IAB > Technology & Computing > Consumer Electronics > Cameras and Camcorders,Consumer Electronics
+Home Entertainment Systems,mural_iab_0634,Contextual > IAB > Technology & Computing > Consumer Electronics > Home Entertainment Systems,Consumer Electronics
+Smartphones,mural_iab_0635,Contextual > IAB > Technology & Computing > Consumer Electronics > Smartphones,Consumer Electronics
+Tablets and E-readers,mural_iab_0636,Contextual > IAB > Technology & Computing > Consumer Electronics > Tablets and E-readers,Consumer Electronics
+Wearable Technology,mural_iab_0637,Contextual > IAB > Technology & Computing > Consumer Electronics > Wearable Technology,Consumer Electronics
+Travel Accessories,mural_iab_0654,Contextual > IAB > Travel > Travel Accessories,Travel
+Africa Travel,mural_iab_0656,Contextual > IAB > Travel > Travel Locations > Africa Travel,Travel Locations
+Asia Travel,mural_iab_0657,Contextual > IAB > Travel > Travel Locations > Asia Travel,Travel Locations
+Australia and Oceania Travel,mural_iab_0658,Contextual > IAB > Travel > Travel Locations > Australia and Oceania Travel,Travel Locations
+Europe Travel,mural_iab_0659,Contextual > IAB > Travel > Travel Locations > Europe Travel,Travel Locations
+North America Travel,mural_iab_0660,Contextual > IAB > Travel > Travel Locations > North America Travel,Travel Locations
+Polar Travel,mural_iab_0661,Contextual > IAB > Travel > Travel Locations > Polar Travel,Travel Locations
+South America Travel,mural_iab_0662,Contextual > IAB > Travel > Travel Locations > South America Travel,Travel Locations
+Travel Preparation and Advice,mural_iab_0663,Contextual > IAB > Travel > Travel Preparation and Advice,Travel Locations
+Adventure Travel,mural_iab_0665,Contextual > IAB > Travel > Travel Type > Adventure Travel,Travel Type
+Air Travel,mural_iab_0672,Contextual > IAB > Travel > Travel Type > Air Travel,Travel Type
+Beach Travel,mural_iab_0673,Contextual > IAB > Travel > Travel Type > Beach Travel,Travel Type
+Bed & Breakfasts,mural_iab_0674,Contextual > IAB > Travel > Travel Type > Bed & Breakfasts,Travel Type
+Budget Travel,mural_iab_0675,Contextual > IAB > Travel > Travel Type > Budget Travel,Travel Type
+Business Travel,mural_iab_0676,Contextual > IAB > Travel > Travel Type > Business Travel,Travel Type
+Camping,mural_iab_0677,Contextual > IAB > Travel > Travel Type > Camping,Travel Type
+Cruises,mural_iab_0678,Contextual > IAB > Travel > Travel Type > Cruises,Travel Type
+Day Trips,mural_iab_0679,Contextual > IAB > Travel > Travel Type > Day Trips,Travel Type
+Family Travel,mural_iab_0666,Contextual > IAB > Travel > Travel Type > Family Travel,Travel Type
+Honeymoons and Getaways,mural_iab_0667,Contextual > IAB > Travel > Travel Type > Honeymoons and Getaways,Travel Type
+Hotels and Motels,mural_iab_0668,Contextual > IAB > Travel > Travel Type > Hotels and Motels,Travel Type
+Rail Travel,mural_iab_0669,Contextual > IAB > Travel > Travel Type > Rail Travel,Travel Type
+Road Trips,mural_iab_0670,Contextual > IAB > Travel > Travel Type > Road Trips,Travel Type
+Spas,mural_iab_0671,Contextual > IAB > Travel > Travel Type > Spas,Travel Type
+Console Games,mural_iab_0681,Contextual > IAB > Video Gaming > Console Games,Video Gaming
+eSports,mural_iab_0682,Contextual > IAB > Video Gaming > eSports,Video Gaming
+Mobile Games,mural_iab_0683,Contextual > IAB > Video Gaming > Mobile Games,Video Gaming
+PC Games,mural_iab_0684,Contextual > IAB > Video Gaming > PC Games,Video Gaming
+Action Video Games,mural_iab_0686,Contextual > IAB > Video Gaming > Video Game Genres > Action Video Games,Video Game Genres
+Action-Adventure Video Games,mural_iab_0691,Contextual > IAB > Video Gaming > Video Game Genres > Action-Adventure Video Games,Video Game Genres
+Adult Video Games,mural_iab_1521,Contextual > IAB > Video Gaming > Video Game Genres > Adult Video Games,Video Game Genres
+Adventure Video Games,mural_iab_0692,Contextual > IAB > Video Gaming > Video Game Genres > Adventure Video Games,Video Game Genres
+Casino and Gambling Video Games,mural_iab_1522,Contextual > IAB > Video Gaming > Video Game Genres > Casino and Gambling Video Games,Video Game Genres
+Casual Games,mural_iab_0693,Contextual > IAB > Video Gaming > Video Game Genres > Casual Games,Video Game Genres
+Educational Video Games,mural_iab_0694,Contextual > IAB > Video Gaming > Video Game Genres > Educational Video Games,Video Game Genres
+Exercise and Fitness Video Games,mural_iab_0695,Contextual > IAB > Video Gaming > Video Game Genres > Exercise and Fitness Video Games,Video Game Genres
+Family Video Games,mural_iab_1523,Contextual > IAB > Video Gaming > Video Game Genres > Family Video Games,Video Game Genres
+Horror Video Games,mural_iab_1524,Contextual > IAB > Video Gaming > Video Game Genres > Horror Video Games,Video Game Genres
+MMOs,mural_iab_0696,Contextual > IAB > Video Gaming > Video Game Genres > MMOs,Video Game Genres
+Music and Party Video Games,mural_iab_0697,Contextual > IAB > Video Gaming > Video Game Genres > Music and Party Video Games,Video Game Genres
+Puzzle Video Games,mural_iab_0698,Contextual > IAB > Video Gaming > Video Game Genres > Puzzle Video Games,Video Game Genres
+Racing Video Games,mural_iab_1525,Contextual > IAB > Video Gaming > Video Game Genres > Racing Video Games,Video Game Genres
+Role-Playing Video Games,mural_iab_0687,Contextual > IAB > Video Gaming > Video Game Genres > Role-Playing Video Games,Video Game Genres
+Simulation Video Games,mural_iab_0688,Contextual > IAB > Video Gaming > Video Game Genres > Simulation Video Games,Video Game Genres
+Sports Video Games,mural_iab_0689,Contextual > IAB > Video Gaming > Video Game Genres > Sports Video Games,Video Game Genres
+Strategy Video Games,mural_iab_0690,Contextual > IAB > Video Gaming > Video Game Genres > Strategy Video Games,Video Game Genres
+War and Conflicts,mural_iab_0389,Contextual > IAB > War and Conflicts,Other Standalone
+Crime,mural_iab_0380,Contextual > IAB > Crime,Other Standalone
+Disasters,mural_iab_0381,Contextual > IAB > Disasters,Other Standalone
+Communication,mural_iab_1529,Contextual > IAB > Communication,Other Standalone
+Law,mural_iab_0383,Contextual > IAB > Law,Other Standalone
+Maps & Navigation,mural_iab_1527,Contextual > IAB > Maps & Navigation,Other Standalone
+Productivity,mural_iab_1528,Contextual > IAB > Productivity,Other Standalone
+High Risk Adult Sexual Explicit Content,mural_sens_1001,Brand Protection > Brand Suitability > High Risk > Adult Sexual Explicit Content,High Risk
+High Risk Alcohol,mural_sens_1002,Brand Protection > Brand Suitability > High Risk > Alcohol,High Risk
+High Risk Arms and Ammunition,mural_sens_1003,Brand Protection > Brand Suitability > High Risk > Arms & Ammunition,High Risk
+High Risk Crime & Violence,mural_sens_1004,Brand Protection > Brand Suitability > High Risk > Crime & Violence,High Risk
+High Risk Death or Injury,mural_sens_1005,Brand Protection > Brand Suitability > High Risk > Death or Injury,High Risk
+High Risk Epidemic,mural_sens_1006,Brand Protection > Brand Suitability > High Risk > Epidemic,High Risk
+High Risk Hate Speech & Acts of Aggression,mural_sens_1007,Brand Protection > Brand Suitability > High Risk > Hate Speech & Acts of Aggression,High Risk
+High Risk Illegal Drugs,mural_sens_1008,Brand Protection > Brand Suitability > High Risk > Illegal Drugs,High Risk
+High Risk Military Conflict,mural_sens_1009,Brand Protection > Brand Suitability > High Risk > Military Conflict,High Risk
+High Risk Obscenity and Profanity ,mural_sens_1010,Brand Protection > Brand Suitability > High Risk > Obscenity and Profanity,High Risk
+High Risk Sensitive Social Issue,mural_sens_1011,Brand Protection > Brand Suitability > High Risk > Sensitive Social Issue,High Risk
+High Risk Terrorism ,mural_sens_1012,Brand Protection > Brand Suitability > High Risk > Terrorism,High Risk
+High Risk Tabacco/eCigarettes/Vaping,mural_sens_1013,Brand Protection > Brand Suitability > High Risk > Tobacco/eCigarettes/Vaping,High Risk
+High Risk Violation of Human Rights,mural_sens_1014,Brand Protection > Brand Suitability > High Risk > Violation of Human Rights,High Risk
+Low Risk Adult Sexual Explicit Content,mural_sens_3001,Brand Protection > Brand Suitability > Low Risk > Adult Sexual Explicit Content,Low Risk
+Low Risk Alcohol,mural_sens_3002,Brand Protection > Brand Suitability > Low Risk > Alcohol,Low Risk
+Low Risk Arms and Ammunition,mural_sens_3003,Brand Protection > Brand Suitability > Low Risk > Arms & Ammunition,Low Risk
+Low Risk Crime & Violence,mural_sens_3004,Brand Protection > Brand Suitability > Low Risk > Crime & Violence,Low Risk
+Low Risk Death or Injury,mural_sens_3005,Brand Protection > Brand Suitability > Low Risk > Death or Injury,Low Risk
+Low Risk Epidemic,mural_sens_3006,Brand Protection > Brand Suitability > Low Risk > Epidemic,Low Risk
+Low Risk Hate Speech & Acts of Aggression,mural_sens_3007,Brand Protection > Brand Suitability > Low Risk > Hate Speech & Acts of Aggression,Low Risk
+Low Risk Illegal Drugs,mural_sens_3008,Brand Protection > Brand Suitability > Low Risk > Illegal Drugs,Low Risk
+Low Risk Military Conflict,mural_sens_3009,Brand Protection > Brand Suitability > Low Risk > Military Conflict,Low Risk
+Low Risk Obscenity and Profanity ,mural_sens_3010,Brand Protection > Brand Suitability > Low Risk > Obscenity and Profanity,Low Risk
+Low Risk Sensitive Social Issue,mural_sens_3011,Brand Protection > Brand Suitability > Low Risk > Sensitive Social Issue,Low Risk
+Low Risk Terrorism ,mural_sens_3012,Brand Protection > Brand Suitability > Low Risk > Terrorism,Low Risk
+Low Risk Tabacco/eCigarettes/Vaping,mural_sens_3013,Brand Protection > Brand Suitability > Low Risk > Tobacco/eCigarettes/Vaping,Low Risk
+Low Risk Violation of Human Rights,mural_sens_3014,Brand Protection > Brand Suitability > Low Risk > Violation of Human Rights,Low Risk
+Low Risk Adult Sexual Explicit Content,mural_sens_2001,Brand Protection > Brand Suitability > Medium Risk > Adult Sexual Explicit Content,Medium Risk
+Medium Risk Alcohol,mural_sens_2002,Brand Protection > Brand Suitability > Medium Risk > Alcohol,Medium Risk
+Medium Risk Arms and Ammunition,mural_sens_2003,Brand Protection > Brand Suitability > Medium Risk > Arms & Ammunition,Medium Risk
+Medium Risk Crime & Violence,mural_sens_2004,Brand Protection > Brand Suitability > Medium Risk > Crime & Violence,Medium Risk
+Medium Risk Death or Injury,mural_sens_2005,Brand Protection > Brand Suitability > Medium Risk > Death or Injury,Medium Risk
+Medium Risk Epidemic,mural_sens_2006,Brand Protection > Brand Suitability > Medium Risk > Epidemic,Medium Risk
+Medium Risk Hate Speech & Acts of Aggression,mural_sens_2007,Brand Protection > Brand Suitability > Medium Risk > Hate Speech & Acts of Aggression,Medium Risk
+Medium Risk Illegal Drugs,mural_sens_2008,Brand Protection > Brand Suitability > Medium Risk > Illegal Drugs,Medium Risk
+Medium Risk Military Conflict,mural_sens_2009,Brand Protection > Brand Suitability > Medium Risk > Military Conflict,Medium Risk
+Medium Risk Obscenity and Profanity ,mural_sens_2010,Brand Protection > Brand Suitability > Medium Risk > Obscenity and Profanity,Medium Risk
+Medium Risk Sensitive Social Issue,mural_sens_2011,Brand Protection > Brand Suitability > Medium Risk > Sensitive Social Issue,Medium Risk
+Medium Risk Terrorism ,mural_sens_2012,Brand Protection > Brand Suitability > Medium Risk > Terrorism,Medium Risk
+Medium Risk Tabacco/eCigarettes/Vaping,mural_sens_2013,Brand Protection > Brand Suitability > Medium Risk > Tobacco/eCigarettes/Vaping,Medium Risk
+Medium Risk Violation of Human Rights,mural_sens_2014,Brand Protection > Brand Suitability > Medium Risk > Violation of Human Rights,Medium Risk
+Risk Piracy ,mural_sens_2015,Brand Protection > Brand Suitability > Piracy,Medium Risk
+Risk Spam ,mural_sens_2016,Brand Protection > Brand Suitability > Spam,Medium Risk
+Exclude Accidents,mural_excl_1001,Brand Protection > Non Standard > Exclude > Accidents,Exclude
+Exclude Alcohol,mural_excl_1002,Brand Protection > Non Standard > Exclude > Alcohol,Exclude
+Exclude Clickbait Sites,mural_excl_1003,Brand Protection > Non Standard > Exclude > Clickbait Sites,Exclude
+Exclude Crime Violence,mural_excl_1004,Brand Protection > Non Standard > Exclude > Crime Violence,Exclude
+Exclude Gambling,mural_excl_1005,Brand Protection > Non Standard > Exclude > Gambling,Exclude
+Exclude Health Issues,mural_excl_1006,Brand Protection > Non Standard > Exclude > Heath Issues,Exclude
+Exclude Illegal Drugs,mural_excl_1007,Brand Protection > Non Standard > Exclude > Illegal Drugs,Exclude
+Exclude Manga,mural_excl_1008,Brand Protection > Non Standard > Exclude > Manga,Exclude
+Exclude Negative News,mural_excl_1009,Brand Protection > Non Standard > Exclude > Negative News,Exclude
+Exclude NSFW,mural_excl_1010,Brand Protection > Non Standard > Exclude > NSFW,Exclude
+Exclude Offensive,mural_excl_1011,Brand Protection > Non Standard > Exclude > Offensive,Exclude
+Exclude Pornography,mural_excl_1012,Brand Protection > Non Standard > Exclude > Pornography,Exclude
+Exclude Terrorism ,mural_excl_1013,Brand Protection > Non Standard > Exclude > Terrorism,Exclude
+Exclude Tobacco,mural_excl_1014,Brand Protection > Non Standard > Exclude > Tobacco,Exclude
+Exclude Weapons,mural_excl_1015,Brand Protection > Non Standard > Exclude > Weapons,Exclude
+4th of July,mural_c_1001,Contextual > Seasonal Segments > 4th of July,Custom / Seasonal Tags
+Back to School,mural_c_1002,Contextual > Seasonal Segments > Back to School,Custom / Seasonal Tags
+Black Friday,mural_c_1003,Contextual > Seasonal Segments > Black Friday,Custom / Seasonal Tags
+Christmas,mural_c_1004,Contextual > Seasonal Segments > Christmas,Custom / Seasonal Tags
+Cinco De Mayo,mural_c_1005,Contextual > Seasonal Segments > Cinco de Mayo,Custom / Seasonal Tags
+Cyber Monday,mural_c_1006,Contextual > Seasonal Segments > Cyber Monday,Custom / Seasonal Tags
+Easter,mural_c_1007,Contextual > Seasonal Segments > Easter,Custom / Seasonal Tags
+Fashion Week ,mural_c_1008,Contextual > Seasonal Segments > Fashion Week,Custom / Seasonal Tags
+Father's Day ,mural_c_1009,Contextual > Seasonal Segments > Father's Day,Custom / Seasonal Tags
+Halloween,mural_c_1010,Contextual > Seasonal Segments > Halloween,Custom / Seasonal Tags
+Labor Day ,mural_c_1011,Contextual > Seasonal Segments > Labor Day,Custom / Seasonal Tags
+Mardi Gras,mural_c_1012,Contextual > Seasonal Segments > Mardi Gras,Custom / Seasonal Tags
+Memorial Day,mural_c_1013,Contextual > Seasonal Segments > Memorial Day,Custom / Seasonal Tags
+Mother's Day,mural_c_1014,Contextual > Seasonal Segments > Mother's Day,Custom / Seasonal Tags
+New Year's Eve,mural_c_1015,Contextual > Seasonal Segments > New Year's Eve,Custom / Seasonal Tags
+President's Day,mural_c_1016,Contextual > Seasonal Segments > Presidents Day,Custom / Seasonal Tags
+Pride Week,mural_c_1017,Contextual > Seasonal Segments > Pride Week,Custom / Seasonal Tags
+Prime Day,mural_c_1018,Contextual > Seasonal Segments > Prime Day,Custom / Seasonal Tags
+Spring Break,mural_c_1019,Contextual > Seasonal Segments > Spring Break,Custom / Seasonal Tags
+St. Patrick's Day,mural_c_1020,Contextual > Seasonal Segments > St. Patrick's Day,Custom / Seasonal Tags
+Summer Vacation,mural_c_1021,Contextual > Seasonal Segments > Summer Vacation,Custom / Seasonal Tags
+Tax Day,mural_c_1022,Contextual > Seasonal Segments > Tax Day,Custom / Seasonal Tags
+Thanksgiving,mural_c_1023,Contextual > Seasonal Segments > Thanksgiving,Custom / Seasonal Tags
+Valentine's Day,mural_c_1024,Contextual > Seasonal Segments > Valentine's Day,Custom / Seasonal Tags
+Veteran's Day,mural_c_1025,Contextual > Seasonal Segments > Veterans Day,Custom / Seasonal Tags

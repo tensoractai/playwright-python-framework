@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta name="theme-color" content="#0b0e14"/>
+<title>Audio QA Workstation Studio</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes" />
+
+<!-- Google Fonts for Modern Typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Third Party Libraries -->
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- Objectways Core Stylesheets -->
+<link rel="stylesheet" href="https://objectways-video-transcription.s3.amazonaws.com/v9/css/videolang.css">
+<link rel="stylesheet" href="https://objectways-video-transcription.s3.amazonaws.com/v9/css/hierarchy-select.min.css">
+
+<style>
+/* Modern High-Contrast Audio Workstation Theme */
+:root {
+    --bg-base: #0b0e14;
+    --bg-surface: #141822;
+    --bg-surface-hover: #1b212e;
+    --bg-card: #1d2330;
+    --bg-input: #10141e;
+    
+    --border-subtle: #252c3a;
+    --border-strong: #2f384a;
+    --border-accent: rgba(139, 92, 246, 0.4);
+    
+    --accent-purple: #8b5cf6;
+    --accent-purple-hover: #7c3aed;
+    --accent-cyan: #06b6d4;
+    --accent-emerald: #10b981;
+    --accent-rose: #f43f5e;
+    --accent-amber: #f59e0b;
+    --accent-indigo: #6366f1;
+    
+    --text-main: #f8fafc;
+    --text-sub: #94a3b8;
+    --text-muted: #64748b;
+    
+    --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow: hidden !important;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+}
+
+body#demo-app { display: flex; flex-direction: column; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(11, 14, 20, 0.6); }
+::-webkit-scrollbar-thumb { background: #2a313d; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-purple); }
+
+/* Top Studio Navbar */
+.studio-navbar {
+    height: 52px;
+    background: #10141d;
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    flex-shrink: 0;
+}
+
+.studio-brand { display: flex; align-items: center; gap: 12px; }
+
+.studio-logo {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    color: #ffffff; font-size: 14px; box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+}
+
+.studio-title-text { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin: 0; }
+
+.asset-badge {
+    background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.25);
+    color: var(--accent-cyan); font-size: 0.76rem; font-weight: 600; padding: 3px 10px; border-radius: 12px;
+    display: inline-flex; align-items: center; gap: 6px;
+}
+
+.timecode-display {
+    font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600;
+    background: var(--bg-input); border: 1px solid var(--border-subtle);
+    padding: 4px 14px; border-radius: var(--radius-sm); color: var(--accent-cyan);
+}
+
+.studio-nav-actions { display: flex; align-items: center; gap: 10px; }
+
+.status-pill {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25);
+    color: var(--accent-emerald); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+}
+
+.status-dot-pulse {
+    width: 6px; height: 6px; background-color: var(--accent-emerald); border-radius: 50%;
+    box-shadow: 0 0 6px var(--accent-emerald); animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+.btn-header-action {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+    color: var(--text-sub); font-size: 0.78rem; font-weight: 600; padding: 5px 12px;
+    border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s ease;
+}
+.btn-header-action:hover { background: rgba(255, 255, 255, 0.1); color: var(--text-main); }
+
+/* Hero Media & Waveform Bar */
+.media-hero-section {
+    background: #06080d; border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 20px; display: flex; flex-direction: column; gap: 10px; flex-shrink: 0;
+}
+
+.workspace-toolbar {
+    background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);
+    padding: 6px 14px; display: flex; align-items: center; justify-content: space-between;
+}
+
+.toolbar-group { display: flex; align-items: center; gap: 8px; }
+
+.btn-tb {
+    background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-main);
+    border-radius: var(--radius-sm); padding: 5px 12px; font-size: 0.78rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer; transition: all 0.15s ease;
+}
+.btn-tb:hover { background: var(--bg-surface-hover); border-color: var(--accent-purple); color: #fff; }
+
+/* Recording Button Active State */
+.btn-record-toggle {
+    background: rgba(244, 63, 94, 0.12); border: 1px solid rgba(244, 63, 94, 0.3); color: var(--accent-rose);
+}
+.btn-record-toggle:hover {
+    background: rgba(244, 63, 94, 0.25); border-color: var(--accent-rose); color: #fff;
+}
+.btn-record-toggle.recording-active {
+    background: var(--accent-rose) !important; color: #ffffff !important; border-color: var(--accent-rose) !important;
+    box-shadow: 0 0 14px rgba(244, 63, 94, 0.5);
+}
+.record-pulse { animation: rec-pulse 1s infinite; }
+@keyframes rec-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.tb-select {
+    background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-main);
+    border-radius: var(--radius-sm); padding: 4px 8px; font-size: 0.78rem; outline: none; cursor: pointer;
+}
+
+#videowraper { display: none; }
+#video, #audio { width: 100%; max-height: 180px; }
+
+/* Crystal Clear Waveform Display */
+.wavecontainer {
+    background: #05070c !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: var(--radius-md);
+    padding: 8px;
+    box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.8);
+}
+
+#waveform { cursor: pointer; min-height: 80px; }
+
+#subtitles {
+    background: rgba(20, 24, 34, 0.9); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm); padding: 6px 14px; color: var(--text-main); font-size: 0.82rem; text-align: center;
+}
+
+.timeline-scroll-area { max-height: 140px; overflow-y: auto; }
+
+.trackanotate, #videotrackanotate {
+    background: var(--bg-surface) !important; border: 1px solid var(--border-strong) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+/* 2-Column Grid Layout */
+.app-workspace-grid {
+    flex: 1; display: grid; grid-template-columns: 1fr 420px; overflow: hidden;
+}
+
+.segments-left-col {
+    background: var(--bg-base); border-right: 1px solid var(--border-subtle);
+    display: flex; flex-direction: column; overflow-y: auto; padding: 16px; gap: 14px;
+}
+
+.col-header-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);
+}
+
+.col-title-text { font-size: 0.88rem; font-weight: 700; color: var(--text-main); margin: 0; }
+
+.segment-card {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md); padding: 14px; display: flex; flex-direction: column; gap: 10px;
+    transition: all 0.15s ease;
+}
+.segment-card:hover { border-color: var(--border-accent); }
+.segment-card.active-segment {
+    border-color: var(--accent-purple); box-shadow: 0 0 14px rgba(139, 92, 246, 0.25);
+    background: var(--bg-surface-hover);
+}
+
+.segment-card-header {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    padding-bottom: 6px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.segment-spk-pill {
+    background: rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.4);
+    color: #c084fc; font-size: 0.74rem; font-weight: 700; padding: 2px 10px; border-radius: 12px;
+    display: inline-flex; align-items: center; gap: 4px;
+}
+
+.segment-tc-badge {
+    font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;
+    color: var(--accent-cyan); background: var(--bg-input); border: 1px solid var(--border-subtle);
+    padding: 2px 8px; border-radius: 4px;
+}
+
+.segment-label-select {
+    background: var(--bg-input); border: 1px solid var(--border-strong);
+    color: var(--text-main); border-radius: var(--radius-sm); font-size: 0.78rem; font-weight: 600;
+    padding: 3px 8px; outline: none; cursor: pointer;
+}
+
+.segment-trans-input {
+    width: 100%; background: var(--bg-input); border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm); color: var(--text-main); font-family: var(--font-sans);
+    font-size: 0.86rem; padding: 10px; min-height: 65px; outline: none; resize: vertical;
+    transition: border 0.15s ease;
+}
+.segment-trans-input:focus { border-color: var(--accent-purple); box-shadow: 0 0 8px rgba(139, 92, 246, 0.2); }
+
+.segment-actions-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 2px;
+}
+
+.btn-seg-act {
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+    color: var(--text-sub); border-radius: var(--radius-sm); padding: 4px 10px; font-size: 0.75rem;
+    font-weight: 600; display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+    transition: all 0.15s ease;
+}
+.btn-seg-act:hover { background: rgba(255, 255, 255, 0.12); color: var(--text-main); }
+.btn-seg-act.play:hover { background: var(--accent-purple); color: #fff; border-color: var(--accent-purple); }
+.btn-seg-act.loop:hover { background: var(--accent-cyan); color: #fff; border-color: var(--accent-cyan); }
+.btn-seg-act.delete:hover { background: var(--accent-rose); color: #fff; border-color: var(--accent-rose); }
+
+.qa-right-col {
+    background: var(--bg-surface); display: flex; flex-direction: column; overflow-y: auto; padding: 16px; gap: 14px;
+}
+
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.spec-card { background: rgba(10, 14, 22, 0.7); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 9px; }
+.spec-card-lbl { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+.spec-card-val { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--accent-cyan); }
+
+#prevnextBox {
+    background: var(--bg-card); border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md); padding: 14px; display: flex; flex-direction: column; gap: 10px;
+}
+
+.text-question { font-size: 0.88rem; font-weight: 700; color: var(--text-main); border-left: 3px solid var(--accent-purple); padding-left: 8px; }
+.text-answer { display: none; }
+.text-instructions { font-size: 0.76rem; color: var(--text-muted); font-style: italic; }
+.inote-text { width: 100%; background: var(--bg-input); border: 1px solid var(--border-strong); border-radius: var(--radius-sm); color: var(--text-main); font-size: 0.84rem; padding: 8px; min-height: 60px; outline: none; }
+
+.prevnext-controls { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; }
+.prevnext { background: var(--bg-surface-hover) !important; border: 1px solid var(--border-strong) !important; color: var(--text-main) !important; font-size: 0.78rem !important; font-weight: 600 !important; padding: 6px 14px !important; border-radius: var(--radius-sm) !important; cursor: pointer; }
+.prevnext:hover { background: var(--accent-purple) !important; border-color: var(--accent-purple) !important; }
+.prevnext_number { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); }
+
+#submitButton {
+    width: 100%; background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo)) !important;
+    border: none !important; color: #ffffff !important; font-size: 0.88rem !important; font-weight: 700 !important;
+    padding: 12px 20px !important; border-radius: var(--radius-md) !important;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3) !important; cursor: pointer; transition: all 0.2s ease !important;
+}
+#submitButton:hover { background: linear-gradient(135deg, #7c3aed, #4f46e5) !important; transform: translateY(-1px); }
+</style>
+</head>
+
+<body id="demo-app">
+
+    <!-- Header Navbar -->
+    <header class="studio-navbar">
+        <div class="studio-brand">
+            <div class="studio-logo"><i class="fa-solid fa-waveform"></i></div>
+            <h1 class="studio-title-text">Audio QA Workstation Studio</h1>
+            <span class="asset-badge" id="headerAssetBadge"><i class="fa-solid fa-file-audio"></i> Test Audio.mp3</span>
+        </div>
+
+        <div class="studio-nav-center">
+            <div class="timecode-display" id="navTimecode">00:00:00.00 / 00:00:00.00</div>
+        </div>
+
+        <div class="studio-nav-actions">
+            <div class="status-pill"><span class="status-dot-pulse"></span><span>Active Task</span></div>
+            <button type="button" class="btn-header-action" data-toggle="modal" data-target="#myModal">
+                <i class="fa-solid fa-keyboard mr-1"></i> Shortcuts
+            </button>
+        </div>
+    </header>
+
+    <!-- Modal Dialog for Shortcuts -->
+    <div id="myModal" class="modal fade" role="dialog" style="z-index: 100000">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content style-modal" style="background:#11151c; border:1px solid #30363d; border-radius:12px; color:#fff;">
+                <div class="modal-header" style="border-bottom:1px solid #262c36;">
+                    <h5 class="modal-title" style="font-size:1rem; font-weight:700;"><i class="fa-solid fa-circle-info text-info mr-2"></i> Workstation Shortcuts</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" style="font-size:0.85rem; color:#94a3b8;">
+                    <div style="display:flex; justify-content:space-between; padding:6px 0;"><span>Play / Pause</span> <kbd>Space</kbd></div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0;"><span>Start / Stop Recording</span> <kbd>Shift+R</kbd></div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0;"><span>Seek Forward / Back</span> <span><kbd>←</kbd> <kbd>→</kbd></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Media & Waveform Bar -->
+    <section class="media-hero-section">
+        <div class="workspace-toolbar">
+            <div class="toolbar-group">
+                <button class="btn-tb btnMasterPlay"><i class="fa-solid fa-play iconMasterPlay"></i> Play / Pause</button>
+                
+                <!-- Start / Stop Segment Recording Controller -->
+                <button class="btn-tb btn-record-toggle" id="btnRecordToggle" title="Click to begin recording segment time range">
+                    <i class="fa-solid fa-circle text-rose" id="recordIcon"></i>
+                    <span id="recordLabel">Start Recording</span>
+                </button>
+
+                <button class="btn-tb btnSeekBack"><i class="fa-solid fa-rotate-left"></i> -1s</button>
+                <button class="btn-tb btnSeekFwd"><i class="fa-solid fa-rotate-right"></i> +1s</button>
+            </div>
+
+            <div class="toolbar-group">
+                <span style="font-size:0.75rem; color:var(--text-sub);">Speed:</span>
+                <select class="tb-select selectSpeed" id="selectSpeed">
+                    <option value="0.5">0.5x</option>
+                    <option value="0.75">0.75x</option>
+                    <option value="1.0" selected>1.0x</option>
+                    <option value="1.25">1.25x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2.0">2.0x</option>
+                </select>
+
+                <button class="btn-tb ml-2" id="btnZoomIn" title="Zoom Waveform In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+                <button class="btn-tb" id="btnZoomOut" title="Zoom Waveform Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+                <button class="btn-tb text-danger ml-2" id="btnClearTracks" title="Clear all segment tracks"><i class="fa-solid fa-eraser"></i> Clear Tracks</button>
+            </div>
+        </div>
+
+        <div id="videowraper">
+            <video id="video"></video>
+            <audio id="audio" ssrc="mira640.mp4"></audio>
+        </div>
+
+        <div class="wavecontainer">
+            <div id="waveform" style="width: 100%"></div>
+        </div>
+
+        <div id="subtitles">
+            <i class="fa-solid fa-closed-captioning text-muted mr-2"></i> Subtitles will display here during playback...
+        </div>
+
+        <div class="timeline-scroll-area">
+            <div id="videotrackanotate"></div>
+        </div>
+    </section>
+
+    <!-- Document Metadata Storage -->
+    <TEXTAREA id='document-metadata' style="display: none;">
+{
+  "Test Audio.mp3": {
+    "duration": 180.5,
+    "audio-metadata": {
+      "format": "MP3",
+      "sample_rate": 44100,
+      "channels": 2,
+      "channel_layout": "stereo",
+      "bit_rate": 192000,
+      "bit_depth": 16,
+      "codec": "MP3",
+      "language": "English",
+      "annotation_type": "temporal",
+      "segments": [
+        { "start": 0.0, "end": 15.5, "label": "Speech" },
+        { "start": 15.5, "end": 32.8, "label": "Background Noise" },
+        { "start": 32.8, "end": 58.2, "label": "Music" }
+      ]
+    }
+  },
+  "audioSource": "https://objectways-transcribe.s3.amazonaws.com/granicus/la_30_min_sample.mp3",
+  "transcriptionMode": true,
+  "streams": {{task.input.streams | default: "[]"}}
+}
+    </TEXTAREA>
+
+    <TEXTAREA id='document-videodata' style="display: none;">{}</TEXTAREA>
+
+    <!-- AWS Crowd Form Integration -->
+    <crowd-form>
+        <input name="annotations" id="annotations" type="hidden">
+        <crowd-button form-action="submit" style="display: none;"></crowd-button>
+    </crowd-form>
+
+    <!-- Main 2-Column Workstation Grid -->
+    <main class="app-workspace-grid">
+        <!-- Left Column: Audio Segments Annotator -->
+        <section class="segments-left-col">
+            <div class="col-header-bar">
+                <h2 class="col-title-text"><i class="fa-solid fa-list-ul text-purple"></i> Audio Segments (<span id="segCount">0</span>)</h2>
+                <span style="font-size:0.75rem; color:var(--text-sub);">Click "Start Recording" or timeline to add segment</span>
+            </div>
+            <div id="segmentsListContainer" style="display:flex; flex-direction:column; gap:12px;"></div>
+        </section>
+
+        <!-- Right Column: QA Evaluation & Specifications -->
+        <aside class="qa-right-col">
+            <div class="spec-card">
+                <div style="font-weight:700; color:var(--accent-cyan);" class="mb-2"><i class="fa-solid fa-microchip"></i> Audio Technical Specs</div>
+                <div class="spec-grid" id="dawSpecGrid"></div>
+            </div>
+
+            <div id="prevnextBox">
+                <div class="text-question" id="questionTitle">Segment Transcription</div>
+                <div id="questionAnswer" class="text-answer"></div>
+                <div id="questionInstructions" class="text-instructions">Review and transcribe segment audio carefully.</div>
+                <div id="questionFalse"></div>
+                <textarea id="questionUserAnswer" class="inote-text" placeholder="Enter transcript for selected segment..."></textarea>
+                
+                <div class="prevnext-controls">
+                    <button id="buttonPrev" type="button" class="btn btn-primary prevnext">
+                        <i class="fa-solid fa-chevron-left mr-1"></i> Prev
+                    </button>
+                    <div class="prevnext_number"><span><span id="qaCurrentIndex">1</span> / <span id="qaTotalCount">1</span></span></div>
+                    <button id="buttonNext" type="button" class="btn btn-primary prevnext">
+                        Next <i class="fa-solid fa-chevron-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="reportpanel"></div>
+
+            <div class="hierarchy"></div>
+            <div id="video-attr"></div>
+
+            <div id="submitBox" class="mt-auto">
+                <button id="submitButton" type="button" class="btn btn-primary w-100">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Submit Annotation
+                </button>
+            </div>
+        </aside>
+    </main>
+
+    <script>
+        var tagData = {};
+        try { tagData = JSON.parse($('#document-metadata').val()); } catch(e) {}
+        var descriptor = tagData;
+    </script>
+
+    <!-- External Libraries & AWS DRM Scripts -->
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/js/hierarchy-select.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/crypto-js.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/xml2js.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/amazon-cognito-identity.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/aws-iot-sdk-bundle.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/third_party/dist/js/dash.all.min.js"></script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/drm/src/lib/js/app.js" type="module"></script>
+    
+    <script>
+        (function() {
+            function patchWaveSurfer() {
+                if (window.WaveSurfer && WaveSurfer.create && !WaveSurfer._purplePatched) {
+                    var origCreate = WaveSurfer.create;
+                    WaveSurfer.create = function(options) {
+                        options.waveColor = options.waveColor || '#8b5cf6';
+                        options.progressColor = options.progressColor || '#06b6d4';
+                        options.cursorColor = options.cursorColor || '#f43f5e';
+                        options.barWidth = options.barWidth || 2;
+                        options.barGap = options.barGap || 1;
+                        options.barRadius = options.barRadius || 2;
+                        return origCreate.call(this, options);
+                    };
+                    WaveSurfer._purplePatched = true;
+                }
+            }
+            patchWaveSurfer();
+            document.addEventListener('DOMContentLoaded', patchWaveSurfer);
+        })();
+    </script>
+    <script src="https://objectways-video-transcription.s3.amazonaws.com/v9/js/videotrackanotate_mini.js"></script>
+
+    <!-- Recording Controller & Master Workstation Script -->
+    <script>
+        $(document).ready(function() {
+            var segmentTexts = {};
+            var segmentLabels = {};
+            var activeSegmentIndex = 0;
+            var loopTimer = null;
+
+            // Start / Stop Recording Controller state
+            var isRecording = false;
+            var recordStartTime = 0;
+
+            var parsedMeta = {
+                fileName: "Test Audio.mp3",
+                duration: 180.5,
+                format: "MP3",
+                sample_rate: 44100,
+                channels: 2,
+                channel_layout: "stereo",
+                bit_rate: 192000,
+                bit_depth: 16,
+                codec: "MP3",
+                language: "English",
+                annotation_type: "temporal",
+                segments: [
+                    { start: 0.0, end: 15.5, label: "Speech" },
+                    { start: 15.5, end: 32.8, label: "Background Noise" },
+                    { start: 32.8, end: 58.2, label: "Music" }
+                ]
+            };
+
+            function extractMetadata() {
+                if (!tagData) return;
+                var keys = Object.keys(tagData);
+                for (var i = 0; i < keys.length; i++) {
+                    var k = keys[i];
+                    if (tagData[k] && tagData[k]['audio-metadata']) {
+                        parsedMeta.fileName = k;
+                        parsedMeta.duration = tagData[k].duration || 180.5;
+                        var am = tagData[k]['audio-metadata'];
+                        parsedMeta.format = am.format || "MP3";
+                        parsedMeta.sample_rate = am.sample_rate || 44100;
+                        parsedMeta.channels = am.channels || 2;
+                        parsedMeta.channel_layout = am.channel_layout || "stereo";
+                        parsedMeta.bit_rate = am.bit_rate || 192000;
+                        parsedMeta.bit_depth = am.bit_depth || 16;
+                        parsedMeta.codec = am.codec || "MP3";
+                        parsedMeta.language = am.language || "English";
+                        parsedMeta.annotation_type = am.annotation_type || "temporal";
+                        if (am.segments && am.segments.length) parsedMeta.segments = am.segments;
+                        break;
+                    }
+                }
+                parsedMeta.segments.forEach(function(s, idx) {
+                    if (segmentLabels[idx] === undefined) segmentLabels[idx] = s.label || "Speech";
+                    if (segmentTexts[idx] === undefined) segmentTexts[idx] = s.transcript || "";
+                });
+            }
+
+            extractMetadata();
+
+            function formatTC(secs) {
+                if (isNaN(secs)) return "00:00.00";
+                var m = Math.floor(secs / 60);
+                var s = Math.floor(secs % 60);
+                var ms = Math.floor((secs % 1) * 100);
+                return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s + '.' + (ms < 10 ? '0' : '') + ms;
+            }
+
+            function renderSpecs() {
+                var html = '';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Format</span><span class="spec-card-val">' + parsedMeta.format + '</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Sample Rate</span><span class="spec-card-val">' + (parsedMeta.sample_rate / 1000).toFixed(1) + ' kHz</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Channels</span><span class="spec-card-val">' + parsedMeta.channels + ' (' + parsedMeta.channel_layout + ')</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Bit Rate</span><span class="spec-card-val">' + Math.round(parsedMeta.bit_rate / 1000) + ' kbps</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Codec</span><span class="spec-card-val">' + parsedMeta.codec + '</span></div>';
+                html += '<div class="spec-card"><span class="spec-card-lbl">Language</span><span class="spec-card-val">' + parsedMeta.language + '</span></div>';
+
+                $('#dawSpecGrid').html(html);
+                $('#headerAssetBadge').html('<i class="fa-solid fa-file-audio"></i> ' + parsedMeta.fileName);
+            }
+
+            renderSpecs();
+
+            var lastCount = -1;
+            function buildSegmentDOM() {
+                var ranges = $('.trackrange');
+                var count = ranges.length;
+
+                var items = [];
+                if (count > 0) {
+                    ranges.each(function(idx) {
+                        var $el = $(this);
+                        var rawText = $el.text() || '';
+                        if (rawText === ('Segment ' + (idx + 1))) rawText = '';
+                        if (segmentTexts[idx] === undefined) segmentTexts[idx] = rawText;
+                        var metaSeg = parsedMeta.segments[idx] || { start: idx * 10, end: (idx + 1) * 10, label: "Speech" };
+                        items.push({ idx: idx, meta: metaSeg });
+                    });
+                } else {
+                    parsedMeta.segments.forEach(function(s, idx) {
+                        items.push({ idx: idx, meta: s });
+                    });
+                }
+
+                $('#segCount').text(items.length);
+                $('#qaTotalCount').text(items.length);
+
+                if (items.length === lastCount) return;
+                lastCount = items.length;
+
+                var html = '';
+                items.forEach(function(item) {
+                    var idx = item.idx;
+                    var meta = item.meta;
+                    var curText = segmentTexts[idx] !== undefined ? segmentTexts[idx] : "";
+                    var curLabel = segmentLabels[idx] || meta.label || "Speech";
+                    var isAct = idx === activeSegmentIndex;
+
+                    html += '<div class="segment-card ' + (isAct ? 'active-segment' : '') + '" data-idx="' + idx + '" id="segCard_' + idx + '">';
+                    html += '  <div class="segment-card-header">';
+                    html += '    <div style="display:flex; align-items:center; gap:8px;">';
+                    html += '      <span class="segment-spk-pill"><i class="fa-solid fa-microphone"></i> Segment ' + (idx + 1) + '</span>';
+                    html += '      <select class="segment-label-select btnLabelSelect" data-idx="' + idx + '">';
+                    html += '        <option value="Speech" ' + (curLabel==='Speech'?'selected':'') + '>Speech</option>';
+                    html += '        <option value="Background Noise" ' + (curLabel==='Background Noise'?'selected':'') + '>Background Noise</option>';
+                    html += '        <option value="Music" ' + (curLabel==='Music'?'selected':'') + '>Music</option>';
+                    html += '        <option value="Silence" ' + (curLabel==='Silence'?'selected':'') + '>Silence</option>';
+                    html += '        <option value="Overlap" ' + (curLabel==='Overlap'?'selected':'') + '>Overlap</option>';
+                    html += '      </select>';
+                    html += '    </div>';
+                    html += '    <span class="segment-tc-badge">' + formatTC(meta.start) + ' ➔ ' + formatTC(meta.end) + '</span>';
+                    html += '  </div>';
+                    html += '  <textarea class="segment-trans-input segTransInput" data-idx="' + idx + '" placeholder="Type transcript annotation for segment ' + (idx + 1) + '...">' + curText + '</textarea>';
+                    html += '  <div class="segment-actions-bar">';
+                    html += '    <div style="display:flex; gap:6px;">';
+                    html += '      <button type="button" class="btn-seg-act play btnSegPlay" data-idx="' + idx + '"><i class="fa-solid fa-play"></i> Play</button>';
+                    html += '      <button type="button" class="btn-seg-act loop btnSegLoop" data-idx="' + idx + '"><i class="fa-solid fa-rotate-right"></i> Loop</button>';
+                    html += '    </div>';
+                    html += '    <button type="button" class="btn-seg-act delete btnSegDel" data-idx="' + idx + '"><i class="fa-solid fa-trash-can"></i> Delete</button>';
+                    html += '  </div>';
+                    html += '</div>';
+                });
+
+                $('#segmentsListContainer').html(html);
+                syncQAPanel();
+            }
+
+            // Real-Time Smooth Typing Handler
+            $(document).on('input', '.segTransInput', function() {
+                var idx = $(this).data('idx');
+                var val = $(this).val();
+                segmentTexts[idx] = val;
+
+                var ranges = $('.trackrange');
+                if (ranges.eq(idx).length) {
+                    ranges.eq(idx).text(val || ('Segment ' + (idx + 1)));
+                }
+
+                if (idx === activeSegmentIndex) {
+                    $('#questionUserAnswer').val(val);
+                }
+
+                updateAnnotationsPayload();
+            });
+
+            $(document).on('input', '#questionUserAnswer', function() {
+                var val = $(this).val();
+                segmentTexts[activeSegmentIndex] = val;
+                $('.segTransInput[data-idx="' + activeSegmentIndex + '"]').val(val);
+
+                var ranges = $('.trackrange');
+                if (ranges.eq(activeSegmentIndex).length) {
+                    ranges.eq(activeSegmentIndex).text(val || ('Segment ' + (activeSegmentIndex + 1)));
+                }
+                updateAnnotationsPayload();
+            });
+
+            $(document).on('change', '.btnLabelSelect', function() {
+                var idx = $(this).data('idx');
+                var lbl = $(this).val();
+                segmentLabels[idx] = lbl;
+                updateAnnotationsPayload();
+            });
+
+            function syncQAPanel() {
+                $('#qaCurrentIndex').text(activeSegmentIndex + 1);
+                var meta = parsedMeta.segments[activeSegmentIndex] || { label: "Speech" };
+                $('#questionTitle').text('Segment ' + (activeSegmentIndex + 1) + ' (' + (segmentLabels[activeSegmentIndex] || meta.label) + ')');
+                $('#questionUserAnswer').val(segmentTexts[activeSegmentIndex] || '');
+
+                $('.segment-card').removeClass('active-segment');
+                $('#segCard_' + activeSegmentIndex).addClass('active-segment');
+            }
+
+            $('#buttonPrev').on('click', function() {
+                if (activeSegmentIndex > 0) {
+                    activeSegmentIndex--;
+                    syncQAPanel();
+                }
+            });
+
+            $('#buttonNext').on('click', function() {
+                var count = $('.trackrange').length || parsedMeta.segments.length;
+                if (activeSegmentIndex < count - 1) {
+                    activeSegmentIndex++;
+                    syncQAPanel();
+                }
+            });
+
+            function updateAnnotationsPayload() {
+                var result = [];
+                var count = $('.trackrange').length || parsedMeta.segments.length;
+
+                for (var i = 0; i < count; i++) {
+                    var s = parsedMeta.segments[i] || { start: i * 10, end: (i + 1) * 10, label: "Speech" };
+                    result.push({
+                        segment_id: i + 1,
+                        start: s.start,
+                        end: s.end,
+                        label: segmentLabels[i] || s.label || "Speech",
+                        transcript: segmentTexts[i] || ""
+                    });
+                }
+
+                $('#annotations').val(JSON.stringify(result));
+            }
+
+            var audioElem = document.getElementById('audio') || document.getElementById('video');
+
+            // Start / Stop Segment Recording Controller
+            $('#btnRecordToggle').on('click', function() {
+                if (!audioElem) return;
+
+                if (!isRecording) {
+                    // Start Recording
+                    isRecording = true;
+                    recordStartTime = audioElem.currentTime;
+                    if (audioElem.paused) audioElem.play();
+
+                    $('#recordIcon').removeClass('fa-circle text-rose').addClass('fa-square text-danger record-pulse');
+                    $('#recordLabel').text('Stop Recording (00:00)');
+                    $('#btnRecordToggle').addClass('recording-active');
+                } else {
+                    // Stop Recording & Create Segment
+                    isRecording = false;
+                    var recordEndTime = audioElem.currentTime;
+                    $('#recordIcon').removeClass('fa-square text-danger record-pulse').addClass('fa-circle text-rose');
+                    $('#recordLabel').text('Start Recording');
+                    $('#btnRecordToggle').removeClass('recording-active');
+
+                    if (recordEndTime > recordStartTime + 0.2) {
+                        var newSeg = {
+                            start: parseFloat(recordStartTime.toFixed(2)),
+                            end: parseFloat(recordEndTime.toFixed(2)),
+                            label: "Speech",
+                            transcript: ""
+                        };
+                        parsedMeta.segments.push(newSeg);
+                        activeSegmentIndex = parsedMeta.segments.length - 1;
+
+                        var trackAddBtn = $('.trackaddbutton').first();
+                        if (trackAddBtn.length) {
+                            trackAddBtn.trigger('click');
+                        }
+
+                        buildSegmentDOM();
+                        syncQAPanel();
+                        updateAnnotationsPayload();
+                    }
+                }
+            });
+
+            // Clear All Waveform Tracks
+            $('#btnClearTracks').on('click', function() {
+                if (confirm("Are you sure you want to clear all audio segment tracks?")) {
+                    parsedMeta.segments = [];
+                    segmentTexts = {};
+                    segmentLabels = {};
+                    $('.trackrange').remove();
+                    lastCount = -1;
+                    buildSegmentDOM();
+                    updateAnnotationsPayload();
+                }
+            });
+
+            // Playback Speed Selector Handler
+            $('#selectSpeed, .selectSpeed').on('change', function() {
+                var spd = parseFloat($(this).val());
+                if (audioElem) audioElem.playbackRate = spd;
+                if (window.wavesurfer) window.wavesurfer.setPlaybackRate(spd);
+            });
+
+            $(document).on('click', '.btnSegPlay', function() {
+                var idx = $(this).data('idx');
+                activeSegmentIndex = idx;
+                syncQAPanel();
+                var s = parsedMeta.segments[idx] || { start: idx * 10 };
+                if (audioElem) {
+                    audioElem.currentTime = s.start;
+                    audioElem.play();
+                    $('.iconMasterPlay').removeClass('fa-play').addClass('fa-pause');
+                }
+            });
+
+            $(document).on('click', '.btnSegLoop', function() {
+                var idx = $(this).data('idx');
+                activeSegmentIndex = idx;
+                syncQAPanel();
+                var s = parsedMeta.segments[idx] || { start: 0, end: 10 };
+
+                if (audioElem) {
+                    audioElem.currentTime = s.start;
+                    audioElem.play();
+                    $('.iconMasterPlay').removeClass('fa-play').addClass('fa-pause');
+
+                    if (loopTimer) clearInterval(loopTimer);
+                    loopTimer = setInterval(function() {
+                        if (audioElem.currentTime >= s.end) {
+                            audioElem.currentTime = s.start;
+                        }
+                    }, 200);
+                }
+            });
+
+            $(document).on('click', '.btnSegDel', function() {
+                var idx = $(this).data('idx');
+                parsedMeta.segments.splice(idx, 1);
+                delete segmentTexts[idx];
+                delete segmentLabels[idx];
+                lastCount = -1;
+                buildSegmentDOM();
+                updateAnnotationsPayload();
+            });
+
+            $(document).on('click', '.btnMasterPlay', function() {
+                if (loopTimer) { clearInterval(loopTimer); loopTimer = null; }
+                if (audioElem) {
+                    if (audioElem.paused) {
+                        audioElem.play();
+                        $('.iconMasterPlay').removeClass('fa-play').addClass('fa-pause');
+                    } else {
+                        audioElem.pause();
+                        $('.iconMasterPlay').removeClass('fa-pause').addClass('fa-play');
+                    }
+                }
+            });
+
+            $(document).on('click', '.btnSeekBack', function() {
+                if (audioElem) audioElem.currentTime = Math.max(0, audioElem.currentTime - 1.0);
+            });
+
+            $(document).on('click', '.btnSeekFwd', function() {
+                if (audioElem) audioElem.currentTime = Math.min(audioElem.duration || 0, audioElem.currentTime + 1.0);
+            });
+
+            if (audioElem) {
+                audioElem.addEventListener('timeupdate', function() {
+                    var tc = formatTC(audioElem.currentTime) + ' / ' + formatTC(audioElem.duration);
+                    $('#navTimecode').text(tc);
+
+                    if (isRecording) {
+                        var dur = audioElem.currentTime - recordStartTime;
+                        $('#recordLabel').text('Stop Recording (' + formatTC(dur) + ')');
+                    }
+                });
+            }
+
+            $('#submitButton').on('click', function() {
+                updateAnnotationsPayload();
+                alert("Annotations Submitted Successfully!\nPayload: " + $('#annotations').val());
+                if ($('crowd-form').length) {
+                    try { $('crowd-form')[0].submit(); } catch(e) {}
+                }
+            });
+
+            setInterval(function() {
+                buildSegmentDOM();
+            }, 500);
+
+            buildSegmentDOM();
+        });
+    </script>
+</body>
+</html>
