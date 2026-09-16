@@ -58,7 +58,7 @@ on:
       company_username:
         description: "4️⃣ COMPANY ADMIN EMAIL"
         required: false
-        default: "admin@liceum.ai"
+        default: "admin@objectways.com"
         type: string
 
       company_password:
@@ -74,13 +74,13 @@ on:
       superuser_username:
         description: "6️⃣ SUPERUSER EMAIL"
         required: false
-        default: ""
+        default: "admin@objectways.com"
         type: string
 
       superuser_password:
         description: "7️⃣ SUPERUSER PASSWORD"
         required: false
-        default: ""
+        default: "Admin123"
         type: string
 
       # ============================================================
