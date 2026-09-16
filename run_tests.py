@@ -11,8 +11,8 @@ import sys
 from glob import glob
 
 # Browser Configuration
-HEADLESS = False
-SLOW_MO = 500
+HEADLESS = os.getenv("HEADLESS", "False").lower() in ("true", "1") or os.getenv("CI", "False").lower() in ("true", "1")
+SLOW_MO = 500 if not HEADLESS else 0
 VIEWPORT = {
     "width": 1260,
     "height": 900
