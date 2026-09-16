@@ -171,10 +171,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
 
       # ============================================================
@@ -532,20 +528,61 @@ jobs:
 
 
       # ============================================================
-      # DEPLOY ALLURE REPORT TO GITHUB PAGES
+      # GENERATE VISUAL TEST SUMMARY ON WORKFLOW PAGE
       # ============================================================
 
-      - name: Setup Pages
+      - name: Generate Visual Test Summary
         if: always()
-        uses: actions/configure-pages@v5
+        shell: python
+        run: |
+          import json, glob, os
 
-      - name: Upload Artifact to GitHub Pages
-        if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: allure-report/
+          results_dir = "allure-results"
+          passed, failed, broken, skipped = 0, 0, 0, 0
+          failed_tests = []
 
-      - name: Deploy to GitHub Pages
-        if: always()
-        id: deployment
-        uses: actions/deploy-pages@v4
+          if os.path.exists(results_dir):
+              for fpath in glob.glob(os.path.join(results_dir, "*-result.json")):
+                  try:
+                      with open(fpath, "r", encoding="utf-8") as f:
+                          data = json.load(f)
+                          status = data.get("status", "unknown")
+                          name = data.get("name", "Unnamed Test")
+                          if status == "passed":
+                              passed += 1
+                          elif status == "failed":
+                              failed += 1
+                              failed_tests.append((name, "Failed"))
+                          elif status == "broken":
+                              broken += 1
+                              failed_tests.append((name, "Broken"))
+                          elif status == "skipped":
+                              skipped += 1
+                  except Exception:
+                      pass
+
+          total = passed + failed + broken + skipped
+          overall_status = "✅ PASSED" if (failed + broken == 0 and total > 0) else "❌ FAILED" if total > 0 else "⚠️ NO TESTS EXECUTED"
+
+          summary_md = f"""## 📊 Playwright Test Execution Summary
+
+          ### Overall Result: {overall_status}
+
+          | Metric | Count |
+          | :--- | :--- |
+          | **Total Tests** | **{total}** |
+          | **Passed** ✅ | **{passed}** |
+          | **Failed** ❌ | **{failed + broken}** |
+          | **Skipped** ⚠️ | **{skipped}** |
+
+          """
+
+          if failed_tests:
+              summary_md += "### ❌ Failed Test Cases:\n"
+              for tc_name, tc_status in failed_tests:
+                  summary_md += f"- `{tc_name}` (**{tc_status}**)\n"
+
+          github_summary = os.getenv("GITHUB_STEP_SUMMARY")
+          if github_summary:
+              with open(github_summary, "a", encoding="utf-8") as f:
+                  f.write(summary_md)
