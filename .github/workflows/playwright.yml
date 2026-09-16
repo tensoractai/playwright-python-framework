@@ -29,7 +29,6 @@ on:
           - "https://fmn-qa.tensoract.com/"
           - "https://fmn-qa1.tensoract.com"
           - "https://fmn-staging.tensoract.com/"
-        type: string
 
       company_username:
         description: "3️⃣ COMPANY ADMIN EMAIL"
