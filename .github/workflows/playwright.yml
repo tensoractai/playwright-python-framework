@@ -1,5 +1,10 @@
 name: Playwright Automation Tests
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 on:
   workflow_dispatch:
 
@@ -165,6 +170,10 @@ jobs:
     name: Playwright Tests
 
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
 
@@ -520,3 +529,23 @@ jobs:
           name: allure-results-${{ github.run_number }}
 
           path: allure-results/
+
+
+      # ============================================================
+      # DEPLOY ALLURE REPORT TO GITHUB PAGES
+      # ============================================================
+
+      - name: Setup Pages
+        if: always()
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact to GitHub Pages
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report/
+
+      - name: Deploy to GitHub Pages
+        if: always()
+        id: deployment
+        uses: actions/deploy-pages@v4
