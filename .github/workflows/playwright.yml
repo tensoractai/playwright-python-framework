@@ -21,7 +21,7 @@ on:
           - "all"
 
       execution_url:
-        description: "2️⃣ TARGET URL [All Modules]"
+        description: "2️⃣ TARGET URL"
         required: true
         default: "https://fmn-qa1.tensoract.com"
         type: choice
@@ -32,79 +32,79 @@ on:
         type: string
 
       company_username:
-        description: "3️⃣ COMPANY ADMIN EMAIL [ObjectwaysSanity, AnnotatorReviewer & Other Modules]"
+        description: "3️⃣ COMPANY ADMIN EMAIL"
         required: false
         default: "admin@liceum.ai"
         type: string
 
       company_password:
-        description: "4️⃣ COMPANY ADMIN PASSWORD [ObjectwaysSanity, AnnotatorReviewer & Other Modules]"
+        description: "4️⃣ COMPANY ADMIN PASSWORD"
         required: false
         default: "Admin123!"
         type: string
 
       superuser_username:
-        description: "5️⃣ SUPERUSER EMAIL [For newCompanySanity ONLY]"
+        description: "5️⃣ SUPERUSER EMAIL "
         required: false
         default: ""
         type: string
 
       superuser_password:
-        description: "6️⃣ SUPERUSER PASSWORD [For newCompanySanity ONLY]"
+        description: "6️⃣ SUPERUSER PASSWORD "
         required: false
         default: ""
         type: string
 
       annotator1_username:
-        description: "7️⃣ ANNOTATOR 1 EMAIL [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        description: "7️⃣ ANNOTATOR 1 EMAIL"
         required: false
         default: "annotator1@objectways.com"
         type: string
 
       annotator1_password:
-        description: "8️⃣ ANNOTATOR 1 PASSWORD [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        description: "8️⃣ ANNOTATOR 1 PASSWORD "
         required: false
         default: "Annotator123!"
         type: string
 
       annotator2_username:
-        description: "9️⃣ ANNOTATOR 2 EMAIL [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        description: "9️⃣ ANNOTATOR 2 EMAIL"
         required: false
         default: "annotator2@objectways.com"
         type: string
 
       annotator2_password:
-        description: "🔟 ANNOTATOR 2 PASSWORD [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        description: "🔟 ANNOTATOR 2 PASSWORD"
         required: false
         default: "Annotator123!"
         type: string
 
       reviewer1_username:
-        description: "1️⃣1️⃣ REVIEWER 1 EMAIL [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        description: "1️⃣1️⃣ REVIEWER 1 EMAIL"
         required: false
         default: "reviewer@objectways.com"
         type: string
 
       reviewer1_password:
-        description: "1️⃣2️⃣ REVIEWER 1 PASSWORD [ObjectwaysSanity & AnnotatorReviewer ONLY]"
+        description: "1️⃣2️⃣ REVIEWER 1 PASSWORD"
         required: false
         default: "Reviewer123!"
         type: string
 
       different_email_for_otp:
-        description: "1️⃣3️⃣ OTP EMAIL [ObjectwaysSanity & newCompanySanity ONLY]"
+        description: "1️⃣3️⃣ OTP EMAIL"
         required: false
         default: "worthy58@web-library.net"
         type: string
 
       different_email_for_otp_password:
-        description: "1️⃣4️⃣ OTP EMAIL PASSWORD [ObjectwaysSanity & newCompanySanity ONLY]"
+        description: "1️⃣4️⃣ OTP EMAIL PASSWORD"
         required: false
         default: "$6y1q=(gLq"
         type: string
 
       company_name:
-        description: "1️⃣5️⃣ COMPANY NAME [ObjectwaysSanity, AnnotatorReviewer & Other Modules]"
+        description: "1️⃣5️⃣ COMPANY NAME"
         required: false
         default: "Objectways"
         type: string
