@@ -3,25 +3,21 @@ name: Playwright Automation Tests
 on:
   workflow_dispatch:
     inputs:
-      test_suite:
-        description: "1️⃣ SELECT MODULE / SUITE"
+
+      # ============================================================
+      # 1. TEST PATH / MODULE / FILE / PATTERN
+      # ============================================================
+      test_path:
+        description: "TEST PATH / MODULE / FILE / PATTERN / MULTIPLE PATHS"
         required: true
         default: "objectwaysSanity"
-        type: choice
-        options:
-          - "objectwaysSanity"
-          - "newCompanySanity"
-          - "AnnotatorReviewer"
-          - "datasets"
-          - "files"
-          - "projects"
-          - "templates"
-          - "users"
-          - "workflows"
-          - "all"
+        type: string
 
+      # ============================================================
+      # 2. TARGET URL
+      # ============================================================
       execution_url:
-        description: "2️⃣ TARGET URL"
+        description: "TARGET URL"
         required: true
         default: "https://fmn-qa1.tensoract.com"
         type: choice
@@ -30,174 +26,453 @@ on:
           - "https://fmn-qa1.tensoract.com"
           - "https://fmn-staging.tensoract.com/"
 
+      # ============================================================
+      # 3. COMPANY ADMIN
+      # ============================================================
       company_username:
-        description: "3️⃣ COMPANY ADMIN EMAIL"
+        description: "COMPANY ADMIN EMAIL"
         required: false
         default: "admin@liceum.ai"
         type: string
 
       company_password:
-        description: "4️⃣ COMPANY ADMIN PASSWORD"
+        description: "COMPANY ADMIN PASSWORD"
         required: false
         default: "Admin123!"
         type: string
 
+      # ============================================================
+      # 4. SUPERUSER
+      # ============================================================
       superuser_username:
-        description: "5️⃣ SUPERUSER EMAIL "
+        description: "SUPERUSER EMAIL"
         required: false
         default: ""
         type: string
 
       superuser_password:
-        description: "6️⃣ SUPERUSER PASSWORD "
+        description: "SUPERUSER PASSWORD"
         required: false
         default: ""
         type: string
 
+      # ============================================================
+      # 5. ANNOTATOR 1
+      # ============================================================
       annotator1_username:
-        description: "7️⃣ ANNOTATOR 1 EMAIL"
+        description: "ANNOTATOR 1 EMAIL"
         required: false
         default: "annotator1@objectways.com"
         type: string
 
       annotator1_password:
-        description: "8️⃣ ANNOTATOR 1 PASSWORD "
+        description: "ANNOTATOR 1 PASSWORD"
         required: false
         default: "Annotator123!"
         type: string
 
+      # ============================================================
+      # 6. ANNOTATOR 2
+      # ============================================================
       annotator2_username:
-        description: "9️⃣ ANNOTATOR 2 EMAIL"
+        description: "ANNOTATOR 2 EMAIL"
         required: false
         default: "annotator2@objectways.com"
         type: string
 
       annotator2_password:
-        description: "🔟 ANNOTATOR 2 PASSWORD"
+        description: "ANNOTATOR 2 PASSWORD"
         required: false
         default: "Annotator123!"
         type: string
 
+      # ============================================================
+      # 7. REVIEWER
+      # ============================================================
       reviewer1_username:
-        description: "1️⃣1️⃣ REVIEWER 1 EMAIL"
+        description: "REVIEWER 1 EMAIL"
         required: false
         default: "reviewer@objectways.com"
         type: string
 
       reviewer1_password:
-        description: "1️⃣2️⃣ REVIEWER 1 PASSWORD"
+        description: "REVIEWER 1 PASSWORD"
         required: false
         default: "Reviewer123!"
         type: string
 
+      # ============================================================
+      # 8. OTP EMAIL
+      # ============================================================
       different_email_for_otp:
-        description: "1️⃣3️⃣ OTP EMAIL"
+        description: "OTP EMAIL"
         required: false
         default: "worthy58@web-library.net"
         type: string
 
       different_email_for_otp_password:
-        description: "1️⃣4️⃣ OTP EMAIL PASSWORD"
+        description: "OTP EMAIL PASSWORD"
         required: false
         default: "$6y1q=(gLq"
         type: string
 
+      # ============================================================
+      # 9. COMPANY NAME
+      # ============================================================
       company_name:
-        description: "1️⃣5️⃣ COMPANY NAME"
+        description: "COMPANY NAME"
         required: false
         default: "Objectways"
         type: string
 
+
+# ==================================================================
+# JOB
+# ==================================================================
+
 jobs:
+
   playwright-tests:
+
+    name: Playwright Tests
+
     runs-on: ubuntu-latest
 
     steps:
+
+      # ============================================================
+      # CHECKOUT
+      # ============================================================
+
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+
+      # ============================================================
+      # PYTHON
+      # ============================================================
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Setup Java (for Allure Report CLI)
+          # Cache pip dependencies
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+
+      # ============================================================
+      # JAVA
+      # Required for Allure CLI
+      # ============================================================
+
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: "17"
 
+
+      # ============================================================
+      # ALLURE CLI
+      # ============================================================
+
       - name: Install Allure CLI
         run: |
-          npm install -g allure-commandline --save-dev
+          npm install -g allure-commandline
+
+
+      # ============================================================
+      # PYTHON DEPENDENCIES
+      # ============================================================
 
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+          # Install Chromium and required Linux dependencies
           playwright install --with-deps chromium
 
-      - name: Create Environment File (.env)
+
+      # ============================================================
+      # CREATE .ENV FILE
+      # ============================================================
+
+      - name: Create Environment File
         shell: bash
         run: |
+
           EXEC_URL="${{ inputs.execution_url }}"
+
           COMP_USER="${{ inputs.company_username }}"
           COMP_PASS="${{ inputs.company_password }}"
+
           SUPER_USER="${{ inputs.superuser_username }}"
           SUPER_PASS="${{ inputs.superuser_password }}"
+
           ANN1_USER="${{ inputs.annotator1_username }}"
           ANN1_PASS="${{ inputs.annotator1_password }}"
+
           ANN2_USER="${{ inputs.annotator2_username }}"
           ANN2_PASS="${{ inputs.annotator2_password }}"
+
           REV1_USER="${{ inputs.reviewer1_username }}"
           REV1_PASS="${{ inputs.reviewer1_password }}"
+
           OTP_EMAIL="${{ inputs.different_email_for_otp }}"
           OTP_PASS="${{ inputs.different_email_for_otp_password }}"
+
           COMP_NAME="${{ inputs.company_name }}"
 
-          # If newCompanySanity selected and superuser credentials provided, use superuser as company_Username
-          if [ "${{ inputs.test_suite }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
+
+          # ========================================================
+          # NEW COMPANY SANITY
+          # Use Superuser as Company Admin
+          # ========================================================
+
+          if [ "${{ inputs.test_path }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
             COMP_USER="$SUPER_USER"
             COMP_PASS="$SUPER_PASS"
           fi
 
+
+          # ========================================================
+          # CREATE .ENV
+          # ========================================================
+
           cat <<EOF > .env
+
           QA_url_1="${EXEC_URL}"
           QA_url_2="${EXEC_URL}"
           QA_url_Staging="${EXEC_URL}"
+
           Execution_url="${EXEC_URL}"
+
           company_Username="${COMP_USER}"
           company_Password="${COMP_PASS}"
+
           annotator_Username="${ANN1_USER}"
           annotator_Password="${ANN1_PASS}"
+
           annotator_Username_2="${ANN2_USER}"
           annotator_Password_2="${ANN2_PASS}"
+
           reviewer_Username="${REV1_USER}"
           reviewer_Password="${REV1_PASS}"
+
           different_email_for_otp="${OTP_EMAIL}"
           different_email_for_otp_password="${OTP_PASS}"
+
           company_Name="${COMP_NAME}"
+
           EOF
+
+
+      # ============================================================
+      # SHOW SELECTED TEST PATH
+      # ============================================================
+
+      - name: Show Test Selection
+        run: |
+
+          echo "=============================================="
+          echo "TEST EXECUTION"
+          echo "=============================================="
+
+          echo "Selected Test Path:"
+          echo "${{ inputs.test_path }}"
+
+          echo "Target URL:"
+          echo "${{ inputs.execution_url }}"
+
+          echo "=============================================="
+
+
+      # ============================================================
+      # RUN PLAYWRIGHT TESTS
+      # ============================================================
 
       - name: Run Playwright Tests
         shell: bash
+
         env:
+          TEST_PATH: ${{ inputs.test_path }}
           HEADLESS: "true"
+
         run: |
-          if [ "${{ inputs.test_suite }}" = "all" ]; then
-            pytest tests/ --alluredir=allure-results
-          else
-            pytest "tests/${{ inputs.test_suite }}" --alluredir=allure-results
-          fi
+
+          echo "=============================================="
+          echo "Preparing Test Execution"
+          echo "=============================================="
+
+          # --------------------------------------------------------
+          # Convert Windows "\" path to Linux "/" path
+          # --------------------------------------------------------
+
+          TEST_PATH="${TEST_PATH//\\//}"
+
+          echo "Normalized Input:"
+          echo "$TEST_PATH"
+
+
+          # --------------------------------------------------------
+          # Split multiple paths by comma
+          #
+          # Example:
+          #
+          # tests/objectwaysSanity,tests/datasets,tests/files
+          #
+          # becomes:
+          #
+          # tests/objectwaysSanity
+          # tests/datasets
+          # tests/files
+          # --------------------------------------------------------
+
+          IFS=',' read -ra TEST_PATHS <<< "$TEST_PATH"
+
+
+          # --------------------------------------------------------
+          # Build pytest arguments
+          # --------------------------------------------------------
+
+          PYTEST_ARGS=()
+
+
+          for path in "${TEST_PATHS[@]}"; do
+
+            # Remove leading/trailing spaces
+            path=$(echo "$path" | xargs)
+
+            # Skip empty values
+            if [ -z "$path" ]; then
+              continue
+            fi
+
+
+            # ------------------------------------------------------
+            # ALL
+            # ------------------------------------------------------
+
+            if [ "$path" = "all" ]; then
+
+              echo "Running ALL test modules"
+
+              PYTEST_ARGS+=("tests")
+
+              continue
+
+            fi
+
+
+            # ------------------------------------------------------
+            # MODULE NAME
+            #
+            # objectwaysSanity
+            # datasets
+            # files
+            #
+            # becomes:
+            #
+            # tests/objectwaysSanity
+            # tests/datasets
+            # tests/files
+            # ------------------------------------------------------
+
+            if [[ "$path" != tests/* ]]; then
+
+              path="tests/$path"
+
+            fi
+
+
+            echo "Adding Test Path:"
+            echo "$path"
+
+            PYTEST_ARGS+=("$path")
+
+          done
+
+
+          # --------------------------------------------------------
+          # Display final pytest command
+          # --------------------------------------------------------
+
+          echo ""
+          echo "=============================================="
+          echo "FINAL PYTEST COMMAND"
+          echo "=============================================="
+
+          printf 'pytest '
+
+          for arg in "${PYTEST_ARGS[@]}"; do
+            printf '"%s" ' "$arg"
+          done
+
+          printf '%s\n' "--alluredir=allure-results"
+
+          echo "=============================================="
+
+
+          # --------------------------------------------------------
+          # Execute tests
+          # --------------------------------------------------------
+
+          pytest "${PYTEST_ARGS[@]}" --alluredir=allure-results
+
+
+      # ============================================================
+      # GENERATE ALLURE REPORT
+      # ============================================================
 
       - name: Generate Allure Report
         if: always()
+
         run: |
-          allure generate allure-results --clean -o allure-report
+
+          echo "Generating Allure Report..."
+
+          if [ -d "allure-results" ]; then
+
+            allure generate \
+              allure-results \
+              --clean \
+              -o allure-report
+
+          else
+
+            echo "No Allure results found."
+
+          fi
+
+
+      # ============================================================
+      # UPLOAD ALLURE REPORT
+      # ============================================================
 
       - name: Upload Allure Report Artifact
         if: always()
+
         uses: actions/upload-artifact@v4
+
         with:
-          name: allure-report-${{ inputs.test_suite }}
+          name: allure-report-${{ github.run_number }}
+
           path: allure-report/
+
+
+      # ============================================================
+      # UPLOAD RAW TEST RESULTS
+      # ============================================================
+
+      - name: Upload Allure Results
+        if: always()
+
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: allure-results-${{ github.run_number }}
+
+          path: allure-results/
