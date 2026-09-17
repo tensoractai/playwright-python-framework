@@ -7,9 +7,9 @@ permissions:
 
 env:
   ACTIONS_NODE20_DEPRECATION_WARNING: "false"
-  GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
-  GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
-  GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+  GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
+  GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
+  GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
 
 on:
   workflow_dispatch:
@@ -306,25 +306,25 @@ jobs:
           # --------------------------------------------------------
 
           cat <<EOF > .env
-QA_url_1="${EXEC_URL}"
-QA_url_2="${EXEC_URL}"
-QA_url_Staging="${EXEC_URL}"
-Execution_url="${EXEC_URL}"
-company_Username="${COMP_USER}"
-company_Password="${COMP_PASS}"
-annotator_Username="${ANN1_USER}"
-annotator_Password="${ANN1_PASS}"
-annotator_Username_2="${ANN2_USER}"
-annotator_Password_2="${ANN2_PASS}"
-reviewer_Username="${REV1_USER}"
-reviewer_Password="${REV1_PASS}"
-different_email_for_otp="${OTP_EMAIL}"
-different_email_for_otp_password="${OTP_PASS}"
-company_Name="${COMP_NAME}"
-GMAIL_CLIENT_ID="${GMAIL_ID}"
-GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
-GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
-EOF
+        QA_url_1="${EXEC_URL}"
+        QA_url_2="${EXEC_URL}"
+        QA_url_Staging="${EXEC_URL}"
+        Execution_url="${EXEC_URL}"
+        company_Username="${COMP_USER}"
+        company_Password="${COMP_PASS}"
+        annotator_Username="${ANN1_USER}"
+        annotator_Password="${ANN1_PASS}"
+        annotator_Username_2="${ANN2_USER}"
+        annotator_Password_2="${ANN2_PASS}"
+        reviewer_Username="${REV1_USER}"
+        reviewer_Password="${REV1_PASS}"
+        different_email_for_otp="${OTP_EMAIL}"
+        different_email_for_otp_password="${OTP_PASS}"
+        company_Name="${COMP_NAME}"
+        GMAIL_CLIENT_ID="${GMAIL_ID}"
+        GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
+        GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
+        EOF
 
 
       # ============================================================
@@ -408,9 +408,9 @@ EOF
 
         env:
           HEADLESS: "true"
-          GMAIL_CLIENT_ID: ${{ inputs.gmail_client_id || secrets.GMAIL_CLIENT_ID }}
-          GMAIL_CLIENT_SECRET: ${{ inputs.gmail_client_secret || secrets.GMAIL_CLIENT_SECRET }}
-          GMAIL_REFRESH_TOKEN: ${{ inputs.gmail_refresh_token || secrets.GMAIL_REFRESH_TOKEN }}
+          GMAIL_CLIENT_ID: "${{ inputs.gmail_client_id || secrets.GMAIL_CLIENT_ID }}"
+          GMAIL_CLIENT_SECRET: "${{ inputs.gmail_client_secret || secrets.GMAIL_CLIENT_SECRET }}"
+          GMAIL_REFRESH_TOKEN: "${{ inputs.gmail_refresh_token || secrets.GMAIL_REFRESH_TOKEN }}"
 
         run: |
 
@@ -543,7 +543,7 @@ EOF
         uses: actions/upload-artifact@v4
 
         with:
-          name: allure-report-${{ github.run_number }}
+          name: "allure-report-${{ github.run_number }}"
 
           path: allure-report/
 
@@ -558,7 +558,7 @@ EOF
         uses: actions/upload-artifact@v4
 
         with:
-          name: allure-results-${{ github.run_number }}
+          name: "allure-results-${{ github.run_number }}"
 
           path: allure-results/
 
