@@ -11,11 +11,10 @@ def before_each(page):
     password = action_factory.helpers.fetch_dotenv("company_Password")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
     diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-    diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
     
     # Login & Setup
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
-    action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+    action_factory.login_actions.use_different_email_OTP(diff_email)
     action_factory.login_actions.select_organization(company_Name, "Company Admin")
     return action_factory
 
@@ -30,7 +29,6 @@ def test_create_valid_user_and_login(before_each):
         url = action_factory.helpers.fetch_dotenv("Execution_url")
         company_Name = action_factory.helpers.fetch_dotenv("company_Name")
         diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-        diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
         
         user_name = test_data_inputs.valid_user_name
         user_email = test_data_inputs.valid_user_email
@@ -69,7 +67,7 @@ def test_create_valid_user_and_login(before_each):
             new_action_factory.login_actions.perform_login_new_user(url=url, email=user_email, password=user_password)
             new_action_factory.users_actions.user_settings_changePassword(updated_new_password)
             new_action_factory.login_actions.perform_login(url=url, email=user_email, password=updated_new_password)
-            new_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+            new_action_factory.login_actions.use_different_email_OTP(diff_email)
             new_action_factory.login_actions.select_organization(company_Name, "Company Admin")
             new_action_factory.ui_utils.smart_wait()
             welcome_visible = new_action_factory.ui_utils.is_element_visible(new_action_factory.page_factory.login_page.home_page_welcome)

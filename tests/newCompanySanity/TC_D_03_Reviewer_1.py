@@ -11,9 +11,6 @@ def before_each(page):
     password = test_data_inputs.updated_new_password
     company_Name = test_data_inputs.get_company_name(action_factory.helpers)
     diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-    diff_email_password = action_factory.helpers.fetch_dotenv(
-        "different_email_for_otp_password"
-    )
     # Login
     action_factory.login_actions.perform_login(
         url=url,
@@ -21,8 +18,7 @@ def before_each(page):
         password=password
     )
     action_factory.login_actions.use_different_email_OTP(
-        diff_email,
-        diff_email_password
+        diff_email
     )
     action_factory.login_actions.select_organization(company_Name, "Reviewer")
     return action_factory

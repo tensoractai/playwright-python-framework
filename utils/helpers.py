@@ -1,3 +1,4 @@
+from asyncio import timeout
 import csv
 from datetime import datetime
 import inspect
@@ -7,9 +8,11 @@ import allure
 import time
 from dotenv import load_dotenv
 import logging
-import requests
 import re
 import pytest
+import base64
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
 
 class Helpers:
 
@@ -18,7 +21,6 @@ class Helpers:
         self.REPORT_FILE = f"reports/TestResults_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv"
         self.logger = logging.getLogger(__name__)
         load_dotenv()
-
 
     def fetch_dotenv(self, key):
         value = os.getenv(key)
@@ -105,42 +107,123 @@ class Helpers:
             raise
 
 
-    def fetch_otp_from_mail_tm(self, email, password, timeout=120):
-        # Login
-        response = requests.post(
-            "https://api.mail.tm/token",
-            json={
-                "address": email,
-                "password": password
-            }
+    def fetch_otp_from_gmail(self, timeout=120):
+        """
+        Fetch OTP from the dedicated Gmail automation account.
+        Required in .env:
+            GMAIL_CLIENT_ID
+            GMAIL_CLIENT_SECRET
+            GMAIL_REFRESH_TOKEN
+        """
+        client_id = self.fetch_dotenv("GMAIL_CLIENT_ID")
+        client_secret = self.fetch_dotenv("GMAIL_CLIENT_SECRET")
+        refresh_token = self.fetch_dotenv("GMAIL_REFRESH_TOKEN")
+
+        if not client_id:
+            raise ValueError("GMAIL_CLIENT_ID is not configured in .env")
+        if not client_secret:
+            raise ValueError("GMAIL_CLIENT_SECRET is not configured in .env")
+        if not refresh_token:
+            raise ValueError("GMAIL_REFRESH_TOKEN is not configured in .env")
+
+        # Record start timestamp (in ms) to ignore any emails received before this function call
+        # Give a 15-second buffer for slight clock skew
+        start_time_epoch = int(time.time())
+        min_internal_date_ms = int((start_time_epoch - 15) * 1000)
+
+        # Create Gmail OAuth credentials
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=["https://www.googleapis.com/auth/gmail.readonly"]
         )
-        time.sleep(3)
-        response.raise_for_status()
-        token = response.json()["token"]
-        headers = {
-            "Authorization": f"Bearer {token}"
-        }
+
+        # Connect to Gmail API
+        service = build("gmail", "v1", credentials=creds)
         start = time.time()
         while time.time() - start < timeout:
-            response = requests.get(
-                "https://api.mail.tm/messages",
-                headers=headers
-            )
-            response.raise_for_status()
-            messages = response.json()["hydra:member"]
-            if messages:
-                message_id = messages[0]["id"]
-                response = requests.get(
-                    f"https://api.mail.tm/messages/{message_id}",
-                    headers=headers
-                )
-                response.raise_for_status()
-                body = response.json()["text"]
-                otp = re.search(r"\b\d{4,8}\b", body)
-                if otp:
-                    return otp.group()
+            print("Checking Gmail for new OTP...")
+            try:
+                # Query recent emails received after function start time
+                query = f'(from:no-reply@objectways.com OR subject:TensorAct OR subject:verification) after:{start_time_epoch - 15}'
+                response = service.users().messages().list(
+                    userId="me",
+                    q=query,
+                    maxResults=10
+                ).execute()
+
+                messages = response.get("messages", [])
+
+                for message in messages:
+                    message_id = message["id"]
+                    message_data = service.users().messages().get(
+                        userId="me",
+                        id=message_id,
+                        format="full"
+                    ).execute()
+
+                    # Check email received timestamp to ignore older emails
+                    internal_date = int(message_data.get("internalDate", 0))
+                    if internal_date < min_internal_date_ms:
+                        continue
+
+                    snippet = message_data.get("snippet", "")
+                    payload = message_data.get("payload", {})
+                    body = self._extract_gmail_body(payload)
+
+                    combined_text = f"{snippet} {body}"
+
+                    # Match 6-digit code or code after verification text
+                    otp_match = (
+                        re.search(r"verification code.*?\b(\d{4,8})\b", combined_text, re.IGNORECASE | re.DOTALL) or
+                        re.search(r"\b(\d{6})\b", combined_text) or
+                        re.search(r"\b(\d{4,8})\b", combined_text)
+                    )
+
+                    if otp_match:
+                        otp_value = otp_match.group(1) if otp_match.groups() else otp_match.group(0)
+                        print(f"NEW OTP received successfully: {otp_value}")
+                        return otp_value
+
+            except Exception as e:
+                print(f"Gmail API error: {e}")
+
+            # Wait before checking Gmail again
+            print("New OTP email not received yet. Waiting 5 seconds...")
             time.sleep(5)
-        raise Exception("OTP not received within timeout.")
+
+        raise Exception(f"OTP not received within {timeout} seconds.")
+
+    def _extract_gmail_body(self, payload):
+        """
+        Extract text content from Gmail message payload.
+        Handles single-part, multipart, and nested multipart messages.
+        """
+        body = ""
+        parts = payload.get("parts", [])
+        if parts:
+            for part in parts:
+                mime_type = part.get("mimeType", "")
+                if mime_type in ["text/plain", "text/html"]:
+                    data = part.get("body", {}).get("data")
+                    if data:
+                        try:
+                            body += base64.urlsafe_b64decode(data).decode("utf-8", errors="ignore")
+                        except Exception as e:
+                            print(f"Failed to decode Gmail part body: {e}")
+                if part.get("parts"):
+                    body += self._extract_gmail_body(part)
+        else:
+            data = payload.get("body", {}).get("data")
+            if data:
+                try:
+                    body = base64.urlsafe_b64decode(data).decode("utf-8", errors="ignore")
+                except Exception as e:
+                    print(f"Failed to decode Gmail body: {e}")
+        return body
 
     def resolve_next_index(self, existing_list, pattern):
         if "{i}" not in pattern:

@@ -30,7 +30,7 @@ class LoginActions:
         self.ui_utils.click_element(self.page_factory.login_page.sign_in_button)
         self.ui_utils.smart_wait()
 
-    def use_different_email_OTP(self, email_address, password):
+    def use_different_email_OTP(self, email_address):
         self.ui_utils.click_element(self.page_factory.login_page.different_email_for_otp_link)
         self.ui_utils.element_wait_for(self.page_factory.login_page.email_address_input, state="visible", timeout=10000)
         self.ui_utils.fill_input(self.page_factory.login_page.email_address_input, email_address)
@@ -42,7 +42,7 @@ class LoginActions:
             print("Enter OTP input is visible")
         else:
             raise Exception("Enter OTP input is not visible after clicking 'Send code to a different email' link.")
-        otp_mail_tm = self.helpers.fetch_otp_from_mail_tm(email_address, password)
+        otp_mail_tm = self.helpers.fetch_otp_from_gmail()
         self.ui_utils.smart_wait()
         for i, digit in enumerate(otp_mail_tm):   
             self.ui_utils.fill_input(self.page_factory.login_page.enter_otp(i), digit)

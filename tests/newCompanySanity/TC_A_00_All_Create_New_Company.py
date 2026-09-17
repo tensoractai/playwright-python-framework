@@ -11,11 +11,10 @@ def before_each(page):
     password = action_factory.helpers.fetch_dotenv("company_Password")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
     diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-    diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
     
     # Login & Setup as Super User
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
-    action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+    action_factory.login_actions.use_different_email_OTP(diff_email)
     action_factory.login_actions.select_organization(company_Name, "Super User")
     return action_factory
 
@@ -31,7 +30,6 @@ def test_create_new_company_and_users(before_each):
         default_password =test_data_inputs.default_password
         updated_new_password = test_data_inputs.updated_new_password
         diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-        diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
         
         # Navigate to Companies menu and resolve next available index
         action_factory.superuser_actions.click_companies_menu()
@@ -183,7 +181,7 @@ def test_create_new_company_and_users(before_each):
         new_action_factory.login_actions.perform_login_new_user(url=url, email=company_admin_email, password=default_password)
         new_action_factory.users_actions.user_settings_changePassword(updated_new_password)
         new_action_factory.login_actions.perform_login(url=url, email=company_admin_email, password=updated_new_password)
-        new_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+        new_action_factory.login_actions.use_different_email_OTP(diff_email)
         new_action_factory.login_actions.select_organization(company_name, "Company Admin")
         new_action_factory.ui_utils.smart_wait()
         welcome_visible = new_action_factory.ui_utils.is_element_visible(new_action_factory.page_factory.login_page.home_page_welcome)
@@ -207,7 +205,7 @@ def test_create_new_company_and_users(before_each):
         new_action_factory.login_actions.perform_login_new_user(url=url, email=annotator_1_email, password=default_password)
         new_action_factory.users_actions.user_settings_changePassword(updated_new_password)
         new_action_factory.login_actions.perform_login(url=url, email=annotator_1_email, password=updated_new_password)
-        new_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+        new_action_factory.login_actions.use_different_email_OTP(diff_email)
         new_action_factory.login_actions.select_organization(company_name, "Annotator")
         new_action_factory.ui_utils.smart_wait()
         welcome_visible = new_action_factory.ui_utils.is_element_visible(new_action_factory.page_factory.login_page.home_page_welcome)
@@ -231,7 +229,7 @@ def test_create_new_company_and_users(before_each):
         new_action_factory.login_actions.perform_login_new_user(url=url, email=annotator_2_email, password=default_password)
         new_action_factory.users_actions.user_settings_changePassword(updated_new_password)
         new_action_factory.login_actions.perform_login(url=url, email=annotator_2_email, password=updated_new_password)
-        new_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+        new_action_factory.login_actions.use_different_email_OTP(diff_email)
         new_action_factory.login_actions.select_organization(company_name, "Annotator")
         new_action_factory.ui_utils.smart_wait()
         welcome_visible = new_action_factory.ui_utils.is_element_visible(new_action_factory.page_factory.login_page.home_page_welcome)
@@ -255,7 +253,7 @@ def test_create_new_company_and_users(before_each):
         new_action_factory.login_actions.perform_login_new_user(url=url, email=reviewer_1_email, password=default_password)
         new_action_factory.users_actions.user_settings_changePassword(updated_new_password)
         new_action_factory.login_actions.perform_login(url=url, email=reviewer_1_email, password=updated_new_password)
-        new_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+        new_action_factory.login_actions.use_different_email_OTP(diff_email)
         new_action_factory.login_actions.select_organization(company_name, "Reviewer")
         new_action_factory.ui_utils.smart_wait()
         welcome_visible = new_action_factory.ui_utils.is_element_visible(new_action_factory.page_factory.login_page.home_page_welcome)
@@ -279,7 +277,7 @@ def test_create_new_company_and_users(before_each):
         new_action_factory.login_actions.perform_login_new_user(url=url, email=reviewer_2_email, password=default_password)
         new_action_factory.users_actions.user_settings_changePassword(updated_new_password)
         new_action_factory.login_actions.perform_login(url=url, email=reviewer_2_email, password=updated_new_password)
-        new_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+        new_action_factory.login_actions.use_different_email_OTP(diff_email)
         new_action_factory.login_actions.select_organization(company_name, "Reviewer")
         new_action_factory.ui_utils.smart_wait()
         welcome_visible = new_action_factory.ui_utils.is_element_visible(new_action_factory.page_factory.login_page.home_page_welcome)

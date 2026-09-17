@@ -11,11 +11,10 @@ def before_each(page):
     password = action_factory.helpers.fetch_dotenv("company_Password")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
     diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-    diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
     
     # Login as Company Admin & Setup
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
-    action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+    action_factory.login_actions.use_different_email_OTP(diff_email)
     action_factory.login_actions.select_organization(company_Name, "Company Admin")
     return action_factory
 
@@ -42,7 +41,6 @@ def test_Auto_Save(before_each):
         url = action_factory.helpers.fetch_dotenv("Execution_url")
         company_Name = action_factory.helpers.fetch_dotenv("company_Name")
         diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-        diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
         target_file_name = dataset_files_upload[-1].split("/")[-1]
 
         # Setup Dataset
@@ -105,7 +103,7 @@ def test_Auto_Save(before_each):
         new_page = new_context.new_page()
         new_action_factory = ActionFactory(new_page)
         new_action_factory.login_actions.perform_login(url=url, email=annotator_email, password=annotator_password)
-        new_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+        new_action_factory.login_actions.use_different_email_OTP(diff_email)
         new_action_factory.login_actions.select_organization(company_Name, "Annotator")
         new_action_factory.ui_utils.smart_wait()
 

@@ -22,7 +22,7 @@ NAVIGATION_TIMEOUT = 30000
 
 
 TEST_FILES = [
-            "tests/workflows/TC_02*.py"
+            "tests/datasets/TC_01_Valid_Dataset_Creation.py"
             ]
 
 if __name__ == "__main__":

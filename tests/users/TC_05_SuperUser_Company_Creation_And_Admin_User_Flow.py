@@ -11,11 +11,10 @@ def before_each(page):
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
     password = action_factory.helpers.fetch_dotenv("company_Password")
     diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-    diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
     
     # Login & Setup as Super User
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
-    action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+    action_factory.login_actions.use_different_email_OTP(diff_email)
     action_factory.login_actions.select_organization(company_Name, "Super User")
     return action_factory
 
@@ -29,7 +28,6 @@ def test_superuser_company_creation_and_admin_user_flow(before_each):
         action_factory = before_each
         url = action_factory.helpers.fetch_dotenv("Execution_url")
         diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-        diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
 
         company_name = test_data_inputs.superuser_company_name
         legal_name = test_data_inputs.superuser_legal_name
@@ -111,7 +109,7 @@ def test_superuser_company_creation_and_admin_user_flow(before_each):
             admin_action_factory.login_actions.perform_login_new_user(url=url, email=admin_email, password=admin_password)
             admin_action_factory.users_actions.user_settings_changePassword(updated_new_password)
             admin_action_factory.login_actions.perform_login(url=url, email=admin_email, password=updated_new_password)
-            admin_action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+            admin_action_factory.login_actions.use_different_email_OTP(diff_email)
             admin_action_factory.login_actions.select_organization(company_name, "Company Admin")
             admin_action_factory.ui_utils.smart_wait()
             home_visible = admin_action_factory.ui_utils.is_element_visible(admin_action_factory.page_factory.login_page.home_page_welcome)

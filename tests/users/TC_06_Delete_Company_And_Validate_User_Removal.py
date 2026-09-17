@@ -11,11 +11,10 @@ def before_each(page):
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
     password = action_factory.helpers.fetch_dotenv("company_Password")
     diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
-    diff_email_password = action_factory.helpers.fetch_dotenv("different_email_for_otp_password")
     
     # Login & Setup as Super User
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
-    action_factory.login_actions.use_different_email_OTP(diff_email, diff_email_password)
+    action_factory.login_actions.use_different_email_OTP(diff_email)
     action_factory.login_actions.select_organization(company_Name, "Super User")
     return action_factory
 
