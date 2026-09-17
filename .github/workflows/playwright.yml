@@ -322,6 +322,7 @@ jobs:
       # ============================================================
 
       - name: Run Playwright Tests
+        id: pytest_step
         continue-on-error: true
         shell: bash
         env:
@@ -332,7 +333,8 @@ jobs:
           different_email_for_otp: "${{ secrets.different_email_for_otp }}"
         run: |
 
-          mkdir -p allure-results
+          rm -rf allure-results allure-report
+          mkdir -p allure-results allure-report
 
           TEST_SELECTION=$(cat test_execution_path.txt)
 
@@ -466,3 +468,16 @@ jobs:
           echo "🌐 **Live Allure Report URL**: [$URL]($URL)" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Click the link above to view your interactive Allure report." >> $GITHUB_STEP_SUMMARY
+
+
+      # ========================================================
+      # ENFORCE WORKFLOW FAILURE IF TESTS FAILED
+      # ========================================================
+
+      - name: Fail Workflow If Tests Failed
+        if: always()
+        run: |
+          if [ "${{ steps.pytest_step.outcome }}" != "success" ]; then
+            echo "❌ Pytest execution encountered test failure(s). Marking workflow job as FAILED."
+            exit 1
+          fi
