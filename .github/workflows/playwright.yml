@@ -10,6 +10,7 @@ env:
   GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
   GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
   GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
+  different_email_for_otp: "${{ secrets.different_email_for_otp }}"
 
 on:
   workflow_dispatch:
@@ -148,13 +149,7 @@ on:
       different_email_for_otp:
         description: "1️⃣4️⃣ OTP EMAIL"
         required: false
-        default: "worthy58@web-library.net"
-        type: string
-
-      different_email_for_otp_password:
-        description: "1️⃣5️⃣ OTP EMAIL PASSWORD"
-        required: false
-        default: "$6y1q=(gLq"
+        default: ""
         type: string
 
       # ============================================================
@@ -234,6 +229,7 @@ jobs:
           GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
           GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
           GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
+          different_email_for_otp: "${{ secrets.different_email_for_otp }}"
         run: |
 
           EXEC_URL="${{ inputs.execution_url }}"
@@ -253,14 +249,12 @@ jobs:
           REV1_USER="${{ inputs.reviewer1_username }}"
           REV1_PASS="${{ inputs.reviewer1_password }}"
 
-          OTP_EMAIL="${{ inputs.different_email_for_otp }}"
-          OTP_PASS="${{ inputs.different_email_for_otp_password }}"
-
           COMP_NAME="${{ inputs.company_name }}"
 
           GMAIL_ID="${GMAIL_CLIENT_ID}"
           GMAIL_SECRET="${GMAIL_CLIENT_SECRET}"
           GMAIL_REFRESH="${GMAIL_REFRESH_TOKEN}"
+          different_email_for_otp="${different_email_for_otp}"
 
           if [ "${{ inputs.test_module }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
             COMP_USER="$SUPER_USER"
@@ -285,14 +279,12 @@ jobs:
           reviewer_Username="${REV1_USER}"
           reviewer_Password="${REV1_PASS}"
 
-          different_email_for_otp="${OTP_EMAIL}"
-          different_email_for_otp_password="${OTP_PASS}"
-
           company_Name="${COMP_NAME}"
 
           GMAIL_CLIENT_ID="${GMAIL_ID}"
           GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
           GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
+          different_email_for_otp="${different_email_for_otp}"
           EOF
 
           echo "Environment file created successfully."
@@ -343,6 +335,7 @@ jobs:
           GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
           GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
           GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
+          different_email_for_otp: "${{ secrets.different_email_for_otp }}"
         run: |
 
           mkdir -p allure-results
