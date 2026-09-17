@@ -267,35 +267,35 @@ jobs:
             COMP_PASS="$SUPER_PASS"
           fi
 
-          cat <<EOF > .env
-QA_url_1="${EXEC_URL}"
-QA_url_2="${EXEC_URL}"
-QA_url_Staging="${EXEC_URL}"
-Execution_url="${EXEC_URL}"
+          cat << EOF | sed 's/^[ \t]*//' > .env
+          QA_url_1="${EXEC_URL}"
+          QA_url_2="${EXEC_URL}"
+          QA_url_Staging="${EXEC_URL}"
+          Execution_url="${EXEC_URL}"
 
-company_Username="${COMP_USER}"
-company_Password="${COMP_PASS}"
+          company_Username="${COMP_USER}"
+          company_Password="${COMP_PASS}"
 
-annotator_Username="${ANN1_USER}"
-annotator_Password="${ANN1_PASS}"
+          annotator_Username="${ANN1_USER}"
+          annotator_Password="${ANN1_PASS}"
 
-annotator_Username_2="${ANN2_USER}"
-annotator_Password_2="${ANN2_PASS}"
+          annotator_Username_2="${ANN2_USER}"
+          annotator_Password_2="${ANN2_PASS}"
 
-reviewer_Username="${REV1_USER}"
-reviewer_Password="${REV1_PASS}"
+          reviewer_Username="${REV1_USER}"
+          reviewer_Password="${REV1_PASS}"
 
-different_email_for_otp="${OTP_EMAIL}"
-different_email_for_otp_password="${OTP_PASS}"
+          different_email_for_otp="${OTP_EMAIL}"
+          different_email_for_otp_password="${OTP_PASS}"
 
-company_Name="${COMP_NAME}"
+          company_Name="${COMP_NAME}"
 
-GMAIL_CLIENT_ID="${GMAIL_ID}"
-GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
-GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
-EOF
+          GMAIL_CLIENT_ID="${GMAIL_ID}"
+          GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
+          GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
+          EOF
 
-echo "Environment file created successfully."
+          echo "Environment file created successfully."
 
       # ============================================================
       # DETERMINE TEST PATH
