@@ -7,6 +7,9 @@ permissions:
 
 env:
   ACTIONS_NODE20_DEPRECATION_WARNING: "false"
+  GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+  GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+  GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
 
 on:
   workflow_dispatch:
@@ -172,7 +175,7 @@ on:
       gmail_client_id:
         description: "1️⃣7️⃣ GMAIL CLIENT ID (Optional if using GitHub Secrets)"
         required: false
-        default: ""
+        default:  
         type: string
 
       gmail_client_secret:
@@ -405,6 +408,9 @@ EOF
 
         env:
           HEADLESS: "true"
+          GMAIL_CLIENT_ID: ${{ inputs.gmail_client_id || secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ inputs.gmail_client_secret || secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ inputs.gmail_refresh_token || secrets.GMAIL_REFRESH_TOKEN }}
 
         run: |
 
