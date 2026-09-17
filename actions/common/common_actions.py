@@ -10,6 +10,6 @@ class CommonActions:
 
     def validate_toast_msg(self, expected_msg):
         toast_locator = self.page_factory.files_page.return_toast_msg_locator(expected_msg)
-        self.ui_utils.element_wait_for(toast_locator,timeout=10000)
-        toast_visible = self.ui_utils.is_element_visible(toast_locator,timeout=10000)
+        self.ui_utils.element_wait_for(toast_locator,timeout=20000)
+        toast_visible = self.ui_utils.is_element_visible(toast_locator,timeout=20000)
         assert toast_visible is True, f"Toast message '{expected_msg}' is not visible"

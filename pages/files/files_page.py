@@ -31,7 +31,7 @@ class FilesPage:
         self.failed_detached_file = page.get_by_text('Failed Detached File', exact=False)
 
     def return_toast_msg_locator(self, toast_msg):
-        return self.page.locator("div[class*='center justify-center']").filter(has_text=toast_msg)
+        return self.page.locator("div[class*='center gap-2 text']").filter(has_text=toast_msg)
 
     def return_delete_message(self, delete_msg):
         return self.page.get_by_text(delete_msg)
