@@ -13,7 +13,6 @@ env:
 
 on:
   workflow_dispatch:
-
     inputs:
 
       # ============================================================
@@ -168,28 +167,6 @@ on:
         default: "Objectways"
         type: string
 
-      # ============================================================
-      # 11. GMAIL OAUTH CREDENTIALS (FOR GMAIL OTP)
-      # ============================================================
-
-      gmail_client_id:
-        description: "1️⃣7️⃣ GMAIL CLIENT ID (Optional if using GitHub Secrets)"
-        required: false
-        default:  
-        type: string
-
-      gmail_client_secret:
-        description: "1️⃣8️⃣ GMAIL CLIENT SECRET (Optional if using GitHub Secrets)"
-        required: false
-        default: ""
-        type: string
-
-      gmail_refresh_token:
-        description: "1️⃣9️⃣ GMAIL REFRESH TOKEN (Optional if using GitHub Secrets)"
-        required: false
-        default: ""
-        type: string
-
 
 jobs:
 
@@ -202,29 +179,25 @@ jobs:
     steps:
 
       # ============================================================
-      # CHECKOUT
+      # CHECKOUT REPOSITORY
       # ============================================================
 
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-
       # ============================================================
-      # PYTHON
+      # SETUP PYTHON
       # ============================================================
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-          # Cache pip dependencies
           cache: pip
           cache-dependency-path: requirements.txt
 
-
       # ============================================================
-      # JAVA FOR ALLURE
+      # SETUP JAVA FOR ALLURE
       # ============================================================
 
       - name: Setup Java
@@ -233,7 +206,6 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-
       # ============================================================
       # INSTALL ALLURE CLI
       # ============================================================
@@ -241,7 +213,6 @@ jobs:
       - name: Install Allure CLI
         run: |
           npm install -g allure-commandline
-
 
       # ============================================================
       # INSTALL PYTHON DEPENDENCIES
@@ -253,13 +224,16 @@ jobs:
           pip install -r requirements.txt
           playwright install --with-deps chromium
 
-
       # ============================================================
-      # CREATE .ENV
+      # CREATE .ENV FILE
       # ============================================================
 
       - name: Create Environment File
         shell: bash
+        env:
+          GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
+          GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
+          GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
         run: |
 
           EXEC_URL="${{ inputs.execution_url }}"
@@ -284,48 +258,44 @@ jobs:
 
           COMP_NAME="${{ inputs.company_name }}"
 
-          GMAIL_ID="${{ inputs.gmail_client_id || secrets.GMAIL_CLIENT_ID }}"
-          GMAIL_SECRET="${{ inputs.gmail_client_secret || secrets.GMAIL_CLIENT_SECRET }}"
-          GMAIL_REFRESH="${{ inputs.gmail_refresh_token || secrets.GMAIL_REFRESH_TOKEN }}"
-
-
-          # --------------------------------------------------------
-          # NEW COMPANY SANITY
-          # --------------------------------------------------------
+          GMAIL_ID="${GMAIL_CLIENT_ID}"
+          GMAIL_SECRET="${GMAIL_CLIENT_SECRET}"
+          GMAIL_REFRESH="${GMAIL_REFRESH_TOKEN}"
 
           if [ "${{ inputs.test_module }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
-
             COMP_USER="$SUPER_USER"
             COMP_PASS="$SUPER_PASS"
-
           fi
 
-
-          # --------------------------------------------------------
-          # CREATE ENV FILE (No leading whitespace inside EOF)
-          # --------------------------------------------------------
-
           cat <<EOF > .env
-        QA_url_1="${EXEC_URL}"
-        QA_url_2="${EXEC_URL}"
-        QA_url_Staging="${EXEC_URL}"
-        Execution_url="${EXEC_URL}"
-        company_Username="${COMP_USER}"
-        company_Password="${COMP_PASS}"
-        annotator_Username="${ANN1_USER}"
-        annotator_Password="${ANN1_PASS}"
-        annotator_Username_2="${ANN2_USER}"
-        annotator_Password_2="${ANN2_PASS}"
-        reviewer_Username="${REV1_USER}"
-        reviewer_Password="${REV1_PASS}"
-        different_email_for_otp="${OTP_EMAIL}"
-        different_email_for_otp_password="${OTP_PASS}"
-        company_Name="${COMP_NAME}"
-        GMAIL_CLIENT_ID="${GMAIL_ID}"
-        GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
-        GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
-        EOF
+QA_url_1="${EXEC_URL}"
+QA_url_2="${EXEC_URL}"
+QA_url_Staging="${EXEC_URL}"
+Execution_url="${EXEC_URL}"
 
+company_Username="${COMP_USER}"
+company_Password="${COMP_PASS}"
+
+annotator_Username="${ANN1_USER}"
+annotator_Password="${ANN1_PASS}"
+
+annotator_Username_2="${ANN2_USER}"
+annotator_Password_2="${ANN2_PASS}"
+
+reviewer_Username="${REV1_USER}"
+reviewer_Password="${REV1_PASS}"
+
+different_email_for_otp="${OTP_EMAIL}"
+different_email_for_otp_password="${OTP_PASS}"
+
+company_Name="${COMP_NAME}"
+
+GMAIL_CLIENT_ID="${GMAIL_ID}"
+GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
+GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
+EOF
+
+echo "Environment file created successfully."
 
       # ============================================================
       # DETERMINE TEST PATH
@@ -333,70 +303,33 @@ jobs:
 
       - name: Determine Tests To Run
         shell: bash
-
         env:
           TEST_MODULE: ${{ inputs.test_module }}
           CUSTOM_PATH: ${{ inputs.test_path }}
-
         run: |
 
           echo "=============================================="
           echo "TEST SELECTION"
           echo "=============================================="
-
           echo "Selected Module : $TEST_MODULE"
           echo "Custom Path     : $CUSTOM_PATH"
-
           echo "=============================================="
-
-
-          # --------------------------------------------------------
-          # CUSTOM PATH PROVIDED
-          # --------------------------------------------------------
 
           if [ -n "$CUSTOM_PATH" ]; then
-
             echo "Custom test path provided."
-
-            # Convert Windows paths to Linux paths
             CUSTOM_PATH="${CUSTOM_PATH//\\//}"
-
-            echo "Normalized path:"
-            echo "$CUSTOM_PATH"
-
             echo "$CUSTOM_PATH" > test_execution_path.txt
-
-
-          # --------------------------------------------------------
-          # ALL
-          # --------------------------------------------------------
-
           elif [ "$TEST_MODULE" = "all" ]; then
-
             echo "Running ALL test modules."
-
             echo "tests" > test_execution_path.txt
-
-
-          # --------------------------------------------------------
-          # NORMAL MODULE
-          # --------------------------------------------------------
-
           else
-
             echo "Running selected module."
-
             echo "tests/$TEST_MODULE" > test_execution_path.txt
-
           fi
 
-
-          echo ""
           echo "Final Test Selection:"
           cat test_execution_path.txt
-
           echo "=============================================="
-
 
       # ============================================================
       # RUN PLAYWRIGHT TESTS
@@ -405,13 +338,11 @@ jobs:
       - name: Run Playwright Tests
         continue-on-error: true
         shell: bash
-
         env:
           HEADLESS: "true"
-          GMAIL_CLIENT_ID: "${{ inputs.gmail_client_id || secrets.GMAIL_CLIENT_ID }}"
-          GMAIL_CLIENT_SECRET: "${{ inputs.gmail_client_secret || secrets.GMAIL_CLIENT_SECRET }}"
-          GMAIL_REFRESH_TOKEN: "${{ inputs.gmail_refresh_token || secrets.GMAIL_REFRESH_TOKEN }}"
-
+          GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
+          GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
+          GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
         run: |
 
           mkdir -p allure-results
@@ -421,88 +352,26 @@ jobs:
           echo "=============================================="
           echo "RUNNING TESTS"
           echo "=============================================="
-
-          echo "Test Selection:"
-          echo "$TEST_SELECTION"
-
+          echo "Test Selection: $TEST_SELECTION"
           echo "=============================================="
 
-
-          # --------------------------------------------------------
-          # Split multiple paths by comma
-          # --------------------------------------------------------
-
           IFS=',' read -ra TEST_PATHS <<< "$TEST_SELECTION"
-
-
           PYTEST_ARGS=()
 
-
           for path in "${TEST_PATHS[@]}"; do
-
-            # Remove spaces
             path=$(echo "$path" | xargs)
-
-            # Skip empty path
             if [ -z "$path" ]; then
               continue
             fi
-
-            # Convert Windows path
             path="${path//\\//}"
-
-
-            # ------------------------------------------------------
-            # If user entered only module name
-            #
-            # datasets
-            #
-            # becomes
-            #
-            # tests/datasets
-            # ------------------------------------------------------
-
             if [[ "$path" != tests/* ]]; then
-
               path="tests/$path"
-
             fi
-
-
-            echo "Adding:"
-            echo "$path"
-
             PYTEST_ARGS+=("$path")
-
           done
 
-
-          # --------------------------------------------------------
-          # Show final command
-          # --------------------------------------------------------
-
-          echo ""
-          echo "=============================================="
-          echo "FINAL PYTEST COMMAND"
-          echo "=============================================="
-
-          printf 'pytest '
-
-          for arg in "${PYTEST_ARGS[@]}"; do
-            printf '"%s" ' "$arg"
-          done
-
-          echo "--alluredir=allure-results"
-
-          echo "=============================================="
-
-
-          # --------------------------------------------------------
-          # Execute
-          # --------------------------------------------------------
-
+          echo "FINAL PYTEST COMMAND: pytest ${PYTEST_ARGS[*]} --alluredir=allure-results"
           pytest "${PYTEST_ARGS[@]}" --alluredir=allure-results
-
 
       # ============================================================
       # GENERATE ALLURE REPORT
@@ -510,28 +379,18 @@ jobs:
 
       - name: Generate Allure Report
         if: always()
-
+        shell: bash
         run: |
 
           mkdir -p allure-results allure-report
 
           if [ "$(ls -A allure-results 2>/dev/null)" ]; then
-
             echo "Generating Allure Report..."
-
-            allure generate \
-              allure-results \
-              --clean \
-              -o allure-report
-
+            allure generate allure-results --clean -o allure-report
           else
-
-            echo "No Allure results found. Creating empty report index..."
-
+            echo "No Allure results found."
             echo "<html><body><h1>No test results found</h1></body></html>" > allure-report/index.html
-
           fi
-
 
       # ============================================================
       # UPLOAD ALLURE REPORT
@@ -539,14 +398,10 @@ jobs:
 
       - name: Upload Allure Report
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: "allure-report-${{ github.run_number }}"
-
           path: allure-report/
-
 
       # ============================================================
       # UPLOAD RAW ALLURE RESULTS
@@ -554,16 +409,11 @@ jobs:
 
       - name: Upload Allure Results
         if: always()
-
         uses: actions/upload-artifact@v4
-
         with:
           name: "allure-results-${{ github.run_number }}"
-
           path: allure-results/
-
           if-no-files-found: ignore
-
 
       # ============================================================
       # DEPLOY ALLURE REPORT TO GITHUB PAGES
