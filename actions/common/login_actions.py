@@ -14,7 +14,7 @@ class LoginActions:
         self.ui_utils.fill_input(self.page_factory.login_page.email_input, email)
         self.ui_utils.fill_input(self.page_factory.login_page.password_input, password)
         self.ui_utils.click_element(self.page_factory.login_page.sign_in_button)
-        self.ui_utils.element_wait_for(self.page_factory.login_page.back_to_login, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.back_to_login, state="visible", timeout=30000)
         back_to_login_visible = self.ui_utils.is_element_visible(self.page_factory.login_page.back_to_login, timeout=30000)
         print(f"Back to Login button visibility: {back_to_login_visible}")
         if back_to_login_visible:
