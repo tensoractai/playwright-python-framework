@@ -82,8 +82,7 @@ def test_create_new_company_and_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=test_data_inputs.company_admin_name,
             email=company_admin_email,
-            password=test_data_inputs.default_password,
-            confirm_password=test_data_inputs.default_password
+            password=test_data_inputs.default_password
         )
         action_factory.superuser_actions.select_company_for_user(company_name)
         action_factory.users_actions.enable_allow_mfa_email()
@@ -97,8 +96,7 @@ def test_create_new_company_and_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=test_data_inputs.annotator_1_name,
             email=annotator_1_email,
-            password=test_data_inputs.default_password,
-            confirm_password=test_data_inputs.default_password
+            password=test_data_inputs.default_password
         )
         action_factory.superuser_actions.select_company_for_user(company_name)
         action_factory.users_actions.enable_allow_mfa_email()
@@ -112,7 +110,6 @@ def test_create_new_company_and_users(before_each):
             full_name=test_data_inputs.annotator_2_name,
             email=annotator_2_email,
             password=test_data_inputs.default_password,
-            confirm_password=test_data_inputs.default_password
         )
         action_factory.superuser_actions.select_company_for_user(company_name)
         action_factory.users_actions.enable_allow_mfa_email()
@@ -125,8 +122,7 @@ def test_create_new_company_and_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=test_data_inputs.reviewer_1_name,
             email=reviewer_1_email,
-            password=test_data_inputs.default_password,
-            confirm_password=test_data_inputs.default_password
+            password=test_data_inputs.default_password
         )
         action_factory.superuser_actions.select_company_for_user(company_name)
         action_factory.users_actions.enable_allow_mfa_email()
@@ -139,8 +135,7 @@ def test_create_new_company_and_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=test_data_inputs.reviewer_2_name,
             email=reviewer_2_email,
-            password=test_data_inputs.default_password,
-            confirm_password=test_data_inputs.default_password
+            password=test_data_inputs.default_password
         )
         action_factory.superuser_actions.select_company_for_user(company_name)
         action_factory.users_actions.enable_allow_mfa_email()

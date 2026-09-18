@@ -14,11 +14,10 @@ class UsersActions:
         self.ui_utils.click_element(self.page_factory.users_page.create_user)
         self.ui_utils.smart_wait()
 
-    def fill_user_form(self, full_name, email, password, confirm_password):
+    def fill_user_form(self, full_name, email, password):
         self.ui_utils.fill_input(self.page_factory.users_page.enter_name, full_name)
         self.ui_utils.fill_input(self.page_factory.users_page.enter_email, email)
-        self.ui_utils.fill_input(self.page_factory.users_page.enter_password, password)
-        self.ui_utils.fill_input(self.page_factory.users_page.confirm_password, confirm_password)
+        self.ui_utils.fill_input(self.page_factory.users_page.enter_temporary_password, password)
 
     def enable_allow_mfa_email(self):
         self.ui_utils.click_element(self.page_factory.users_page.allow_MFA_btn)

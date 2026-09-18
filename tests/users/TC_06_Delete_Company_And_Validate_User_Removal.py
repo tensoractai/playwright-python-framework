@@ -69,8 +69,7 @@ def test_delete_company_and_validate_user_removal(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=user_name,
             email=user_email,
-            password=user_password,
-            confirm_password=user_password
+            password=user_password
         )
         action_factory.superuser_actions.select_company_for_user(company_name)
         action_factory.users_actions.enable_allow_mfa_email()

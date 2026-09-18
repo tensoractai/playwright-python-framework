@@ -10,6 +10,7 @@ class Userspage:
         self.enter_name = page.get_by_role('textbox', name='Enter Full Name')
         self.enter_email = page.get_by_role('textbox', name='Enter Email')
         self.enter_password = page.get_by_role('textbox', name='Enter Password')
+        self.enter_temporary_password = page.get_by_role('textbox', name='Enter Temporary Password')
         self.confirm_password = page.get_by_role('textbox', name='Confirm Password')
         self.allow_MFA_btn = page.get_by_role('checkbox', name='Allow alternate MFA email(')
         self.cancel_btn = page.get_by_role('button', name='Cancel')

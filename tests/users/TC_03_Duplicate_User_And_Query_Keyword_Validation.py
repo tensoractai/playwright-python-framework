@@ -43,8 +43,7 @@ def test_duplicate_user_and_query_keyword_validation(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=existing_name.upper(),
             email=existing_email,
-            password=existing_password,
-            confirm_password=existing_password
+            password=existing_password
         )
         action_factory.users_actions.create_roles(existing_roles)
         action_factory.users_actions.enable_allow_mfa_email()

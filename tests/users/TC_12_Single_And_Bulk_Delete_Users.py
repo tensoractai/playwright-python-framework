@@ -47,8 +47,7 @@ def test_single_and_bulk_delete_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=user1_name,
             email=user1_email,
-            password=user1_password,
-            confirm_password=user1_password
+            password=user1_password
         )
         action_factory.users_actions.enable_allow_mfa_email()
         action_factory.users_actions.create_roles(user1_roles)
@@ -60,8 +59,7 @@ def test_single_and_bulk_delete_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=user2_name,
             email=user2_email,
-            password=user2_password,
-            confirm_password=user2_password
+            password=user2_password
         )
         action_factory.users_actions.enable_allow_mfa_email()
         action_factory.users_actions.create_roles(user2_roles)
@@ -73,8 +71,7 @@ def test_single_and_bulk_delete_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=user3_name,
             email=user3_email,
-            password=user3_password,
-            confirm_password=user3_password
+            password=user3_password
         )
         action_factory.users_actions.enable_allow_mfa_email()
         action_factory.users_actions.create_roles(user3_roles)

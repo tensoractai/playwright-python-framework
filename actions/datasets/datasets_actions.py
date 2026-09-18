@@ -64,7 +64,6 @@ class DatasetsActions:
         self.ui_utils.smart_wait()
         loading = self.page_factory.datasets_page.upload_loading
         self.ui_utils.element_wait_for(loading, state="hidden", timeout=200000)
-        self.ui_utils.smart_wait()
         
 
     def add_files_dataset(self, *files):

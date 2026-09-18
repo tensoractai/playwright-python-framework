@@ -78,8 +78,7 @@ def test_superuser_company_creation_and_admin_user_flow(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=admin_name,
             email=admin_email,
-            password=admin_password,
-            confirm_password=admin_password
+            password=admin_password
         )
         action_factory.superuser_actions.select_company_for_user(company_name)
         action_factory.users_actions.enable_allow_mfa_email()
@@ -132,8 +131,7 @@ def test_superuser_company_creation_and_admin_user_flow(before_each):
             admin_action_factory.users_actions.fill_user_form(
                 full_name=annotator_name,
                 email=annotator_email,
-                password=admin_password,
-                confirm_password=admin_password
+                password=admin_password
             )
             admin_action_factory.users_actions.enable_allow_mfa_email()
             admin_action_factory.users_actions.create_roles(["Annotator"])
@@ -145,8 +143,7 @@ def test_superuser_company_creation_and_admin_user_flow(before_each):
             admin_action_factory.users_actions.fill_user_form(
                 full_name=reviewer_name,
                 email=reviewer_email,
-                password=admin_password,
-                confirm_password=admin_password
+                password=admin_password
             )
             admin_action_factory.users_actions.enable_allow_mfa_email()
             admin_action_factory.users_actions.create_roles(["Reviewer"])

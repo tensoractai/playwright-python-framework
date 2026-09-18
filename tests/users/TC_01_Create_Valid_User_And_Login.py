@@ -39,7 +39,7 @@ def test_create_valid_user_and_login(before_each):
         # Open Users Menu and Click Create User and create one Valid User 
         action_factory.users_actions.click_users_menu()
         action_factory.users_actions.click_create_user()
-        action_factory.users_actions.fill_user_form(full_name=user_name, email=user_email, password=user_password, confirm_password=user_password)
+        action_factory.users_actions.fill_user_form(full_name=user_name, email=user_email, password=user_password)
         action_factory.users_actions.create_roles(user_roles)
         action_factory.users_actions.enable_allow_mfa_email()
         action_factory.users_actions.submit_create_user()

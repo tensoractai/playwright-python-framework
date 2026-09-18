@@ -42,8 +42,7 @@ def test_bulk_deactivate_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=user1_name,
             email=user1_email,
-            password=user1_password,
-            confirm_password=user1_password
+            password=user1_password
         )
         action_factory.users_actions.enable_allow_mfa_email()
         action_factory.users_actions.create_roles(user1_roles)
@@ -55,8 +54,7 @@ def test_bulk_deactivate_users(before_each):
         action_factory.users_actions.fill_user_form(
             full_name=user2_name,
             email=user2_email,
-            password=user2_password,
-            confirm_password=user2_password
+            password=user2_password
         )
         action_factory.users_actions.enable_allow_mfa_email()
         action_factory.users_actions.create_roles(user2_roles)
