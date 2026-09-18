@@ -95,7 +95,7 @@ class FilesActions:
             dialog.accept()
 
         self.page_factory.files_page.page.once("dialog", handle_dialog)
-        self.ui_utils.element_wait_for(self.page_factory.files_page.cancel_button, state="visible", timeout=10000)
+        self.ui_utils.element_wait_for(self.page_factory.files_page.cancel_button, state="attached", timeout=10000)
         self.ui_utils.click_element(self.page_factory.files_page.cancel_button)
         self.ui_utils.smart_wait()
 

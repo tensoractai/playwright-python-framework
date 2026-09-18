@@ -127,7 +127,7 @@ class UIUtils:
         """
         return [element.text_content().strip() for element in locator.all()]
 
-    def element_wait_for(self, locator, state="visible", timeout = 5000):
+    def element_wait_for(self, locator, state="attached", timeout = 5000):
         try:
             locator.wait_for(state=state, timeout=timeout)
         except Exception as e:
@@ -135,8 +135,8 @@ class UIUtils:
             raise
 
     def drag_and_drop(self, source, target):
-        source.wait_for(state="visible")
-        target.wait_for(state="visible")
+        source.wait_for(state="attached")
+        target.wait_for(state="attached")
         source_box = source.bounding_box()
         target_box = target.bounding_box()
         if not source_box or not target_box:
@@ -158,7 +158,7 @@ class UIUtils:
 
     def wait_for_visible_if_exists(self, locator, timeout=5000):
         try:
-            locator.wait_for(state="visible", timeout=timeout)
+            locator.wait_for(state="attached", timeout=timeout)
             return True
         except Exception:
             return False

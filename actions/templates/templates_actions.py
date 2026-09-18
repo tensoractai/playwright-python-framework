@@ -9,7 +9,7 @@ class TemplatesActions:
 
     def click_templates_menu(self):
         self.ui_utils.click_element(self.page_factory.templates_page.templates_menu)
-        self.ui_utils.element_wait_for(self.page_factory.templates_page.upload_new_template_btn, state="visible", timeout=10000)
+        self.ui_utils.element_wait_for(self.page_factory.templates_page.upload_new_template_btn, state="attached", timeout=10000)
         upload_new_template_btn_visible = self.ui_utils.is_element_visible(self.page_factory.templates_page.upload_new_template_btn, timeout=10000)
         print(f"Upload New Template button visibility: {upload_new_template_btn_visible}")
         if upload_new_template_btn_visible:

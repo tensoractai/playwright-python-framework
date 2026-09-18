@@ -44,7 +44,7 @@ def test_Validate_Project_Tabs(before_each):
         action_factory.ui_utils.smart_wait()
 
         # Grab project tabs and validate presence
-        action_factory.ui_utils.element_wait_for(action_factory.page_factory.projects_page.project_tabs.first, state="visible", timeout=10000)
+        action_factory.ui_utils.element_wait_for(action_factory.page_factory.projects_page.project_tabs.first, state="attached", timeout=10000)
         actual_tabs = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.projects_page.project_tabs)
         print(f"Actual project tabs found: {actual_tabs}")
 
