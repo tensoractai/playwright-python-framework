@@ -74,8 +74,8 @@ class UsersActions:
     def user_settings_changePassword(self, password):
         self.ui_utils.click_element(self.page_factory.users_page.new_password)
         self.ui_utils.fill_input(self.page_factory.users_page.new_password, password)
-        self.ui_utils.click_element(self.page_factory.users_page.confirm_password)
-        self.ui_utils.fill_input(self.page_factory.users_page.confirm_password, password)
+        self.ui_utils.click_element(self.page_factory.users_page.confirm_new_password)
+        self.ui_utils.fill_input(self.page_factory.users_page.confirm_new_password, password)
         self.ui_utils.click_element(self.page_factory.users_page.save_changes)
         self.ui_utils.smart_wait()
         

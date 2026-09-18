@@ -12,6 +12,7 @@ class Userspage:
         self.enter_password = page.get_by_role('textbox', name='Enter Password')
         self.enter_temporary_password = page.get_by_role('textbox', name='Enter Temporary Password')
         self.confirm_password = page.get_by_role('textbox', name='Confirm Password')
+        self.confirm_new_password = page.get_by_role('textbox', name='Confirm New Password')
         self.allow_MFA_btn = page.get_by_role('checkbox', name='Allow alternate MFA email(')
         self.cancel_btn = page.get_by_role('button', name='Cancel')
         self.change_status = page.get_by_role('button', name='Change Status')
@@ -33,8 +34,8 @@ class Userspage:
         self.enable_roles_arrow = page.locator("svg[class*='flex-shrink']")
         self.delete_btn = page.get_by_role('button', name='Delete')
         self.delete_confirm_input = page.get_by_role('textbox')
-        self.new_password = page.get_by_role('textbox', name= 'New Password' )
-        self.save_changes = page.get_by_role('button', name= 'Save Changes' )
+        self.new_password = page.get_by_role('textbox', name= 'New Password', exact = True)
+        self.save_changes = page.get_by_role('button', name= 'Change Password' )
         self.sign_in_btn = page.get_by_role('button', name= 'Sign in' )
 
 

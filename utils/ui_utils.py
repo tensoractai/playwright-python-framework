@@ -127,7 +127,7 @@ class UIUtils:
         """
         return [element.text_content().strip() for element in locator.all()]
 
-    def element_wait_for(self, locator, state="attached", timeout = 5000):
+    def element_wait_for(self, locator, state="visible", timeout = 5000):
         try:
             locator.wait_for(state=state, timeout=timeout)
         except Exception as e:
