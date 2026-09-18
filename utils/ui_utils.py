@@ -158,7 +158,7 @@ class UIUtils:
 
     def wait_for_visible_if_exists(self, locator, timeout=5000):
         try:
-            locator.wait_for(state="attached", timeout=timeout)
+            locator.wait_for(state="visible", timeout=timeout)
             return True
         except Exception:
             return False
