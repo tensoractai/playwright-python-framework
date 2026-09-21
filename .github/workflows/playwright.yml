@@ -92,7 +92,7 @@ on:
       superuser_password:
         description: "7️⃣ SUPERUSER PASSWORD"
         required: false
-        default: "Admin123"
+        default: "Admin123!"
         type: string
 
       # ============================================================
