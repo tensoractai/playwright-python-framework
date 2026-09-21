@@ -16,7 +16,7 @@ class SuperUserPage:
         self.save_btn = page.get_by_role('button', name='Save')
         self.select_company_btn = page.get_by_role('button', name='Select Company')
         self.modal_text_click = page.get_by_text('Full Name*:Email*:Password*:').first
-        self.company_name_list = page.locator("td[class*='medium truncate']")
+        self.company_name_list = page.locator("td[data-testid*='companies-col-name']")
         self.acknowledge_delete_checkbox = page.get_by_role('checkbox', name='Acknowledge to delete company')
         self.delete_company_btn = page.get_by_role('button', name='Delete Company')
         self.type_delete_input = page.get_by_role('textbox', name="type 'delete a company'")
