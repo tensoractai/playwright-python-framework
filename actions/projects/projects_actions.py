@@ -8,7 +8,7 @@ class ProjectsActions:
 
     def click_project_menu(self):
         self.ui_utils.click_element(self.page_factory.projects_page.project_menu)
-        self.ui_utils.element_wait_for(self.page_factory.projects_page.create_project_btn, state="attached", timeout=10000)
+        self.ui_utils.element_wait_for(self.page_factory.projects_page.create_project_btn, state="visible", timeout=10000)
         create_project_btn_visible = self.ui_utils.is_element_visible(self.page_factory.projects_page.create_project_btn, timeout=10000)
         print(f"Create Project button visibility: {create_project_btn_visible}")
         if create_project_btn_visible:
@@ -22,7 +22,7 @@ class ProjectsActions:
         self.ui_utils.fill_input(self.page_factory.projects_page.project_name_input, project_name)  
         if description and self.ui_utils.is_element_visible(self.page_factory.projects_page.project_description_input, timeout=2000):
             self.ui_utils.fill_input(self.page_factory.projects_page.project_description_input, description)
-        self.ui_utils.element_wait_for(self.page_factory.projects_page.create_project_page, state="attached", timeout=10000)
+        self.ui_utils.element_wait_for(self.page_factory.projects_page.create_project_page, state="visible", timeout=10000)
         create_project_page_visible = self.ui_utils.is_element_visible(self.page_factory.projects_page.create_project_page, timeout=10000)
         print(f"Create Project page visibility: {create_project_page_visible}")
         if create_project_page_visible:

@@ -29,7 +29,7 @@ def test_Dataset_Files_Add_Delete_Functionality(before_each):
         Pdf_Dataset_Name = test_data_inputs.Pdf_Dataset_Name
         Pdf_dataset_type = test_data_inputs.Pdf_dataset_type
 
-        # Attempt to delete file attached to dataset
+        # Attempt to delete file visible to dataset
         action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.datasets_menu)
         action_factory.datasets_actions.create_dataset(dataset_name=Pdf_Dataset_Name, dataset_type_name=Pdf_dataset_type)
         action_factory.ui_utils.smart_wait()
@@ -97,15 +97,15 @@ def test_Dataset_Files_Add_Delete_Functionality(before_each):
         delete_popup_error = action_factory.ui_utils.is_element_visible(action_factory.page_factory.files_page.failure_file_popup)
         if delete_popup_error:
             status = "Pass"
-            message = f"File is attached to a dataset. Please detach it before deleting."
+            message = f"File is visible to a dataset. Please detach it before deleting."
             action_factory.helpers.attach_screenshot(name="DeletePopupError")
-            action_factory.helpers.attach_allure(name="Delete Popup Error", text="File is attached to a dataset. Please detach it before deleting.")
+            action_factory.helpers.attach_allure(name="Delete Popup Error", text="File is visible to a dataset. Please detach it before deleting.")
             assert True, message
         else:
             status = "Fail"
             message = f"Delete popup error not found."
             action_factory.helpers.attach_screenshot(name="DeletePopupErrorFailed")
-            action_factory.helpers.attach_allure(name="Delete Popup Error", text="File is attached to a dataset. Please detach it before deleting.")
+            action_factory.helpers.attach_allure(name="Delete Popup Error", text="File is visible to a dataset. Please detach it before deleting.")
             assert False, message
             
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.cancel_popup)

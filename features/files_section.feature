@@ -156,7 +156,7 @@ And "existing_file.pdf" should remain associated with "Training Dataset 2024"
 
 # TC_06_Dataset_Delete_Functionality.py
 
-### Scenario: Attempt to delete file attached to dataset
+### Scenario: Attempt to delete file visible to dataset
 ```gherkin
 Given I am on the "Dataset" tab
 And I have created one dataset

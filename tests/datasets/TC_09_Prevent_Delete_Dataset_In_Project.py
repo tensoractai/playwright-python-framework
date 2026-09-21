@@ -100,7 +100,7 @@ def test_Prevent_Delete_Dataset_Used_In_Project(before_each):
             assert True, message
         else:
             status = "Fail"
-            message = f"Dataset '{dataset_name}' was deleted despite being attached to project '{project_name}'."
+            message = f"Dataset '{dataset_name}' was deleted despite being visible to project '{project_name}'."
             action_factory.helpers.attach_screenshot(name="DatasetDeletionPreventionFailed")
             action_factory.helpers.attach_allure(name="Prevent Delete Dataset", text=message)
             assert False, message

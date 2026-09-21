@@ -9,7 +9,7 @@ class WorkflowsActions:
 
     def click_workflows_menu(self):
         self.ui_utils.click_element(self.page_factory.workflows_page.workflows_menu)
-        self.ui_utils.element_wait_for(self.page_factory.workflows_page.create_workflow_btn, state="attached", timeout=10000)
+        self.ui_utils.element_wait_for(self.page_factory.workflows_page.create_workflow_btn, state="visible", timeout=10000)
         create_workflow_btn_visible = self.ui_utils.is_element_visible(self.page_factory.workflows_page.create_workflow_btn, timeout=10000)
         print(f"Create Workflow button visibility: {create_workflow_btn_visible}")
         if create_workflow_btn_visible:
@@ -24,7 +24,7 @@ class WorkflowsActions:
         if description:
             self.ui_utils.fill_input(self.page_factory.workflows_page.description_input, description)
         self.ui_utils.click_element(self.page_factory.workflows_page.next_button)
-        self.ui_utils.element_wait_for(self.page_factory.workflows_page.workflow_chart, state="attached", timeout=10000)
+        self.ui_utils.element_wait_for(self.page_factory.workflows_page.workflow_chart, state="visible", timeout=10000)
         workflow_chart_visible = self.ui_utils.is_element_visible(self.page_factory.workflows_page.workflow_chart, timeout=10000)
         print(f"Workflow chart visibility: {workflow_chart_visible}")
         if workflow_chart_visible:
@@ -35,7 +35,7 @@ class WorkflowsActions:
     def click_nodes(self, node_name):
         node_locator = self.page_factory.workflows_page.click_nodes_workflow(node_name)
         self.ui_utils.click_element(node_locator)
-        self.ui_utils.element_wait_for(self.page_factory.workflows_page.verify_nodes_in_workflow_chart(node_name), state="attached", timeout=10000)
+        self.ui_utils.element_wait_for(self.page_factory.workflows_page.verify_nodes_in_workflow_chart(node_name), state="visible", timeout=10000)
         node_visible = self.ui_utils.is_element_visible(self.page_factory.workflows_page.verify_nodes_in_workflow_chart(node_name))
         if node_visible:
             print(f"Node '{node_name}' is visible in the workflow chart")

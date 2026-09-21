@@ -14,7 +14,7 @@ class LoginActions:
         self.ui_utils.fill_input(self.page_factory.login_page.email_input, email)
         self.ui_utils.fill_input(self.page_factory.login_page.password_input, password)
         self.ui_utils.click_element(self.page_factory.login_page.sign_in_button)
-        self.ui_utils.element_wait_for(self.page_factory.login_page.back_to_login, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.back_to_login, state="visible", timeout=30000)
         back_to_login_visible = self.ui_utils.is_element_visible(self.page_factory.login_page.back_to_login, timeout=30000)
         print(f"Back to Login button visibility: {back_to_login_visible}")
         if back_to_login_visible:
@@ -35,7 +35,7 @@ class LoginActions:
         self.ui_utils.fill_input(self.page_factory.login_page.email_address_input, email_address)
         self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.login_page.send_code_button)
-        self.ui_utils.element_wait_for(self.page_factory.login_page.enter_otp_input, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.enter_otp_input, state="visible", timeout=30000)
         enter_otp_visible = self.ui_utils.is_element_visible(self.page_factory.login_page.enter_otp_input, timeout=30000)
         if enter_otp_visible:
             print("Enter OTP input is visible")
@@ -46,7 +46,7 @@ class LoginActions:
         for i, digit in enumerate(otp_mail_tm):   
             self.ui_utils.fill_input(self.page_factory.login_page.enter_otp(i), digit)
         self.ui_utils.click_element(self.page_factory.login_page.sign_In_button)
-        self.ui_utils.element_wait_for(self.page_factory.login_page.organization_card, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.organization_card, state="visible", timeout=30000)
         org_card = self.ui_utils.is_element_visible(self.page_factory.login_page.organization_card, timeout=30000)
         if org_card:
             print("Organization card is visible")
@@ -58,9 +58,9 @@ class LoginActions:
         self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.login_page.get_organization_option(organization_name))
         self.ui_utils.click_element(self.page_factory.login_page.continue_button)
-        self.ui_utils.element_wait_for(self.page_factory.login_page.home_sidebar_link, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.home_sidebar_link, state="visible", timeout=30000)
         self.ui_utils.click_element(self.page_factory.login_page.home_sidebar_link)
-        self.ui_utils.element_wait_for(self.page_factory.login_page.home_page_welcome, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.home_page_welcome, state="visible", timeout=30000)
         home_sidebar_visible = self.ui_utils.is_element_visible(self.page_factory.login_page.home_page_welcome, timeout=30000)
         print(f"Home sidebar link visibility: {home_sidebar_visible}")
         if home_sidebar_visible:
@@ -76,7 +76,7 @@ class LoginActions:
         role_locator = self.page_factory.login_page.return_user_role(role_name)
         self.ui_utils.click_element(role_locator)
         self.ui_utils.smart_wait()
-        self.ui_utils.element_wait_for(self.page_factory.login_page.home_page_welcome, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.home_page_welcome, state="visible", timeout=30000)
         home_sidebar_visible = self.ui_utils.is_element_visible(self.page_factory.login_page.home_page_welcome, timeout=30000)
         print(f"Home sidebar link visibility: {home_sidebar_visible}")
         if home_sidebar_visible:

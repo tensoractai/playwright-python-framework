@@ -89,7 +89,7 @@ class Helpers:
                 name=name,
                 attachment_type=allure.attachment_type.PNG
             )
-            self.logger.info(f"Screenshot saved locally at: {file_path} and attached to Allure: {name}")
+            self.logger.info(f"Screenshot saved locally at: {file_path} and visible to Allure: {name}")
             return file_path
         except Exception as e:
             self.logger.error(f"Failed to capture screenshot. Error: {e}")

@@ -135,8 +135,8 @@ class UIUtils:
             raise
 
     def drag_and_drop(self, source, target):
-        source.wait_for(state="attached")
-        target.wait_for(state="attached")
+        source.wait_for(state="visible")
+        target.wait_for(state="visible")
         source_box = source.bounding_box()
         target_box = target.bounding_box()
         if not source_box or not target_box:

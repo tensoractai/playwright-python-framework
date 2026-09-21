@@ -9,7 +9,7 @@ class DatasetsActions:
 
     def click_datasets_menu(self):
         self.ui_utils.click_element(self.page_factory.datasets_page.datasets_menu)
-        self.ui_utils.element_wait_for(self.page_factory.datasets_page.create_dataset_button, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.datasets_page.create_dataset_button, state="visible", timeout=30000)
         create_dataset_button_visible = self.ui_utils.is_element_visible(self.page_factory.datasets_page.create_dataset_button, timeout=30000)
         print(f"Create Dataset button visibility: {create_dataset_button_visible}")
         if create_dataset_button_visible:
@@ -32,7 +32,7 @@ class DatasetsActions:
             self.ui_utils.fill_input(self.page_factory.datasets_page.dataset_description, description)
         self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.datasets_page.create_button)
-        self.ui_utils.element_wait_for(self.page_factory.datasets_page.dataset_cell, state="attached", timeout=30000)
+        self.ui_utils.element_wait_for(self.page_factory.datasets_page.dataset_cell, state="visible", timeout=30000)
         dataset_cell_visible = self.ui_utils.is_element_visible(self.page_factory.datasets_page.dataset_cell, timeout=30000)
         print(f"Dataset cell visibility: {dataset_cell_visible}")
         if dataset_cell_visible:

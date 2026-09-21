@@ -76,7 +76,7 @@ def test_search_dataset_in_add_to_dataset_popup(before_each):
             action_factory.helpers.attach_allure(name="Search Dataset Popup Link File", text=message)
             assert False, message
 
-        # Switch to Datasets tab and validate file is attached to Dataset here as well
+        # Switch to Datasets tab and validate file is visible to Dataset here as well
         action_factory.datasets_actions.click_datasets_menu()
         action_factory.ui_utils.smart_wait()
         action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.click_dataset_file_name(dataset_name))
@@ -87,7 +87,7 @@ def test_search_dataset_in_add_to_dataset_popup(before_each):
 
         if file_name in files_in_dataset:
             status = "Pass"
-            message = f"File '{file_name}' is attached and visible inside dataset '{dataset_name}'."
+            message = f"File '{file_name}' is visible and visible inside dataset '{dataset_name}'."
             action_factory.helpers.attach_screenshot(name="FileVisibleInsideDataset")
             action_factory.helpers.attach_allure(name="Search Dataset Popup Link File", text=message)
             assert True, message
