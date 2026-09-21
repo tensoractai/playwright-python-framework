@@ -32,7 +32,6 @@ class LoginActions:
 
     def use_different_email_OTP(self, email_address):
         self.ui_utils.click_element(self.page_factory.login_page.MICROSOFT_OTP_EMAIL_link)
-        self.ui_utils.element_wait_for(self.page_factory.login_page.email_address_input, state="attached", timeout=30000)
         self.ui_utils.fill_input(self.page_factory.login_page.email_address_input, email_address)
         self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.login_page.send_code_button)
