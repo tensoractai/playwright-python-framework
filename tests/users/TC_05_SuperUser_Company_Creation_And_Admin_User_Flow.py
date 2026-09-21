@@ -10,7 +10,7 @@ def before_each(page):
     email = action_factory.helpers.fetch_dotenv("company_Username")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
     password = action_factory.helpers.fetch_dotenv("company_Password")
-    diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+    diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
     
     # Login & Setup as Super User
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
@@ -27,7 +27,7 @@ def test_superuser_company_creation_and_admin_user_flow(before_each):
     try:
         action_factory = before_each
         url = action_factory.helpers.fetch_dotenv("Execution_url")
-        diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+        diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
 
         company_name = test_data_inputs.superuser_company_name
         legal_name = test_data_inputs.superuser_legal_name

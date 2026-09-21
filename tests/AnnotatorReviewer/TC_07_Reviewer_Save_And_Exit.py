@@ -10,7 +10,7 @@ def before_each(page):
     email = action_factory.helpers.fetch_dotenv("company_Username")
     password = action_factory.helpers.fetch_dotenv("company_Password")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
-    diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+    diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
     
     # Login as Company Admin & Setup
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
@@ -35,7 +35,7 @@ def test_Reviewer_Save_And_Exit(before_each):
         reviewer_password = action_factory.helpers.fetch_dotenv("reviewer_Password")
         url = action_factory.helpers.fetch_dotenv("Execution_url")
         company_Name = action_factory.helpers.fetch_dotenv("company_Name")
-        diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+        diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
 
         # Ensure Project exists and Reviewer User is assigned
         action_factory.projects_actions.click_project_menu()

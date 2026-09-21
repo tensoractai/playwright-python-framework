@@ -6,3 +6,4 @@ allure-pytest
 python-dotenv
 requests
 msal
+imageio-ffmpeg

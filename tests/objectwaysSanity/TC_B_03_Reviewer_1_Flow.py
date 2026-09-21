@@ -10,7 +10,7 @@ def before_each(page):
     email = action_factory.helpers.fetch_dotenv("reviewer_Username")
     password = action_factory.helpers.fetch_dotenv("reviewer_Password")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
-    diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+    diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
 
     # Login
     action_factory.login_actions.perform_login(

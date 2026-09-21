@@ -11,7 +11,6 @@ env:
   MICROSOFT_CLIENT_SECRET: "${{ secrets.MICROSOFT_CLIENT_SECRET }}"
   MICROSOFT_OTP_EMAIL: "${{ secrets.MICROSOFT_OTP_EMAIL }}"
   MICROSOFT_TENANT_ID: "${{ secrets.MICROSOFT_TENANT_ID }}"
-  different_email_for_otp: "${{ secrets.different_email_for_otp }}"
 
 on:
   workflow_dispatch:
@@ -209,7 +208,6 @@ jobs:
           MICROSOFT_CLIENT_SECRET: "${{ secrets.MICROSOFT_CLIENT_SECRET }}"
           MICROSOFT_OTP_EMAIL: "${{ secrets.MICROSOFT_OTP_EMAIL }}"
           MICROSOFT_TENANT_ID: "${{ secrets.MICROSOFT_TENANT_ID }}"
-          different_email_for_otp: "${{ secrets.different_email_for_otp }}"
         run: |
 
           EXEC_URL="${{ inputs.execution_url }}"
@@ -230,9 +228,8 @@ jobs:
 
           MS_CLIENT_ID="${MICROSOFT_CLIENT_ID}"
           MS_CLIENT_SECRET="${MICROSOFT_CLIENT_SECRET}"
-          MS_OTP_EMAIL="${MICROSOFT_OTP_EMAIL:-$different_email_for_otp}"
+          MS_OTP_EMAIL="${MICROSOFT_OTP_EMAIL}"
           MS_TENANT_ID="${MICROSOFT_TENANT_ID}"
-          different_email="${different_email_for_otp:-$MICROSOFT_OTP_EMAIL}"
 
           cat << EOF | sed 's/^[ \t]*//' > .env
           QA_url_1="${EXEC_URL}"
@@ -258,7 +255,6 @@ jobs:
           MICROSOFT_CLIENT_SECRET="${MS_CLIENT_SECRET}"
           MICROSOFT_OTP_EMAIL="${MS_OTP_EMAIL}"
           MICROSOFT_TENANT_ID="${MS_TENANT_ID}"
-          different_email_for_otp="${different_email}"
           EOF
 
           echo "Environment file created successfully."
@@ -311,7 +307,6 @@ jobs:
           MICROSOFT_CLIENT_SECRET: "${{ secrets.MICROSOFT_CLIENT_SECRET }}"
           MICROSOFT_OTP_EMAIL: "${{ secrets.MICROSOFT_OTP_EMAIL }}"
           MICROSOFT_TENANT_ID: "${{ secrets.MICROSOFT_TENANT_ID }}"
-          different_email_for_otp: "${{ secrets.different_email_for_otp }}"
         run: |
 
           rm -rf allure-results allure-report
@@ -451,8 +446,6 @@ jobs:
 
 
       # ========================================================
-      # SUMMARY LINK
-      # ========================================================
       # SUMMARY TABLE (ALLURE & TRIGGERED MODULES)
       # ========================================================
 
@@ -470,25 +463,44 @@ jobs:
           fi
           FORMATTED_PATHS=$(echo "$TARGET_PATH" | tr ',' '\n' | sed 's/^[ \t]*//;s/[ \t]*$//' | paste -sd ", " -)
 
+          STATUS_BADGE="Pass"
+          if [ "${{ steps.pytest_step.outcome }}" != "success" ]; then
+            STATUS_BADGE="Failed"
+          fi
+          if [ -d "allure-results" ]; then
+            NON_PASSING=$(grep -E '"status"\s*:\s*"(failed|broken|skipped|unknown)"' allure-results/*.json 2>/dev/null | wc -l || echo 0)
+            if [ "$NON_PASSING" -gt 0 ]; then
+              STATUS_BADGE="Failed"
+            fi
+          fi
+
           echo "## 📊 Test Execution Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Field | Details |" >> $GITHUB_STEP_SUMMARY
           echo "| :--- | :--- |" >> $GITHUB_STEP_SUMMARY
           echo "| 📋 **Modules Triggered Name** | \`${{ inputs.test_module }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| 📁 **Executed Paths / Files** | \`$FORMATTED_PATHS\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🚦 **Execution Status** | $STATUS_BADGE |" >> $GITHUB_STEP_SUMMARY
           echo "| 🌐 **Allure Report** | [Open Interactive Allure Report 🔗]($URL) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Click the Allure Report link above to view detailed test logs, steps, and failure screenshots." >> $GITHUB_STEP_SUMMARY
 
 
       # ========================================================
-      # ENFORCE WORKFLOW FAILURE IF TESTS FAILED
+      # ENFORCE WORKFLOW FAILURE IF TESTS FAILED OR BROKEN
       # ========================================================
 
       - name: Fail Workflow If Tests Failed
         if: always()
         run: |
-          if [ "${{ steps.pytest_step.outcome }}" != "success" ]; then
-            echo "❌ Pytest execution encountered test failure(s). Marking workflow job as FAILED."
+          NON_PASSING=0
+          if [ -d "allure-results" ]; then
+            NON_PASSING=$(grep -E '"status"\s*:\s*"(failed|broken|skipped|unknown)"' allure-results/*.json 2>/dev/null | wc -l || echo 0)
+          fi
+
+          if [ "${{ steps.pytest_step.outcome }}" != "success" ] || [ "$NON_PASSING" -gt 0 ]; then
+            echo "❌ Pytest execution encountered test failure(s) or non-passing test(s). Marking workflow job as FAILED."
+            echo "Pytest step outcome: ${{ steps.pytest_step.outcome }}"
+            echo "Non-passing test count in Allure results: $NON_PASSING"
             exit 1
           fi

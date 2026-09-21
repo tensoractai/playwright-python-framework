@@ -17,7 +17,7 @@ class LoginPage:
         self.back_to_login = page.locator("button:has-text('Back to Login')")
         self.home_icon = page.get_by_text("Home")
         self.home_page_welcome = page.get_by_role('heading', name = 'Welcome to' ) ###Checkkk TensorAct is converted to Image 
-        self.different_email_for_otp_link = page.get_by_role('button', name = 'Send code to a different email' )
+        self.MICROSOFT_OTP_EMAIL_link = page.get_by_role('button', name = 'Send code to a different email' )
         self.email_address_input = page.get_by_role('textbox', name = 'Email Address' )
         self.send_code_button = page.get_by_role('button', name = 'Send Code' )
         self.enter_otp_input = page.get_by_text("Enter OTP", exact=True)

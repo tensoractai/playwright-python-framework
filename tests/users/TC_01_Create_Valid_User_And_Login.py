@@ -10,7 +10,7 @@ def before_each(page):
     email = action_factory.helpers.fetch_dotenv("company_Username")
     password = action_factory.helpers.fetch_dotenv("company_Password")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
-    diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+    diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
     
     # Login & Setup
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
@@ -28,7 +28,7 @@ def test_create_valid_user_and_login(before_each):
         action_factory = before_each
         url = action_factory.helpers.fetch_dotenv("Execution_url")
         company_Name = action_factory.helpers.fetch_dotenv("company_Name")
-        diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+        diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
         
         user_name = test_data_inputs.valid_user_name
         user_email = test_data_inputs.valid_user_email

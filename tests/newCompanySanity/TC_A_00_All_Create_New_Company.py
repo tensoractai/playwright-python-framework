@@ -10,7 +10,7 @@ def before_each(page):
     email = action_factory.helpers.fetch_dotenv("company_Username")
     password = action_factory.helpers.fetch_dotenv("company_Password")
     company_Name = action_factory.helpers.fetch_dotenv("company_Name")
-    diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+    diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
     
     # Login & Setup as Super User
     action_factory.login_actions.perform_login(url=url, email=email, password=password)
@@ -29,7 +29,7 @@ def test_create_new_company_and_users(before_each):
         url = action_factory.helpers.fetch_dotenv("Execution_url")
         default_password =test_data_inputs.default_password
         updated_new_password = test_data_inputs.updated_new_password
-        diff_email = action_factory.helpers.fetch_dotenv("different_email_for_otp")
+        diff_email = action_factory.helpers.fetch_dotenv("MICROSOFT_OTP_EMAIL")
         
         # Navigate to Companies menu and resolve next available index
         action_factory.superuser_actions.click_companies_menu()
