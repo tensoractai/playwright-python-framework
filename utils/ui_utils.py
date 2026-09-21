@@ -92,13 +92,13 @@ class UIUtils:
         return self.page.get_attribute(locator, attribute_name, timeout=timeout)
 
     def is_element_visible(self, locator, timeout=5000):
-        """
-        Checks if an element specified by the locator is visible.
-        """
-        try:
-            return locator.is_visible(timeout=timeout)
-        except Exception as e:
-            self.logger.error(f"Error checking visibility of element: {e}")
+        """ Waits until the element becomes visible and returns True. Returns False if the element does not become visible within the timeout. """ 
+        try: 
+            locator.wait_for( state="visible", timeout=timeout ) 
+            self.logger.info( f"Element is visible within {timeout}ms → {locator}" ) 
+            return True 
+        except Exception as e: 
+            self.logger.error( f"Element did not become visible after " f"{timeout}ms → {locator}. Error: {e}" ) 
             return False
 
     def is_element_enabled(self, locator):
@@ -127,12 +127,14 @@ class UIUtils:
         """
         return [element.text_content().strip() for element in locator.all()]
 
-    def element_wait_for(self, locator, state="visible", timeout = 5000):
-        try:
-            locator.wait_for(state=state, timeout=timeout)
-        except Exception as e:
-            self.logger.error(f"Element did not reach state '{state}' after {timeout}ms → {locator}. Error: {e}")
-            raise
+    def element_wait_for(self, locator, state="visible", timeout=5000): 
+        try: 
+            locator.wait_for( state=state, timeout=timeout ) 
+            self.logger.info( f"Element reached state '{state}' within {timeout}ms → {locator}" ) 
+            return True 
+        except Exception as e: 
+            self.logger.error( f"Element did not reach state '{state}' after " f"{timeout}ms → {locator}. Error: {e}" ) 
+            return False
 
     def drag_and_drop(self, source, target):
         source.wait_for(state="visible")
