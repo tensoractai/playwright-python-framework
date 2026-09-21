@@ -19,15 +19,16 @@ VIEWPORT = {
 }
 DEFAULT_TIMEOUT = 3000
 NAVIGATION_TIMEOUT = 30000
+VIDEO = True
 
 
 TEST_FILES = [
-            "tests/datasets/TC_01_Valid_Dataset_Creation.py"
+            "tests/newCompanySanity/TC_A_03*.py"
             ]
 
 if __name__ == "__main__":
-    # Delete old reports
-    for folder in ["allure-results", "allure-report", "reports"]:
+    # Delete old reports and videos
+    for folder in ["allure-results", "allure-report", "reports", "videos"]:
         if os.path.exists(folder):
             shutil.rmtree(folder)
     # Run tests
