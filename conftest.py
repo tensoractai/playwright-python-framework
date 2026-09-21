@@ -41,10 +41,13 @@ def page(request):
             slow_mo=SLOW_MO
         )
 
-        test_folder = getattr(pytest, "current_test_folder", "")
-        test_file = getattr(pytest, "current_test_file", "")
-        if test_folder and test_file:
-            video_dir = os.path.join("videos", test_folder, test_file)
+        test_path = str(request.node.fspath)
+        test_folder = os.path.basename(os.path.dirname(test_path))
+        test_file = os.path.splitext(os.path.basename(test_path))[0]
+        test_func = request.node.name
+
+        if test_folder:
+            video_dir = os.path.join("videos", test_folder)
         else:
             video_dir = "videos"
 
@@ -72,19 +75,42 @@ def page(request):
         rep_setup = getattr(request.node, "rep_setup", None)
         is_failed = (rep_call and rep_call.failed) or (rep_setup and rep_setup.failed)
 
-        if VIDEO and is_failed and video_object:
+        if VIDEO and video_object:
             try:
                 raw_video_path = video_object.path()
                 if raw_video_path and os.path.exists(raw_video_path):
-                    trimmed_path = raw_video_path.replace(".webm", "_last_20s.webm")
-                    final_path = trim_video_last_20_seconds(raw_video_path, trimmed_path)
-                    allure.attach.file(
-                        final_path,
-                        name="Failure Video (Last 20s)",
-                        attachment_type=allure.attachment_type.WEBM
-                    )
+                    clean_file = "".join(c for c in test_file if c.isalnum() or c in ("_", "-"))
+                    clean_func = "".join(c for c in test_func if c.isalnum() or c in ("_", "-"))
+
+                    if clean_file and clean_func and clean_file.lower() != clean_func.lower():
+                        base_name = f"{clean_file}_{clean_func}"
+                    else:
+                        base_name = clean_file or clean_func or "test_video"
+
+                    new_video_path = os.path.join(os.path.dirname(raw_video_path), f"{base_name}.webm")
+
+                    if os.path.exists(new_video_path) and new_video_path != raw_video_path:
+                        try:
+                            os.remove(new_video_path)
+                        except Exception:
+                            pass
+
+                    os.rename(raw_video_path, new_video_path)
+                    raw_video_path = new_video_path
+
+                    if is_failed:
+                        trimmed_path = os.path.join(
+                            os.path.dirname(raw_video_path),
+                            f"{base_name}_last_20s.webm"
+                        )
+                        final_path = trim_video_last_20_seconds(raw_video_path, trimmed_path)
+                        allure.attach.file(
+                            final_path,
+                            name=f"Failure Video ({base_name})",
+                            attachment_type=allure.attachment_type.WEBM
+                        )
             except Exception as e:
-                print(f"Failed to attach video to Allure: {e}")
+                print(f"Failed to process video file: {e}")
 
         browser.close()
 

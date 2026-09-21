@@ -101,7 +101,7 @@ Required inputs:
 Required inputs:
 * **URL**: Target web application environment.
 * **Superuser**: Username & Password (used as `company_Username` / `company_Password` when logging into the Super User org).
-* **OTP Email & Password**: Email credentials for OTP authentication (`different_email_for_otp` / `different_email_for_otp_password`).
+* **OTP Email & Password**: Email credentials for OTP authentication (`MICROSOFT_OTP_EMAIL`).
 
 ### 3. Other Module Suites (`datasets`, `files`, `projects`, `templates`, `users`, `workflows`, `AnnotatorReviewer`)
 Required inputs:
