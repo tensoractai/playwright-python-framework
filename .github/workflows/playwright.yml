@@ -7,9 +7,10 @@ permissions:
 
 env:
   ACTIONS_NODE20_DEPRECATION_WARNING: "false"
-  GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
-  GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
-  GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
+  MICROSOFT_CLIENT_ID: "${{ secrets.MICROSOFT_CLIENT_ID }}"
+  MICROSOFT_CLIENT_SECRET: "${{ secrets.MICROSOFT_CLIENT_SECRET }}"
+  MICROSOFT_OTP_EMAIL: "${{ secrets.MICROSOFT_OTP_EMAIL }}"
+  MICROSOFT_TENANT_ID: "${{ secrets.MICROSOFT_TENANT_ID }}"
   different_email_for_otp: "${{ secrets.different_email_for_otp }}"
 
 on:
@@ -220,9 +221,10 @@ jobs:
       - name: Create Environment File
         shell: bash
         env:
-          GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
-          GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
-          GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
+          MICROSOFT_CLIENT_ID: "${{ secrets.MICROSOFT_CLIENT_ID }}"
+          MICROSOFT_CLIENT_SECRET: "${{ secrets.MICROSOFT_CLIENT_SECRET }}"
+          MICROSOFT_OTP_EMAIL: "${{ secrets.MICROSOFT_OTP_EMAIL }}"
+          MICROSOFT_TENANT_ID: "${{ secrets.MICROSOFT_TENANT_ID }}"
           different_email_for_otp: "${{ secrets.different_email_for_otp }}"
         run: |
 
@@ -245,10 +247,11 @@ jobs:
 
           COMP_NAME="${{ inputs.company_name }}"
 
-          GMAIL_ID="${GMAIL_CLIENT_ID}"
-          GMAIL_SECRET="${GMAIL_CLIENT_SECRET}"
-          GMAIL_REFRESH="${GMAIL_REFRESH_TOKEN}"
-          different_email_for_otp="${different_email_for_otp}"
+          MS_CLIENT_ID="${MICROSOFT_CLIENT_ID}"
+          MS_CLIENT_SECRET="${MICROSOFT_CLIENT_SECRET}"
+          MS_OTP_EMAIL="${MICROSOFT_OTP_EMAIL:-$different_email_for_otp}"
+          MS_TENANT_ID="${MICROSOFT_TENANT_ID}"
+          different_email="${different_email_for_otp:-$MICROSOFT_OTP_EMAIL}"
 
           if [ "${{ inputs.test_module }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
             COMP_USER="$SUPER_USER"
@@ -275,10 +278,11 @@ jobs:
 
           company_Name="${COMP_NAME}"
 
-          GMAIL_CLIENT_ID="${GMAIL_ID}"
-          GMAIL_CLIENT_SECRET="${GMAIL_SECRET}"
-          GMAIL_REFRESH_TOKEN="${GMAIL_REFRESH}"
-          different_email_for_otp="${different_email_for_otp}"
+          MICROSOFT_CLIENT_ID="${MS_CLIENT_ID}"
+          MICROSOFT_CLIENT_SECRET="${MS_CLIENT_SECRET}"
+          MICROSOFT_OTP_EMAIL="${MS_OTP_EMAIL}"
+          MICROSOFT_TENANT_ID="${MS_TENANT_ID}"
+          different_email_for_otp="${different_email}"
           EOF
 
           echo "Environment file created successfully."
@@ -327,9 +331,10 @@ jobs:
         shell: bash
         env:
           HEADLESS: "true"
-          GMAIL_CLIENT_ID: "${{ secrets.GMAIL_CLIENT_ID }}"
-          GMAIL_CLIENT_SECRET: "${{ secrets.GMAIL_CLIENT_SECRET }}"
-          GMAIL_REFRESH_TOKEN: "${{ secrets.GMAIL_REFRESH_TOKEN }}"
+          MICROSOFT_CLIENT_ID: "${{ secrets.MICROSOFT_CLIENT_ID }}"
+          MICROSOFT_CLIENT_SECRET: "${{ secrets.MICROSOFT_CLIENT_SECRET }}"
+          MICROSOFT_OTP_EMAIL: "${{ secrets.MICROSOFT_OTP_EMAIL }}"
+          MICROSOFT_TENANT_ID: "${{ secrets.MICROSOFT_TENANT_ID }}"
           different_email_for_otp: "${{ secrets.different_email_for_otp }}"
         run: |
 
@@ -356,7 +361,24 @@ jobs:
             if [[ "$path" != tests/* ]]; then
               path="tests/$path"
             fi
-            PYTEST_ARGS+=("$path")
+
+            if [[ "$path" == *'*'* ]]; then
+              shopt -s nullglob
+              expanded_files=($path)
+              shopt -u nullglob
+              if [ ${#expanded_files[@]} -gt 0 ]; then
+                echo "Expanded wildcard pattern '$path' to ${#expanded_files[@]} file(s):"
+                for f in "${expanded_files[@]}"; do
+                  echo "  -> $f"
+                  PYTEST_ARGS+=("$f")
+                done
+              else
+                echo "Warning: No files matched pattern '$path'"
+                PYTEST_ARGS+=("$path")
+              fi
+            else
+              PYTEST_ARGS+=("$path")
+            fi
           done
 
           echo "FINAL PYTEST COMMAND: pytest ${PYTEST_ARGS[*]} --alluredir=allure-results"

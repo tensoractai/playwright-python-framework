@@ -119,11 +119,11 @@ class Helpers:
         tenant_id = self.fetch_dotenv("MICROSOFT_TENANT_ID")
         client_id = self.fetch_dotenv("MICROSOFT_CLIENT_ID")
         client_secret = self.fetch_dotenv("MICROSOFT_CLIENT_SECRET")
-        otp_email = self.fetch_dotenv("different_email_for_otp")
+        otp_email = os.getenv("MICROSOFT_OTP_EMAIL") or os.getenv("different_email_for_otp")
         if not tenant_id: raise ValueError("MICROSOFT_TENANT_ID is not configured in .env")
         if not client_id: raise ValueError("MICROSOFT_CLIENT_ID is not configured in .env")
         if not client_secret: raise ValueError("MICROSOFT_CLIENT_SECRET is not configured in .env")
-        if not otp_email: raise ValueError("different_email_for_otp is not configured in .env")
+        if not otp_email: raise ValueError("MICROSOFT_OTP_EMAIL or different_email_for_otp is not configured in .env")
 
         authority = f"https://login.microsoftonline.com/{tenant_id}"
         scope = ["https://graph.microsoft.com/.default"]
