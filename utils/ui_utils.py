@@ -13,7 +13,7 @@ class UIUtils:
         """
         self.page.goto(url)
         
-    def click_element(self, locator, timeout=3000, force=False):
+    def click_element(self, locator, timeout=5000, force=False):
         """
         Click the given locator.
         """
@@ -24,7 +24,7 @@ class UIUtils:
             self.logger.error(f"Failed to click element: {e}")
             raise
 
-    def double_click_element(self, locator, timeout=3000):
+    def double_click_element(self, locator, timeout=5000):
         """
         Double-clicks an element specified by the locator.
         """
@@ -35,13 +35,13 @@ class UIUtils:
             self.logger.error(f"Failed to double click element: {e}")
             raise
 
-    def hover_element(self, locator, timeout=3000):
+    def hover_element(self, locator, timeout=5000):
         """
         Hovers over an element specified by the locator.
         """
         self.page.hover(locator, timeout=timeout)
 
-    def fill_input(self, locator, value, timeout=3000):
+    def fill_input(self, locator, value, timeout=5000):
         """
         Fills an input element specified by the locator with the given value.
         """
@@ -52,46 +52,46 @@ class UIUtils:
             self.logger.error(f"Failed to fill input: {e}")
             raise
 
-    def type_text(self, locator, value, timeout=3000):
+    def type_text(self, locator, value, timeout=5000):
         """
         Types text into an element specified by the locator.
         """
         self.page.type(locator, value, timeout=timeout)
 
-    def press_key(self, locator, key, timeout=3000):
+    def press_key(self, locator, key, timeout=5000):
         """
         Presses a key on an element specified by the locator.
         """
         self.page.press(locator, key, timeout=timeout)
 
-    def select_option(self, locator, value, timeout=3000):
+    def select_option(self, locator, value, timeout=5000):
         locator.select_option(value, timeout=timeout)
 
-    def check_checkbox(self, locator, timeout=3000):
+    def check_checkbox(self, locator, timeout=5000):
         """
         Checks a checkbox element specified by the locator.
         """
         self.page.check(locator, timeout=timeout)
 
-    def uncheck_checkbox(self, locator, timeout=3000):
+    def uncheck_checkbox(self, locator, timeout=5000):
         """
         Unchecks a checkbox element specified by the locator.
         """
         self.page.uncheck(locator, timeout=timeout)
 
-    def get_text(self, locator, timeout=3000):
+    def get_text(self, locator, timeout=5000):
         """
         Gets the text of an element specified by the locator.
         """
         return self.page.text_content(locator, timeout=timeout)
 
-    def get_attribute(self, locator, attribute_name, timeout=3000):
+    def get_attribute(self, locator, attribute_name, timeout=5000):
         """
         Gets the value of an attribute of an element specified by the locator.
         """
         return self.page.get_attribute(locator, attribute_name, timeout=timeout)
 
-    def is_element_visible(self, locator, timeout=5000):
+    def is_element_visible(self, locator, timeout=10000):
         """
         Checks if an element specified by the locator is visible.
         """
@@ -101,22 +101,22 @@ class UIUtils:
             self.logger.error(f"Error checking visibility of element: {e}")
             return False
 
-    def is_element_enabled(self, locator):
+    def is_element_enabled(self, locator, timeout=10000):
         """
         Checks if an element specified by the locator is enabled.
         """
         try:
-            return locator.is_enabled()
+            return locator.is_enabled(timeout=timeout)
         except Exception as e:
             self.logger.error(f"Error checking enabled status of element: {e}")
             return False
 
-    def is_element_disabled(self, locator):  
+    def is_element_disabled(self, locator, timeout=10000):  
         """
         Checks if an element specified by the locator is disabled.
         """
         try:
-            return locator.is_disabled()
+            return locator.is_disabled(timeout=timeout)
         except Exception as e:
             self.logger.error(f"Error checking disabled status of element: {e}")
             return True
@@ -189,7 +189,7 @@ class UIUtils:
             )
             raise
 
-    def wait_for_element_with_retry(self, locator, attempts=3, timeout=2000):
+    def wait_for_element_with_retry(self, locator, attempts=3, timeout=5000):
         """
         Waits for an element to become visible with multiple retry attempts.
         """
