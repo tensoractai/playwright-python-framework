@@ -10,9 +10,8 @@ from dotenv import load_dotenv
 import logging
 import re
 import pytest
-import base64
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
+import requests
+import msal
 
 class Helpers:
 
@@ -106,124 +105,95 @@ class Helpers:
             self.logger.error(f"Failed to attach text to Allure report. Error: {e}")
             raise
 
-
-    def fetch_otp_from_gmail(self, timeout=120):
+    def fetch_otp_from_microsoft(self, timeout=120):
         """
-        Fetch OTP from the dedicated Gmail automation account.
+        Fetch OTP from the dedicated Microsoft 365 automation mailbox.
+
         Required in .env:
-            GMAIL_CLIENT_ID
-            GMAIL_CLIENT_SECRET
-            GMAIL_REFRESH_TOKEN
+            MICROSOFT_TENANT_ID
+            MICROSOFT_CLIENT_ID
+            MICROSOFT_CLIENT_SECRET
+            different_email_for_otp
         """
-        client_id = self.fetch_dotenv("GMAIL_CLIENT_ID")
-        client_secret = self.fetch_dotenv("GMAIL_CLIENT_SECRET")
-        refresh_token = self.fetch_dotenv("GMAIL_REFRESH_TOKEN")
 
-        if not client_id:
-            raise ValueError("GMAIL_CLIENT_ID is not configured in .env")
-        if not client_secret:
-            raise ValueError("GMAIL_CLIENT_SECRET is not configured in .env")
-        if not refresh_token:
-            raise ValueError("GMAIL_REFRESH_TOKEN is not configured in .env")
+        tenant_id = self.fetch_dotenv("MICROSOFT_TENANT_ID")
+        client_id = self.fetch_dotenv("MICROSOFT_CLIENT_ID")
+        client_secret = self.fetch_dotenv("MICROSOFT_CLIENT_SECRET")
+        otp_email = self.fetch_dotenv("different_email_for_otp")
+        if not tenant_id: raise ValueError("MICROSOFT_TENANT_ID is not configured in .env")
+        if not client_id: raise ValueError("MICROSOFT_CLIENT_ID is not configured in .env")
+        if not client_secret: raise ValueError("MICROSOFT_CLIENT_SECRET is not configured in .env")
+        if not otp_email: raise ValueError("different_email_for_otp is not configured in .env")
 
-        # Record start timestamp (in ms) to ignore any emails received before this function call
-        # Give a 15-second buffer for slight clock skew
-        start_time_epoch = int(time.time())
-        min_internal_date_ms = int((start_time_epoch - 15) * 1000)
-
-        # Create Gmail OAuth credentials
-        creds = Credentials(
-            token=None,
-            refresh_token=refresh_token,
-            token_uri="https://oauth2.googleapis.com/token",
+        authority = f"https://login.microsoftonline.com/{tenant_id}"
+        scope = ["https://graph.microsoft.com/.default"]
+        app = msal.ConfidentialClientApplication(
             client_id=client_id,
-            client_secret=client_secret,
-            scopes=["https://www.googleapis.com/auth/gmail.readonly"]
+            client_credential=client_secret,
+            authority=authority
         )
-
-        # Connect to Gmail API
-        service = build("gmail", "v1", credentials=creds)
-        start = time.time()
-        while time.time() - start < timeout:
-            print("Checking Gmail for new OTP...")
+        start_time = time.time()
+        min_received_time = start_time - 15
+        while time.time() - start_time < timeout:
+            print("Checking Microsoft mailbox for new OTP...")
             try:
-                # Query recent emails received after function start time
-                query = f'(from:no-reply@objectways.com OR subject:TensorAct OR subject:verification) after:{start_time_epoch - 15}'
-                response = service.users().messages().list(
-                    userId="me",
-                    q=query,
-                    maxResults=10
-                ).execute()
-
-                messages = response.get("messages", [])
-
+                token_result = app.acquire_token_for_client(scopes=scope)
+                if "access_token" not in token_result:
+                    error = token_result.get("error")
+                    description = token_result.get("error_description")
+                    raise Exception(f"Microsoft authentication failed: {error} - {description}")
+                access_token = token_result["access_token"]
+                headers = {"Authorization": f"Bearer {access_token}", "Accept": "application/json"}
+                endpoint = f"https://graph.microsoft.com/v1.0/users/{otp_email}/mailFolders/inbox/messages"
+                params = {
+                    "$top": "10",
+                    "$orderby": "receivedDateTime desc",
+                    "$select": "id,subject,from,receivedDateTime,bodyPreview,body"
+                }
+                response = requests.get(endpoint, headers=headers, params=params, timeout=30)
+                response.raise_for_status()
+                messages = response.json().get("value", [])
                 for message in messages:
-                    message_id = message["id"]
-                    message_data = service.users().messages().get(
-                        userId="me",
-                        id=message_id,
-                        format="full"
-                    ).execute()
+                    received_time = message.get("receivedDateTime", "")
+                    if received_time:
+                        try:
+                            received_dt = datetime.fromisoformat(
+                                received_time.replace("Z", "+00:00")
+                            )
+                            if received_dt.timestamp() < min_received_time:
+                                continue
+                        except Exception as e:
+                            print(f"Unable to parse received time: {e}")
 
-                    # Check email received timestamp to ignore older emails
-                    internal_date = int(message_data.get("internalDate", 0))
-                    if internal_date < min_internal_date_ms:
-                        continue
+                    subject = message.get("subject", "")
+                    body_preview = message.get("bodyPreview", "")
+                    body_content = message.get("body", {}).get("content", "")
+                    clean_body = re.sub(r'<[^>]+>', ' ', body_content)
+                    combined_text = f"{subject} {body_preview} {clean_body}"
 
-                    snippet = message_data.get("snippet", "")
-                    payload = message_data.get("payload", {})
-                    body = self._extract_gmail_body(payload)
-
-                    combined_text = f"{snippet} {body}"
-
-                    # Match 6-digit code or code after verification text
                     otp_match = (
-                        re.search(r"verification code.*?\b(\d{4,8})\b", combined_text, re.IGNORECASE | re.DOTALL) or
+                        re.search(r"(?:one-time password|otp|verification code).*?\b(\d{4,8})\b", combined_text, re.IGNORECASE | re.DOTALL) or
                         re.search(r"\b(\d{6})\b", combined_text) or
                         re.search(r"\b(\d{4,8})\b", combined_text)
                     )
-
                     if otp_match:
                         otp_value = otp_match.group(1) if otp_match.groups() else otp_match.group(0)
                         print(f"NEW OTP received successfully: {otp_value}")
                         return otp_value
-
+            except requests.RequestException as e:
+                err_msg = str(e)
+                if hasattr(e, 'response') and e.response is not None:
+                    try:
+                        err_msg += f" | Details: {e.response.text}"
+                    except Exception:
+                        pass
+                print(f"Microsoft Graph API error: {err_msg}")
             except Exception as e:
-                print(f"Gmail API error: {e}")
-
-            # Wait before checking Gmail again
+                print(f"Microsoft OTP fetch error: {e}")
             print("New OTP email not received yet. Waiting 5 seconds...")
             time.sleep(5)
-
         raise Exception(f"OTP not received within {timeout} seconds.")
 
-    def _extract_gmail_body(self, payload):
-        """
-        Extract text content from Gmail message payload.
-        Handles single-part, multipart, and nested multipart messages.
-        """
-        body = ""
-        parts = payload.get("parts", [])
-        if parts:
-            for part in parts:
-                mime_type = part.get("mimeType", "")
-                if mime_type in ["text/plain", "text/html"]:
-                    data = part.get("body", {}).get("data")
-                    if data:
-                        try:
-                            body += base64.urlsafe_b64decode(data).decode("utf-8", errors="ignore")
-                        except Exception as e:
-                            print(f"Failed to decode Gmail part body: {e}")
-                if part.get("parts"):
-                    body += self._extract_gmail_body(part)
-        else:
-            data = payload.get("body", {}).get("data")
-            if data:
-                try:
-                    body = base64.urlsafe_b64decode(data).decode("utf-8", errors="ignore")
-                except Exception as e:
-                    print(f"Failed to decode Gmail body: {e}")
-        return body
 
     def resolve_next_index(self, existing_list, pattern):
         if "{i}" not in pattern:

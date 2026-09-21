@@ -42,7 +42,7 @@ class LoginActions:
             print("Enter OTP input is visible")
         else:
             raise Exception("Enter OTP input is not visible after clicking 'Send code to a different email' link.")
-        otp_mail_tm = self.helpers.fetch_otp_from_gmail()
+        otp_mail_tm = self.helpers.fetch_otp_from_microsoft()
         self.ui_utils.smart_wait()
         for i, digit in enumerate(otp_mail_tm):   
             self.ui_utils.fill_input(self.page_factory.login_page.enter_otp(i), digit)
