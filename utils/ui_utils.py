@@ -91,7 +91,7 @@ class UIUtils:
         """
         return self.page.get_attribute(locator, attribute_name, timeout=timeout)
 
-    def is_element_visible(self, locator, timeout=10000):
+    def is_element_visible(self, locator, timeout=5000):
         """
         Checks if an element specified by the locator is visible.
         """
@@ -101,22 +101,22 @@ class UIUtils:
             self.logger.error(f"Error checking visibility of element: {e}")
             return False
 
-    def is_element_enabled(self, locator, timeout=10000):
+    def is_element_enabled(self, locator):
         """
         Checks if an element specified by the locator is enabled.
         """
         try:
-            return locator.is_enabled(timeout=timeout)
+            return locator.is_enabled()
         except Exception as e:
             self.logger.error(f"Error checking enabled status of element: {e}")
             return False
 
-    def is_element_disabled(self, locator, timeout=10000):  
+    def is_element_disabled(self, locator):  
         """
         Checks if an element specified by the locator is disabled.
         """
         try:
-            return locator.is_disabled(timeout=timeout)
+            return locator.is_disabled()
         except Exception as e:
             self.logger.error(f"Error checking disabled status of element: {e}")
             return True
