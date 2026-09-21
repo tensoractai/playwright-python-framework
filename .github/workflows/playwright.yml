@@ -453,19 +453,32 @@ jobs:
       # ========================================================
       # SUMMARY LINK
       # ========================================================
+      # SUMMARY TABLE (ALLURE & TRIGGERED MODULES)
+      # ========================================================
 
-      - name: Display Allure Report Link in Summary
+      - name: Display Test Execution Summary Table
         if: always()
         run: |
           URL="${{ steps.deployment.outputs.page_url }}"
           if [ -z "$URL" ]; then
             URL="https://tensoractai.github.io/playwright-python-framework/"
           fi
-          echo "## 📊 Allure Test Execution Summary" >> $GITHUB_STEP_SUMMARY
+
+          TARGET_PATH="${{ inputs.test_path }}"
+          if [ -z "$TARGET_PATH" ] && [ -f "test_execution_path.txt" ]; then
+            TARGET_PATH=$(cat test_execution_path.txt)
+          fi
+          FORMATTED_PATHS=$(echo "$TARGET_PATH" | tr ',' '\n' | sed 's/^[ \t]*//;s/[ \t]*$//' | paste -sd ", " -)
+
+          echo "## 📊 Test Execution Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "🌐 **Live Allure Report URL**: [$URL]($URL)" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Details |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :--- |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📋 **Modules Triggered Name** | \`${{ inputs.test_module }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📁 **Executed Paths / Files** | \`$FORMATTED_PATHS\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🌐 **Allure Report** | [Open Interactive Allure Report 🔗]($URL) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Click the link above to view your interactive Allure report." >> $GITHUB_STEP_SUMMARY
+          echo "Click the Allure Report link above to view detailed test logs, steps, and failure screenshots." >> $GITHUB_STEP_SUMMARY
 
 
       # ========================================================
