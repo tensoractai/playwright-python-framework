@@ -80,22 +80,6 @@ on:
         type: string
 
       # ============================================================
-      # 5. SUPERUSER
-      # ============================================================
-
-      superuser_username:
-        description: "6️⃣ SUPERUSER EMAIL"
-        required: false
-        default: "admin@objectways.com"
-        type: string
-
-      superuser_password:
-        description: "7️⃣ SUPERUSER PASSWORD"
-        required: false
-        default: "Admin123!"
-        type: string
-
-      # ============================================================
       # 6. ANNOTATOR 1
       # ============================================================
 
@@ -233,9 +217,6 @@ jobs:
           COMP_USER="${{ inputs.company_username }}"
           COMP_PASS="${{ inputs.company_password }}"
 
-          SUPER_USER="${{ inputs.superuser_username }}"
-          SUPER_PASS="${{ inputs.superuser_password }}"
-
           ANN1_USER="${{ inputs.annotator1_username }}"
           ANN1_PASS="${{ inputs.annotator1_password }}"
 
@@ -252,11 +233,6 @@ jobs:
           MS_OTP_EMAIL="${MICROSOFT_OTP_EMAIL:-$different_email_for_otp}"
           MS_TENANT_ID="${MICROSOFT_TENANT_ID}"
           different_email="${different_email_for_otp:-$MICROSOFT_OTP_EMAIL}"
-
-          if [ "${{ inputs.test_module }}" = "newCompanySanity" ] && [ -n "$SUPER_USER" ]; then
-            COMP_USER="$SUPER_USER"
-            COMP_PASS="$SUPER_PASS"
-          fi
 
           cat << EOF | sed 's/^[ \t]*//' > .env
           QA_url_1="${EXEC_URL}"
