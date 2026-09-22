@@ -20,7 +20,7 @@ class LoginPage:
         self.MICROSOFT_OTP_EMAIL_link = page.get_by_role('button', name = 'Send code to a different email' )
         self.email_address_input = page.get_by_role('textbox', name = 'Email Address' )
         self.send_code_button = page.get_by_role('button', name = 'Send Code' )
-        self.enter_otp_input = page.get_by_text("Enter OTP", exact=True)
+        self.enter_otp_input = page.get_by_text("Enter OTP")
         self.admin_profile_btn = page.locator("div[class*='full shadow-sm']")
         self.switch_role_btn = page.locator("svg[class*='lucide-user']")
         self.logout_icon = page.locator('div:nth-child(6) > .relative > .p-2')
