@@ -35,6 +35,7 @@ class LoginActions:
         self.ui_utils.fill_input(self.page_factory.login_page.email_address_input, email_address)
         self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.login_page.send_code_button)
+        self.ui_utils.element_wait_for(self.page_factory.login_page.enter_otp_input, state="visible", timeout=30000)
         enter_otp_visible = self.ui_utils.is_element_visible(self.page_factory.login_page.enter_otp_input, timeout=30000)
         if enter_otp_visible:
             print("Enter OTP input is visible")
