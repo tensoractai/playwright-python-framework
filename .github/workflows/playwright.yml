@@ -357,7 +357,6 @@ jobs:
       - name: Generate Allure Report
         if: always()
         shell: bash
-
         run: |
 
           mkdir -p allure-results
@@ -365,18 +364,23 @@ jobs:
 
           if [ "$(ls -A allure-results 2>/dev/null)" ]; then
 
-            echo "Generating Allure Report..."
+            echo "Generating Allure Report from latest results..."
 
             allure generate \
               allure-results \
               --clean \
               -o allure-report
 
+            # Disable browser caching on GitHub Pages so the latest report is always rendered
+            if [ -f "allure-report/index.html" ]; then
+              sed -i 's/<head>/<head><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">/' allure-report/index.html || true
+            fi
+
           else
 
             echo "No Allure results found."
 
-            echo "<html><body><h1>No test results found</h1></body></html>" \
+            echo "<html><head><meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\"></head><body><h1>No test results found</h1></body></html>" \
               > allure-report/index.html
 
           fi
