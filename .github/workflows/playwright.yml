@@ -226,11 +226,6 @@ jobs:
 
           COMP_NAME="${{ inputs.company_name }}"
 
-          MS_CLIENT_ID="${MICROSOFT_CLIENT_ID}"
-          MS_CLIENT_SECRET="${MICROSOFT_CLIENT_SECRET}"
-          MS_OTP_EMAIL="${MICROSOFT_OTP_EMAIL}"
-          MS_TENANT_ID="${MICROSOFT_TENANT_ID}"
-
           cat << EOF | sed 's/^[ \t]*//' > .env
           QA_url_1="${EXEC_URL}"
           QA_url_2="${EXEC_URL}"
@@ -251,10 +246,10 @@ jobs:
 
           company_Name="${COMP_NAME}"
 
-          MICROSOFT_CLIENT_ID="${MS_CLIENT_ID}"
-          MICROSOFT_CLIENT_SECRET="${MS_CLIENT_SECRET}"
-          MICROSOFT_OTP_EMAIL="${MS_OTP_EMAIL}"
-          MICROSOFT_TENANT_ID="${MS_TENANT_ID}"
+          MICROSOFT_CLIENT_ID="${MICROSOFT_CLIENT_ID}"
+          MICROSOFT_CLIENT_SECRET="${MICROSOFT_CLIENT_SECRET}"
+          MICROSOFT_OTP_EMAIL="${MICROSOFT_OTP_EMAIL}"
+          MICROSOFT_TENANT_ID="${MICROSOFT_TENANT_ID}"
           EOF
 
           echo "Environment file created successfully."
