@@ -18,9 +18,8 @@ def before_each(page):
         action_factory.login_actions.use_different_email_OTP(diff_email)
         action_factory.login_actions.select_organization(company_Name, "Super User")
         return action_factory
-    
+
     except Exception as e:
-        status = "Fail"
         message = str(e)
         action_factory.helpers.handle_failure(message=message)
         raise
