@@ -20,8 +20,7 @@ def before_each(page):
         return action_factory
 
     except Exception as e:
-        message = str(e)
-        action_factory.helpers.handle_failure(message=message)
+        action_factory.helpers.handle_failure("Screenshot")
         raise
 
 @allure.feature("Super User Company & User Provisioning")
