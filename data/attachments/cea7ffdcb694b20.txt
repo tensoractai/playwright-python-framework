@@ -1,0 +1,2 @@
+Failed to add files to dataset.
+assert False
