@@ -45,7 +45,7 @@ def test_Delete_File_From_Dataset(before_each):
         # Go to Files Tab and Verify Dataset is added to that File 
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.files_menu)
         action_factory.ui_utils.smart_wait()
-        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names list: {dataset_names_list}")
         if dataset_name in dataset_names_list:
             status = "Pass"
@@ -80,7 +80,7 @@ def test_Delete_File_From_Dataset(before_each):
             assert False, message
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.cancel_popup)
         action_factory.ui_utils.smart_wait()
-        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_name_list)
+        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_inside_file_name_list)
         print(f"Files in dataset after deletion: {files_name_list}")
 
         if file_name not in files_name_list:
@@ -99,7 +99,7 @@ def test_Delete_File_From_Dataset(before_each):
         # Now Check Dataset Name is not present in  Files Tab 
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.files_menu)
         action_factory.ui_utils.smart_wait()
-        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names list: {dataset_names_list}")
         if dataset_name not in dataset_names_list:
             status = "Pass"

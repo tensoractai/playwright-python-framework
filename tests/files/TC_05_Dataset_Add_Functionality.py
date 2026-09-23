@@ -82,7 +82,7 @@ def test_Dataset_Files_Add_Functionality(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.add_button)
         action_factory.ui_utils.smart_wait()
         action_factory.common_actions.validate_toast_msg("Files added successfully")
-        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names list: {dataset_names_list}")
         if dataset_name_1 in dataset_names_list:
             status = "Pass"
@@ -130,7 +130,7 @@ def test_Dataset_Files_Add_Functionality(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.add_button)
         action_factory.ui_utils.smart_wait()
         action_factory.common_actions.validate_toast_msg("Files added successfully")
-        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names list: {dataset_names_list}")
         if dataset_name_2 in dataset_names_list:
             status = "Pass"
@@ -177,7 +177,7 @@ def test_Dataset_Files_Add_Functionality(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.add_button)
         action_factory.ui_utils.smart_wait()
         action_factory.common_actions.validate_toast_msg("Files added successfully")
-        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names list: {dataset_names_list}")
         if dataset_name_2 in dataset_names_list:
             status = "Pass"

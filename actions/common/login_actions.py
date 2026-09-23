@@ -52,7 +52,6 @@ class LoginActions:
 
     def select_organization(self, company_name, organization_name):
         self.ui_utils.click_element(self.page_factory.login_page.get_organization_card(company_name))
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.login_page.get_organization_option(organization_name))
         self.ui_utils.click_element(self.page_factory.login_page.continue_button)
         self.ui_utils.element_wait_for(self.page_factory.login_page.home_sidebar_link, state="visible", timeout=30000)
@@ -67,7 +66,6 @@ class LoginActions:
 
     def switch_role(self, role_name="Super User"):
         self.ui_utils.click_element(self.page_factory.login_page.admin_profile_btn)
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.login_page.switch_role_btn)
         self.ui_utils.smart_wait()
         role_locator = self.page_factory.login_page.return_user_role(role_name)
@@ -85,7 +83,6 @@ class LoginActions:
 
     def perform_logout(self):
         self.ui_utils.click_element(self.page_factory.login_page.admin_profile_btn)
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.login_page.logout_icon)
         self.ui_utils.click_element(self.page_factory.login_page.logout_btn)
         self.ui_utils.smart_wait()

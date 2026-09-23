@@ -84,7 +84,7 @@ def test_Dataset_Files_Add_Functionality(before_each):
             action_factory.ui_utils.smart_wait()
 
         # Validate File is added
-        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_name_list)
+        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_inside_file_name_list)
         print(f"Files names list: {files_name_list}")
         if all(file in files_name_list for file in file_names):
             status = "Pass"

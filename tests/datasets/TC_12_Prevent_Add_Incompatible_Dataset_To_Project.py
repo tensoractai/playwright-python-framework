@@ -79,7 +79,7 @@ def test_prevent_add_incompatible_dataset_to_project(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.files_menu)
         action_factory.ui_utils.smart_wait()
         dataset_names_in_files = action_factory.ui_utils.grab_text_from_all(
-            action_factory.page_factory.datasets_page.dataset_file_name_list
+            action_factory.page_factory.datasets_page.files_dataset_type_view
         )
         print(f"Dataset names in files tab: {dataset_names_in_files}")
         if dataset_text_name in dataset_names_in_files and dataset_image_name in dataset_names_in_files:

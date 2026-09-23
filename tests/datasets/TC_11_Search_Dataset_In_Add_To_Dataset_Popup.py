@@ -60,7 +60,7 @@ def test_search_dataset_in_add_to_dataset_popup(before_each):
         action_factory.ui_utils.smart_wait()
 
         # Validate dataset name is displayed towards the file in Files tab
-        dataset_names_in_files = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_in_files = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names in files table: {dataset_names_in_files}")
 
         if dataset_name in dataset_names_in_files:
@@ -82,7 +82,7 @@ def test_search_dataset_in_add_to_dataset_popup(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.click_dataset_file_name(dataset_name))
         action_factory.ui_utils.smart_wait()
 
-        files_in_dataset = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_name_list)
+        files_in_dataset = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_inside_file_name_list)
         print(f"Files inside dataset '{dataset_name}': {files_in_dataset}")
 
         if file_name in files_in_dataset:

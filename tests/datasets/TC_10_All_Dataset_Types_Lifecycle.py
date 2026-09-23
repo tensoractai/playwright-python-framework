@@ -86,7 +86,7 @@ def test_all_dataset_types_lifecycle(before_each):
         action_factory.ui_utils.smart_wait()
 
         files_in_files_tab = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_name_list)
-        datasets_in_files_tab = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        datasets_in_files_tab = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
 
         all_datasets_present = all(ds in datasets_in_files_tab for ds in created_dataset_names)
         all_files_present = all(f in files_in_files_tab for f in uploaded_file_names)
@@ -134,7 +134,7 @@ def test_all_dataset_types_lifecycle(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.files_menu)
         action_factory.ui_utils.smart_wait()
 
-        final_datasets_in_files_tab = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        final_datasets_in_files_tab = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         remaining_datasets = [ds for ds in created_dataset_names if ds in final_datasets_in_files_tab]
 
         if not remaining_datasets:

@@ -37,7 +37,7 @@ def test_Create_New_Dataset_Functionality(before_each):
         action_factory.files_actions.click_file_name_checkbox(expected_files_single[0])
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.add_to_dataset)
         action_factory.files_actions.create_new_dataset(Create_New_Dataset)
-        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names list: {dataset_names_list}")
         if Create_New_Dataset in dataset_names_list:
             status = "Pass"
@@ -70,7 +70,7 @@ def test_Create_New_Dataset_Functionality(before_each):
             assert False, message
         action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.click_dataset_file_name(Create_New_Dataset))
         action_factory.ui_utils.smart_wait()
-        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_name_list)
+        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_inside_file_name_list)
         print(f"Files names list: {files_name_list}")
 
         expected_files = [file.split("/")[-1] for file in expected_files_single]

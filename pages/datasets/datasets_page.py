@@ -15,8 +15,9 @@ class datasetsPage:
         self.upload_files_button = page.get_by_role('button',  name='Upload Files')
         self.upload_files = page.locator('label').filter(has_text='Click to upload from this')
         self.upload_button = page.get_by_role('button', name= 'Upload',exact = True)
-        self.files_name_list = page.locator("button[data-testid*='dataview-col-name']")
-        self.dataset_file_name_list = page.locator("td[data-testid*='files-dataview'] div[class*='dataset-name']")
+        self.files_name_list = page.locator("td[data-testid*='dataview-col-name'] div")
+        self.dataset_inside_file_name_list = page.locator("button[data-testid*='dataset-dataview-col-name']")
+        self.files_dataset_type_view = page.locator("td[data-testid*='files-dataview-col-dataset'] div")
         self.dataset_name_error_msg = self.page.get_by_text("Only letters, numbers, spaces, _ and - are allowed", exact=True)
         self.dataset_exists_error = page.get_by_text("A Dataset with this name already exists", exact=True)
         self.add_files = page.get_by_role('button', name='Add Files')
@@ -28,7 +29,7 @@ class datasetsPage:
 
 
     def get_dataset_type_option(self, dataset_type_name):
-        return self.page.get_by_test_id(f"create-dataset-modal-type-option-{dataset_type_name.upper()}")
+        return self.page.get_by_test_id(f"create-dataset-modal-type-option-{dataset_type_name.lower()}")
 
     def click_dataset_file_name(self, file_name):
         return self.page.locator("span").filter(has_text=file_name)

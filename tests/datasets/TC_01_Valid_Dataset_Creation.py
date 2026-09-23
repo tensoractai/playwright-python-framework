@@ -59,7 +59,7 @@ def test_create_dataset_valid(before_each):
         action_factory.ui_utils.smart_wait()
         action_factory.common_actions.validate_toast_msg("2 files added")
         action_factory.ui_utils.smart_wait()
-        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_name_list)
+        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_inside_file_name_list)
         print(f"Files names list: {files_name_list}")
 
         expected_files = [file.split("/")[-1] for file in Dataset_CSV_File_Valid]
@@ -95,7 +95,7 @@ def test_create_dataset_valid(before_each):
             action_factory.helpers.attach_allure(name="Files", text=", ".join(expected_files))
             assert False, message
 
-        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         print(f"Dataset names list: {dataset_names_list}")
         if dataset_Name_Valid in dataset_names_list:
             status = "Pass"

@@ -61,7 +61,7 @@ def test_Cancel_Dataset_Functionality(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.cancel_button)
         action_factory.ui_utils.smart_wait()
 
-        dataset_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_file_name_list)
+        dataset_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_dataset_type_view)
         if Cancel_Dataset_Name not in dataset_name_list:
             status = "Pass"
             message = f"Dataset '{Cancel_Dataset_Name}' is not associated with the file after cancelling addition."

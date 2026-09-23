@@ -76,7 +76,7 @@ def test_company_admin_flow_test(before_each):
         action_factory.datasets_actions.upload_files_with_uploadBtn(*Dataset_files_upload)
         action_factory.common_actions.validate_toast_msg("2 files added")
         action_factory.ui_utils.smart_wait()
-        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.files_name_list)
+        files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_inside_file_name_list)
         print(f"Files names list: {files_name_list}")
 
         expected_files = [file.split("/")[-1] for file in Dataset_files_upload]
