@@ -527,7 +527,6 @@ jobs:
           echo "| 📋 **Modules Triggered Name** | \`${{ inputs.test_module }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| 📁 **Executed Paths / Files** | \`$FORMATTED_PATHS\` |" >> $GITHUB_STEP_SUMMARY
           echo "| 🚦 **Execution Status** | $STATUS_BADGE |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🌐 **Latest Live Allure Report** | [Open Live Allure Report 🔗]($URL) |" >> $GITHUB_STEP_SUMMARY
           echo "| 📜 **This Execution Report (#${{ github.run_number }})** | [Open Run #${{ github.run_number }} Report 🔗]($RUN_URL) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Click the Allure Report links above to view detailed test logs, steps, and failure screenshots." >> $GITHUB_STEP_SUMMARY
