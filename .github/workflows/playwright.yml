@@ -1,4 +1,5 @@
 name: Playwright Automation Tests
+run-name: 'Playwright Automation Tests: ${{ inputs.test_module }} (#${{ github.run_number }})'
 
 permissions:
   contents: write
