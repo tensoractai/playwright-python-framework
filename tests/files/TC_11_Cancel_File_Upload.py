@@ -31,7 +31,8 @@ def test_cancel_file_upload_operation(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.files_menu)
         action_factory.ui_utils.smart_wait()
         # Select files to upload
-        action_factory.datasets_actions.upload_files_with_uploadBtn(*files_to_upload)
+        action_factory.files_actions.upload_files_without_uploadbtn(*files_to_upload)
+        action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.upload_button.nth(1))
         # Cancel the upload using files_actions method
         action_factory.ui_utils.click_element(action_factory.page_factory.files_page.uploading_btn)
         action_factory.files_actions.cancel_file_upload()

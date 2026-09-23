@@ -17,7 +17,7 @@ class FilesPage:
         self.cancel_popup = page.locator("button[data-testid*='modal-close-btn']")
         self.add_to_dataset = page.locator("button[data-testid*='add-to-dataset-btn']")
         self.add_button = page.locator("button[data-testid*='add-to-dataset-modal-submit-btn']")
-        self.cancel_button = page.locator("button[data-testid*='add-to-dataset-modal-cancel-btn']")
+        self.cancel_button = page.locator("button[data-testid*='upload-file-modal-cancel-btn']")
         self.failure_file_popup = page.get_by_text('Failed DeletionFile')
         self.add_dataset_Panel = page.get_by_role('heading', name= 'Add Items to Dataset' )
         self.create_new_dataset = page.get_by_role('tab', name= 'Create New Dataset' )
@@ -27,7 +27,7 @@ class FilesPage:
         self.files_delete_success_popup = page.get_by_text('Successfully Detached File')
         self.upload_files_tabs = page.locator("button[class*='pb-2 text']")
         self.search_datasets_input = page.get_by_role('textbox', name='Search datasets...')
-        self.uploading_btn = page.get_by_role('button', name= '% Uploading' )
+        self.uploading_btn = page.get_by_text("Uploading", exact=True)
         self.failed_detached_file = page.get_by_text('Failed Detached File', exact=False)
 
     def return_toast_msg_locator(self, toast_msg):
