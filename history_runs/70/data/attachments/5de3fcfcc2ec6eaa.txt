@@ -1,0 +1,21 @@
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin@objectways.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: Admin123!
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 4
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 5
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 4
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 8
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+ERROR    utils.ui_utils:ui_utils.py:101 Element did not become visible after 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>. Error: Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for get_by_role("heading", name="Select Your Organization") to be visible

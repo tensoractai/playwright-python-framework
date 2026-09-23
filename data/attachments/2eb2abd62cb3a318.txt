@@ -1,0 +1,65 @@
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin@objectways.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: Admin123!
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'hidden' within 200000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/files'> selector='internal:text="Uploading"i'>
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 50000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/files'> selector='div[class*=\'center gap-2 text\'] >> internal:has-text="Files uploaded successfully"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 50000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/files'> selector='div[class*=\'center gap-2 text\'] >> internal:has-text="Files uploaded successfully"i'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/files/TC_01_Upload_Single_Multiple_Invalid_Files/FilesUploaded.png and visible to Allure: FilesUploaded
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Uploaded Files
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'hidden' within 200000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/files'> selector='internal:text="Uploading"i'>
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 50000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/files'> selector='div[class*=\'center gap-2 text\'] >> internal:has-text="Files uploaded successfully"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 50000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/files'> selector='div[class*=\'center gap-2 text\'] >> internal:has-text="Files uploaded successfully"i'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/files/TC_01_Upload_Single_Multiple_Invalid_Files/FilesUploaded.png and visible to Allure: FilesUploaded
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Uploaded Files
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/files'> selector='internal:text="files skipped (incompatible"i'>
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/files/TC_01_Upload_Single_Multiple_Invalid_Files/InvalidFileError.png and visible to Allure: InvalidFileError
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Invalid File Error
+ERROR    utils.ui_utils:ui_utils.py:121 Error checking disabled status of element: Locator.is_disabled: Error: strict mode violation: get_by_role("button", name="Upload", exact=True) resolved to 2 elements:
+    1) <button data-testid="upload-file-modal-tab-upload" class="pb-2 text-[16px] text-black border-b-2 border-[#4B3EA8]">Upload</button> aka get_by_test_id("upload-file-modal-tab-upload")
+    2) <button disabled type="button" data-testid="upload-file-modal-submit-btn" class="px-4 py-2 text-base font-normal rounded-md disabled:opacity-50 disabled:cursor-not-allowed transition-opacity ">Upload</button> aka get_by_test_id("upload-file-modal-submit-btn")
+
+Call log:
+  - waiting for get_by_role("button", name="Upload", exact=True)
+
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/files/TC_01_Upload_Single_Multiple_Invalid_Files/UploadButtonNotEnabled.png and visible to Allure: UploadButtonNotEnabled
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Upload Button
