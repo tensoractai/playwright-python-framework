@@ -26,6 +26,7 @@ class AnnotatorPage:
         self.step_forward = self.frame.locator("i[class*='step-forward']")
         self.step_backward = self.frame.locator("i[class*='step-backward']")
         self.auto_save_toast = self.page.get_by_text('Auto-saved successfully')
+        self.main_video_image = self.frame.locator('img[id="mainVideo"]')
 
 
 
@@ -34,3 +35,6 @@ class AnnotatorPage:
     
     def click_transcription(self, transcription):
         return self.frame.get_by_role('cell', name= transcription)
+
+    def return_objects_click(self, objects):
+        return self.frame.locator(f'div[data-classname="{objects}"]')

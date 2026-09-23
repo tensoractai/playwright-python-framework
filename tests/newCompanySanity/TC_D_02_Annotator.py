@@ -26,7 +26,7 @@ def before_each(page):
 @allure.feature("Annotator 1")
 @allure.story("Annotator 1 Flow")
 @allure.title("Annotator 1 Flow Validation")
-def test_Annotator_Flow_C_test(before_each):
+def test_Annotator_Flow_D_test(before_each):
     status = "Fail"
     message = ""
     try: 

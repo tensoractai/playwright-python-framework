@@ -351,7 +351,19 @@ jobs:
           pytest "${PYTEST_ARGS[@]}" --alluredir=allure-results
 
             # ========================================================
-      # GENERATE ALLURE REPORT
+      # CHECKOUT PREVIOUS GH-PAGES BRANCH FOR ALLURE HISTORY
+      # ========================================================
+
+      - name: Checkout gh-pages for Allure History
+        if: always()
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages-dir
+
+      # ========================================================
+      # GENERATE ALLURE REPORT WITH HISTORY & RUN ARCHIVE
       # ========================================================
 
       - name: Generate Allure Report
@@ -362,6 +374,13 @@ jobs:
           mkdir -p allure-results
           mkdir -p allure-report
 
+          # Preserve Allure history trend from previous gh-pages deployment
+          if [ -d "gh-pages-dir/history" ]; then
+            echo "Copying previous Allure history..."
+            mkdir -p allure-results/history
+            cp -r gh-pages-dir/history/* allure-results/history/ 2>/dev/null || true
+          fi
+
           if [ "$(ls -A allure-results 2>/dev/null)" ]; then
 
             echo "Generating Allure Report from latest results..."
@@ -370,6 +389,18 @@ jobs:
               allure-results \
               --clean \
               -o allure-report
+
+            # Store standalone copy of this run's report in allure-report/history_runs/<run_number>
+            RUN_NUM="${{ github.run_number }}"
+            mkdir -p "allure-report/history_runs/${RUN_NUM}"
+            cp -r allure-report/* "allure-report/history_runs/${RUN_NUM}/" 2>/dev/null || true
+
+            # Preserve prior run reports from gh-pages-dir so past run reports remain accessible
+            if [ -d "gh-pages-dir/history_runs" ]; then
+              echo "Preserving past execution reports..."
+              mkdir -p allure-report/history_runs
+              cp -rn gh-pages-dir/history_runs/* allure-report/history_runs/ 2>/dev/null || true
+            fi
 
             # Disable browser caching on GitHub Pages so the latest report is always rendered
             if [ -f "allure-report/index.html" ]; then
@@ -414,6 +445,19 @@ jobs:
 
 
       # ========================================================
+      # PUBLISH TO GH-PAGES BRANCH (FOR HISTORY RETENTION)
+      # ========================================================
+
+      - name: Deploy Allure Report to gh-pages Branch
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          keep_files: true
+
+
+      # ========================================================
       # SETUP GITHUB PAGES
       # ========================================================
 
@@ -455,6 +499,9 @@ jobs:
           if [ -z "$URL" ]; then
             URL="https://tensoractai.github.io/playwright-python-framework/"
           fi
+          [[ "$URL" != */ ]] && URL="${URL}/"
+
+          RUN_URL="${URL}history_runs/${{ github.run_number }}/index.html"
 
           TARGET_PATH="${{ inputs.test_path }}"
           if [ -z "$TARGET_PATH" ] && [ -f "test_execution_path.txt" ]; then
@@ -480,9 +527,10 @@ jobs:
           echo "| 📋 **Modules Triggered Name** | \`${{ inputs.test_module }}\` |" >> $GITHUB_STEP_SUMMARY
           echo "| 📁 **Executed Paths / Files** | \`$FORMATTED_PATHS\` |" >> $GITHUB_STEP_SUMMARY
           echo "| 🚦 **Execution Status** | $STATUS_BADGE |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🌐 **Allure Report** | [Open Interactive Allure Report 🔗]($URL) |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🌐 **Latest Live Allure Report** | [Open Live Allure Report 🔗]($URL) |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📜 **This Execution Report (#${{ github.run_number }})** | [Open Run #${{ github.run_number }} Report 🔗]($RUN_URL) |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Click the Allure Report link above to view detailed test logs, steps, and failure screenshots." >> $GITHUB_STEP_SUMMARY
+          echo "Click the Allure Report links above to view detailed test logs, steps, and failure screenshots." >> $GITHUB_STEP_SUMMARY
 
 
       # ========================================================
