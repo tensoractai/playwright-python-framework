@@ -1,0 +1,1 @@
+File 'CSV Test data.csv' deleted successfully from dataset 'AUT_Delete_Files'.

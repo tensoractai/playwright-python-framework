@@ -1,0 +1,1 @@
+Error message for invalid dataset name is visible

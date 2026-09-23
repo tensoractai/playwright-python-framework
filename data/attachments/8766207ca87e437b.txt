@@ -1,0 +1,1 @@
+Toast message '2 files added' is not visible
