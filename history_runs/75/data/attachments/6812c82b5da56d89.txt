@@ -1,0 +1,60 @@
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin@objectways.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: Admin123!
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 8
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Dataset_Valid
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets'> selector='th[data-testid*="view-header-name"]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets'> selector='th[data-testid*="view-header-name"]'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/datasets/TC_01_Valid_Dataset_Creation/DatasetCreated.png and visible to Allure: DatasetCreated
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Dataset Name
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'hidden' within 200000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets/3'> selector='internal:text="Uploading"i'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+ERROR    utils.ui_utils:ui_utils.py:136 Element did not reach state 'visible' after 50000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets/3'> selector='div[class*=\'center gap-2 text\'] >> internal:has-text="2 files added"i'>. Error: Locator.wait_for: Timeout 50000ms exceeded.
+Call log:
+  - waiting for locator("div[class*='center gap-2 text']").filter(has_text="2 files added") to be visible
+
+ERROR    utils.ui_utils:ui_utils.py:101 Element did not become visible after 50000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets/3'> selector='div[class*=\'center gap-2 text\'] >> internal:has-text="2 files added"i'>. Error: Locator.wait_for: Timeout 50000ms exceeded.
+Call log:
+  - waiting for locator("div[class*='center gap-2 text']").filter(has_text="2 files added") to be visible
+
+ERROR    utils.helpers:helpers.py:56 Test failed: Toast message '2 files added' is not visible
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/datasets/TC_01_Valid_Dataset_Creation/Last Seen Screenshot.png and visible to Allure: Last Seen Screenshot
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Failure Stack Trace

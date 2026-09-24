@@ -1,0 +1,108 @@
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin@objectways.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: Admin123!
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets'> selector='internal:role=button[name="Create Dataset"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets'> selector='internal:role=button[name="Create Dataset"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Prevent_Dataset
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets'> selector='th[data-testid*="view-header-name"]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets'> selector='th[data-testid*="view-header-name"]'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'hidden' within 200000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/datasets/13'> selector='internal:text="Uploading"i'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/templates'> selector='internal:role=button[name="Upload New Template"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/templates'> selector='internal:role=button[name="Upload New Template"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Prevent_Template
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector='internal:role=button[name="Create workflow"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector='internal:role=button[name="Create workflow"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Prevent_WorkFlow
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: Workflow for testing dataset deletion prevention
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector='.react-flow__pane'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector='.react-flow__pane'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-start'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-start'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-annotate'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-annotate'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-review'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-review'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-complete'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/workflows'> selector="div[class*='node-complete'] >> nth=0">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/projects'> selector='internal:role=button[name="Create Project"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/projects'> selector='internal:role=button[name="Create Project"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Prevent_Project
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/projects'> selector='internal:text="PlaceholderProject Name*:"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 10000ms → <Locator frame=<Frame name= url='https://fmn-qa1.tensoract.com/projects'> selector='internal:text="PlaceholderProject Name*:"i'>
+ERROR    utils.ui_utils:ui_utils.py:24 Failed to click element: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="Select Datasets")
+
+ERROR    utils.helpers:helpers.py:56 Test failed: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_role("button", name="Select Datasets")
+
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/datasets/TC_09_Prevent_Delete_Dataset_In_Project/Last Seen Screenshot.png and visible to Allure: Last Seen Screenshot
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Failure Stack Trace
