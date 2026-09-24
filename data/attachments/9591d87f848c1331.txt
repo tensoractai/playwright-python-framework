@@ -1,0 +1,353 @@
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin@liceum.ai
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: Admin123!
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 8
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Company_1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT New Company Legal
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: autcompany.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/companies/30'> selector='internal:role=checkbox[name="Company Admin"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/companies/30'> selector='internal:role=checkbox[name="Project Supervisor"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/companies/30'> selector='internal:role=checkbox[name="Annotator"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/companies/30'> selector='internal:role=checkbox[name="Reviewer"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/newCompanySanity/TC_A_00_All_Create_New_Company/Company_Created.png and visible to Allure: Company_Created
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Create New Company
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT Company Admin
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT Annotator 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: annotator11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT Annotator 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: annotator21@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT Reviewer 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: reviewer11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT Reviewer 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: reviewer21@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/newCompanySanity/TC_A_00_All_Create_New_Company/Company_And_Users_Created_Pass.png and visible to Allure: Company_And_Users_Created_Pass
+INFO     utils.helpers:helpers.py:103 Allure attachment added: Company and Users Provisioning
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: admin11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 8
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 3
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 3
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 4
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/newCompanySanity/TC_A_00_All_Create_New_Company/User Logged In successfully.png and visible to Allure: User Logged In successfully
+INFO     utils.helpers:helpers.py:103 Allure attachment added: User Logged In successfully
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: annotator11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: annotator11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 4
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/tasks'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/newCompanySanity/TC_A_00_All_Create_New_Company/User Logged In successfully.png and visible to Allure: User Logged In successfully
+INFO     utils.helpers:helpers.py:103 Allure attachment added: User Logged In successfully
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: annotator21@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: annotator21@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 8
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 4
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 7
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/tasks'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/newCompanySanity/TC_A_00_All_Create_New_Company/User Logged In successfully.png and visible to Allure: User Logged In successfully
+INFO     utils.helpers:helpers.py:103 Allure attachment added: User Logged In successfully
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: reviewer11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: reviewer11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 2
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/tasks'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/newCompanySanity/TC_A_00_All_Create_New_Company/User Logged In successfully.png and visible to Allure: User Logged In successfully
+INFO     utils.helpers:helpers.py:103 Allure attachment added: User Logged In successfully
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: reviewer21@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AUT_Password@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: reviewer21@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: fmn.app@objectways.com
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:text="Enter OTP"i'>
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 6
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 1
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 5
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 3
+INFO     utils.ui_utils:ui_utils.py:50 Input filled with value: 0
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector='internal:role=heading[name="Select Your Organization"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/tasks'> selector='internal:role=link[name="Home"i]'>
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+INFO     utils.ui_utils:ui_utils.py:133 Element reached state 'visible' within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.ui_utils:ui_utils.py:176 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:98 Element is visible within 5000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/'> selector='internal:role=heading[name="Welcome to"i]'>
+INFO     utils.helpers:helpers.py:92 Screenshot saved locally at: screenshots/newCompanySanity/TC_A_00_All_Create_New_Company/User Logged In successfully.png and visible to Allure: User Logged In successfully
+INFO     utils.helpers:helpers.py:103 Allure attachment added: User Logged In successfully
