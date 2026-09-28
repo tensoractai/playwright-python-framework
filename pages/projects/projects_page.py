@@ -56,7 +56,7 @@ class ProjectsPage:
         self.remove_user_confirm = page.get_by_test_id('remove-users-confirmation-modal-confirm-input')
         self.remove_btn = page.get_by_test_id('remove-users-confirmation-modal-submit-btn')
         self.removed_user_toast = page.get_by_text('Successfully Removed Users')
-
+        self.select_dataset_type = page.get_by_test_id('create-project-modal-type-dropdown-btn')
 
 
     def select_dropdowns(self, dropdown_name):
@@ -92,3 +92,6 @@ class ProjectsPage:
             'td[data-testid="project-collaborators-col-email"]').filter(has_text=email).locator(
             "xpath=preceding-sibling::td//input"
         )
+
+    def get_dataset_type_option_project(self, dataset_type_name):
+        return self.page.get_by_test_id(f"create-project-modal-type-option-{dataset_type_name.lower()}")

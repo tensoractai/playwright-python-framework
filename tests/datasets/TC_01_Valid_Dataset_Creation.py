@@ -37,7 +37,6 @@ def test_create_dataset_valid(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.datasets_menu)
         action_factory.datasets_actions.create_dataset(dataset_name=dataset_Name_Valid, dataset_type_name=dataset_Type_CSV)
         action_factory.ui_utils.smart_wait()
-        action_factory.ui_utils.smart_wait()
         dataset_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_names_list)
         print(f"Dataset names list: {dataset_name_list}")
         if dataset_Name_Valid in dataset_name_list:
@@ -56,7 +55,6 @@ def test_create_dataset_valid(before_each):
         action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.click_dataset_file_name(dataset_Name_Valid))
 
         action_factory.datasets_actions.upload_files_with_uploadBtn(*Dataset_CSV_File_Valid)
-        action_factory.ui_utils.smart_wait()
         action_factory.common_actions.validate_toast_msg("2 files added")
         action_factory.ui_utils.smart_wait()
         files_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_inside_file_name_list)

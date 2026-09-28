@@ -16,7 +16,7 @@ class ProjectsActions:
         else:
             raise Exception("Create Project button is not visible after clicking the Projects menu.")
 
-    def create_project(self, project_name, dataset_name, workflow_name, description=None):
+    def create_project(self, project_name, dataset_type, dataset_name, workflow_name, description=None):
         self.ui_utils.click_element(self.page_factory.projects_page.create_project_btn)
         self.ui_utils.smart_wait()
         self.ui_utils.fill_input(self.page_factory.projects_page.project_name_input, project_name)  
@@ -29,12 +29,12 @@ class ProjectsActions:
             print("Create Project page is visible")
         else:
             raise Exception("Select Dataset button is not visible after clicking the Create Project button.")
+        self.ui_utils.click_element(self.page_factory.projects_page.select_dataset_type)
+        self.ui_utils.click_element(self.page_factory.projects_page.get_dataset_type_option_project(dataset_type))
         self.ui_utils.click_element(self.page_factory.projects_page.select_dataset)
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.projects_page.select_dropdowns(dataset_name))
         self.ui_utils.click_element(self.page_factory.projects_page.heading_create_project)
         self.ui_utils.click_element(self.page_factory.projects_page.select_workflow)
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.projects_page.select_dropdowns(workflow_name))
         self.ui_utils.click_element(self.page_factory.projects_page.heading_create_project)
         create_project_enabled = self.ui_utils.is_element_enabled(self.page_factory.projects_page.create_project_btn)

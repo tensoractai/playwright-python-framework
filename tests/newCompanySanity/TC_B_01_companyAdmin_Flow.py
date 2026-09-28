@@ -186,7 +186,7 @@ def test_company_admin_B_flow_test(before_each):
         # Projects Functionality
         action_factory.projects_actions.click_project_menu()
         action_factory.ui_utils.smart_wait()
-        action_factory.projects_actions.create_project(project_name, dataset_name, workflow_name)
+        action_factory.projects_actions.create_project(project_name, dataset_type_name, dataset_name, workflow_name)
         action_factory.ui_utils.smart_wait()
         workflow_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.projects_page.project_names_list)
         print(f"Project names list: {workflow_name_list}")
