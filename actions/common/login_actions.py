@@ -67,10 +67,8 @@ class LoginActions:
     def switch_role(self, role_name="Super User"):
         self.ui_utils.click_element(self.page_factory.login_page.admin_profile_btn)
         self.ui_utils.click_element(self.page_factory.login_page.switch_role_btn)
-        self.ui_utils.smart_wait()
         role_locator = self.page_factory.login_page.return_user_role(role_name)
         self.ui_utils.click_element(role_locator)
-        self.ui_utils.smart_wait()
         self.ui_utils.element_wait_for(self.page_factory.login_page.home_page_welcome, state="visible", timeout=30000)
         home_sidebar_visible = self.ui_utils.is_element_visible(self.page_factory.login_page.home_page_welcome, timeout=30000)
         print(f"Home sidebar link visibility: {home_sidebar_visible}")
@@ -79,10 +77,8 @@ class LoginActions:
         else:
             raise Exception("Home sidebar link is not visible after login attempt.")
         self.ui_utils.click_element(self.page_factory.login_page.admin_profile_btn)
-        self.ui_utils.smart_wait()
 
     def perform_logout(self):
         self.ui_utils.click_element(self.page_factory.login_page.admin_profile_btn)
         self.ui_utils.click_element(self.page_factory.login_page.logout_icon)
         self.ui_utils.click_element(self.page_factory.login_page.logout_btn)
-        self.ui_utils.smart_wait()

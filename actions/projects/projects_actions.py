@@ -18,7 +18,6 @@ class ProjectsActions:
 
     def create_project(self, project_name, dataset_type, dataset_name, workflow_name, description=None):
         self.ui_utils.click_element(self.page_factory.projects_page.create_project_btn)
-        self.ui_utils.smart_wait()
         self.ui_utils.fill_input(self.page_factory.projects_page.project_name_input, project_name)  
         if description and self.ui_utils.is_element_visible(self.page_factory.projects_page.project_description_input, timeout=2000):
             self.ui_utils.fill_input(self.page_factory.projects_page.project_description_input, description)
@@ -47,7 +46,6 @@ class ProjectsActions:
 
     def click_teams_tab(self):
         self.ui_utils.click_element(self.page_factory.projects_page.teams_tab)
-        self.ui_utils.smart_wait()
         teams_panel_visible = self.ui_utils.is_element_visible(self.page_factory.projects_page.teams_panel)
         print(f"Teams panel visibility: {teams_panel_visible}")
         if teams_panel_visible:
@@ -57,12 +55,9 @@ class ProjectsActions:
 
     def add_users(self, role, email_address):
         self.ui_utils.click_element(self.page_factory.projects_page.add_user_btn)
-        self.ui_utils.smart_wait()
         self.ui_utils.select_option(self.page_factory.projects_page.assign_user_dropdown, role.upper())
         self.ui_utils.click_element(self.page_factory.projects_page.get_user_checkbox(email_address))
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.projects_page.add_btn)
-        self.ui_utils.smart_wait()
         add_user_btn_visible = self.ui_utils.is_element_visible(self.page_factory.projects_page.add_user_btn)
         print(f"Add user button visibility: {add_user_btn_visible}")
         if add_user_btn_visible:
@@ -72,12 +67,9 @@ class ProjectsActions:
 
     def remove_user(self, email_address):
         self.ui_utils.click_element(self.page_factory.projects_page.get_email_click_checkbox(email_address))
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.projects_page.remove_selected_btn)
-        self.ui_utils.smart_wait()
         self.ui_utils.fill_input(self.page_factory.projects_page.remove_user_confirm, "DELETE")
         self.ui_utils.click_element(self.page_factory.projects_page.remove_btn)
-        self.ui_utils.smart_wait()
         removed_user_toast_visible = self.ui_utils.is_element_visible(self.page_factory.projects_page.removed_user_toast)
         print(f"Removed user toast visibility: {removed_user_toast_visible}")
         if removed_user_toast_visible:
@@ -89,19 +81,16 @@ class ProjectsActions:
     def delete_project(self, project_name):
         self.ui_utils.click_element(self.page_factory.files_page.return_file_checkbox(project_name).first)
         self.ui_utils.click_element(self.page_factory.projects_page.delete_toolbar_btn)
-        self.ui_utils.smart_wait()
         delete_popup = self.ui_utils.wait_for_visible_if_exists(self.page_factory.files_page.delete_confirmation)
         if delete_popup:
             self.ui_utils.fill_input(self.page_factory.files_page.delete_text, "DELETE")
             self.ui_utils.click_element(self.page_factory.files_page.delete_btn)
-            self.ui_utils.smart_wait()
         else:
             raise Exception(f"Delete popup not found when attempting to delete project: {project_name}")
 
     def export_and_validate_transcription_json(self, expected_files=None, expected_texts=None, unexpected_texts=None, fields=None):
         import json, zipfile
         self.ui_utils.click_element(self.page_factory.projects_page.tasks_table_master_checkbox)
-        self.ui_utils.smart_wait()
         with self.page_factory.projects_page.page.expect_download() as download_info:
             self.ui_utils.click_element(self.page_factory.projects_page.export_json_btn)
         download_path = download_info.value.path()
@@ -160,13 +149,9 @@ class ProjectsActions:
 
     def set_projects_pagination(self, num_of_items):
         self.ui_utils.select_option(self.page_factory.projects_page.pagination_dropdown, str(num_of_items))
-        self.ui_utils.smart_wait()
 
     def add_dataset_to_project(self, dataset_name):
         self.ui_utils.click_element(self.page_factory.projects_page.project_datasets_add_btn)
-        self.ui_utils.smart_wait()
         self.ui_utils.select_option(self.page_factory.projects_page.modal_pagination_select.last, "50")
         self.ui_utils.click_element(self.page_factory.projects_page.return_Dataset_checkbox_addsync(dataset_name))
         self.ui_utils.click_element(self.page_factory.projects_page.add_sync_btn)
-        self.ui_utils.smart_wait()
-

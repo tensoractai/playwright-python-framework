@@ -9,7 +9,6 @@ class FilesActions:
 
     def upload_files_without_uploadbtn(self, *file_paths):
         self.ui_utils.click_element(self.page_factory.datasets_page.upload_files_button)
-        self.ui_utils.smart_wait()
         files = []
         for file_path in file_paths:
             full_path = Path("test_data") / "files" / file_path
@@ -26,16 +25,13 @@ class FilesActions:
             else:
                 raise FileNotFoundError(f"File or folder not found: {full_path}")
         self.page_factory.datasets_page.upload_files.set_input_files(files)
-        self.ui_utils.smart_wait()
 
     def set_files_pagination(self, num_of_files):
         self.ui_utils.select_option(self.page_factory.files_page.pagination_dropdown, num_of_files)
-        self.ui_utils.smart_wait()
 
     def search_files_name(self, file_name):
         self.ui_utils.click_element(self.page_factory.files_page.search_btn)
         self.ui_utils.fill_input(self.page_factory.files_page.search_btn, file_name)
-        self.ui_utils.smart_wait()
 
     def delete_multiple_files(self, count):
         for index in range(count):
@@ -71,7 +67,6 @@ class FilesActions:
     
     def add_to_dataset(self, dataset_name):
         self.ui_utils.click_element(self.page_factory.files_page.add_to_dataset)
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.files_page.return_file_checkbox(dataset_name))
         print("Dataset Check Box Clicked successfully")
 
@@ -87,7 +82,6 @@ class FilesActions:
         self.ui_utils.click_element(self.page_factory.files_page.dataset_name_enter)
         self.ui_utils.fill_input(self.page_factory.files_page.dataset_name_enter, dataset_name)
         self.ui_utils.click_element(self.page_factory.files_page.create_button)
-        self.ui_utils.smart_wait()
 
     def cancel_file_upload(self):
         def handle_dialog(dialog):
@@ -97,10 +91,8 @@ class FilesActions:
         self.page_factory.files_page.page.once("dialog", handle_dialog)
         self.ui_utils.element_wait_for(self.page_factory.files_page.cancel_button_upload, state="visible", timeout=10000)
         self.ui_utils.click_element(self.page_factory.files_page.cancel_button_upload)
-        self.ui_utils.smart_wait()
 
         # If custom HTML confirmation popup overlay is visible, click OK
         ok_btn = self.page_factory.files_page.page.get_by_role('button', name='OK', exact=True)
         if self.ui_utils.is_element_visible(ok_btn, timeout=3000):
             self.ui_utils.click_element(ok_btn)
-            self.ui_utils.smart_wait()

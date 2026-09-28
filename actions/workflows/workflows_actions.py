@@ -19,7 +19,6 @@ class WorkflowsActions:
 
     def create_workflow(self, workflow_name, description=None):
         self.ui_utils.click_element(self.page_factory.workflows_page.create_workflow_btn)
-        self.ui_utils.smart_wait()
         self.ui_utils.fill_input(self.page_factory.workflows_page.enter_workflow_name_input, workflow_name)
         if description:
             self.ui_utils.fill_input(self.page_factory.workflows_page.description_input, description)
@@ -44,12 +43,10 @@ class WorkflowsActions:
 
     def apply_template_to_annotate(self, template_name, position=0):
         self.ui_utils.click_element(self.page_factory.workflows_page.plus_icon.nth(position))
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.workflows_page.get_template_option(template_name))
 
     def apply_existing_template_new(self, old_template_name, new_template_name, index=1):
         self.ui_utils.click_element(self.page_factory.workflows_page.return_applied_template_click(old_template_name, index))
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.workflows_page.get_template_option(new_template_name))
         
     def nodes_connection_flow(self, node_Name1, node_index1, position1 , index1, node_Name2, node_index2, position2, index2):
@@ -64,7 +61,6 @@ class WorkflowsActions:
     def search_workflow_name(self, workflow_name):
         self.ui_utils.click_element(self.page_factory.workflows_page.search_btn)
         self.ui_utils.fill_input(self.page_factory.workflows_page.search_btn, workflow_name)
-        self.ui_utils.smart_wait()
 
     def delete_workflow(self, workflow_names):
         if isinstance(workflow_names, str):
@@ -72,22 +68,18 @@ class WorkflowsActions:
         for name in workflow_names:
             self.ui_utils.click_element(self.page_factory.files_page.return_file_checkbox(name).first)
         self.ui_utils.click_element(self.page_factory.files_page.delete_btn)
-        self.ui_utils.smart_wait()
         delete_popup = self.ui_utils.wait_for_visible_if_exists(self.page_factory.workflows_page.delete_confirmation)
         if delete_popup:
             self.ui_utils.fill_input(self.page_factory.files_page.delete_text, "DELETE")
             self.ui_utils.click_element(self.page_factory.files_page.delete_btn)
-            self.ui_utils.smart_wait()
 
     def set_workflows_pagination(self, num_of_items):
         self.ui_utils.select_option(self.page_factory.files_page.pagination_dropdown, str(num_of_items))
-        self.ui_utils.smart_wait()
 
     def edit_node_pencil(self, edit_node, index, new_Name):
         self.ui_utils.click_element(self.page_factory.workflows_page.edit_node_pencil(edit_node, index))
         self.ui_utils.fill_input(self.page_factory.workflows_page.edit_name, new_Name)
         self.ui_utils.keyboard_press("Enter")
-        self.ui_utils.smart_wait()
 
 
         

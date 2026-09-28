@@ -11,7 +11,6 @@ class ReviewerActions:
     def is_annotation_present(self, annotator):
         self.ui_utils.click_element(self.page_factory.reviewer_page.annotation_dropdown)
         self.ui_utils.click_element(self.page_factory.reviewer_page.click_annotator_dropdown(annotator))
-        self.ui_utils.smart_wait()
         self.wait_for_iframe_ready()
 
     def wait_for_iframe_ready(self, timeout=180000):
@@ -21,4 +20,3 @@ class ReviewerActions:
         if visible:
             self.ui_utils.element_wait_for(loading, state="hidden", timeout=timeout)
             message = "Iframe loaded successfully."
-        self.ui_utils.smart_wait()

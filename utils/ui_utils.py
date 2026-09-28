@@ -172,7 +172,7 @@ class UIUtils:
         try:
             self.page.wait_for_load_state("domcontentloaded", timeout=timeout)
             self.page.wait_for_load_state("networkidle", timeout=timeout)
-            self.page.wait_for_timeout(2000)
+            self.page.wait_for_timeout(1000)
             self.logger.info("Smart wait completed successfully.")
         except Exception as e:
             self.logger.error(f"Smart wait failed: {e}")

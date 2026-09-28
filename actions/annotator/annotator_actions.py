@@ -19,7 +19,7 @@ class AnnotatorActions:
         self.ui_utils.click_element(self.page_factory.annotator_page.input_text_field)
         self.ui_utils.fill_input(self.page_factory.annotator_page.input_text_field, input_text)
         self.ui_utils.click_element(self.page_factory.annotator_page.set_text_button)
-        self.ui_utils.smart_wait()
+
 
     def perform_save_exit(self):
         def handle_dialog(dialog):
@@ -36,11 +36,9 @@ class AnnotatorActions:
 
     def perform_edit_transcription(self, old_transcription, new_transcription):
         self.ui_utils.double_click_element(self.page_factory.annotator_page.click_transcription(old_transcription))
-        self.ui_utils.smart_wait()
         self.ui_utils.click_element(self.page_factory.annotator_page.input_text_field)
         self.ui_utils.fill_input(self.page_factory.annotator_page.input_text_field, new_transcription)
         self.ui_utils.click_element(self.page_factory.annotator_page.set_text_button)
-        self.ui_utils.smart_wait()
 
     def perform_delete_transcription(self, transcription):
         self.ui_utils.click_element(self.page_factory.annotator_page.click_transcription(transcription))
@@ -55,3 +53,40 @@ class AnnotatorActions:
             return True
         else:
             return False
+
+    def draw_bounding_box(self, from_coords, to_coords):
+        """
+        Draws a bounding box on the image inside the Annotator iframe.
+
+        :param from_coords: Tuple/list (x1, y1) or dict {"x": x1, "y": y1} for start position.
+        :param to_coords: Tuple/list (x2, y2) or dict {"x": x2, "y": y2} for end position.
+        """
+        if isinstance(from_coords, (list, tuple)):
+            start_x, start_y = from_coords[0], from_coords[1]
+        elif isinstance(from_coords, dict):
+            start_x, start_y = from_coords.get("x", 0), from_coords.get("y", 0)
+        else:
+            raise ValueError("from_coords must be a tuple/list (x, y) or dict {'x': x, 'y': y}")
+
+        if isinstance(to_coords, (list, tuple)):
+            end_x, end_y = to_coords[0], to_coords[1]
+        elif isinstance(to_coords, dict):
+            end_x, end_y = to_coords.get("x", 0), to_coords.get("y", 0)
+        else:
+            raise ValueError("to_coords must be a tuple/list (x, y) or dict {'x': x, 'y': y}")
+
+        img_element = self.page_factory.annotator_page.main_video_image
+        img_element.wait_for(state="visible", timeout=10000)
+
+        # Move to start position, press mouse down, drag to end position, and release
+        img_element.hover(position={"x": start_x, "y": start_y})
+        self.ui_utils.page.mouse.down()
+        img_element.hover(position={"x": end_x, "y": end_y})
+        self.ui_utils.page.mouse.up()
+        self.ui_utils.smart_wait()
+
+    def perform_annotation_for_image_files(self, objects, from_coords, to_coords):
+        self.ui_utils.click_element(self.page_factory.annotator_page.return_objects_click(objects))
+        self.ui_utils.smart_wait()
+        self.draw_bounding_box(from_coords, to_coords)
+        
