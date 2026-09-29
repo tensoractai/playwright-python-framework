@@ -37,9 +37,14 @@ class UIUtils:
 
     def hover_element(self, locator, timeout=5000):
         """
-        Hovers over an element specified by the locator.
+        Hovers over an element specified by a Locator instance or string selector.
         """
-        self.page.hover(locator, timeout=timeout)
+        try:
+            locator.hover(timeout=timeout)
+            self.logger.info("Element hovered successfully.")
+        except Exception as e:
+            self.logger.error(f"Failed to hover element: {e}")
+            raise
 
     def fill_input(self, locator, value, timeout=5000):
         """
@@ -172,7 +177,7 @@ class UIUtils:
         try:
             self.page.wait_for_load_state("domcontentloaded", timeout=timeout)
             self.page.wait_for_load_state("networkidle", timeout=timeout)
-            self.page.wait_for_timeout(1000)
+            self.page.wait_for_timeout(1500)
             self.logger.info("Smart wait completed successfully.")
         except Exception as e:
             self.logger.error(f"Smart wait failed: {e}")

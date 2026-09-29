@@ -150,3 +150,14 @@ class test_data_inputs:
     TC_D_reviewer_1_text_Approve = "Segment Approve by Reviewer 1"
     TC_D_reviewer_2_text_Edit = "Segment Edit by Reviewer 2"
     TC_D_reviewer_2_text_Approve = "Segment Approve by Reviewer 2"
+
+    # TC_E - Start Annotate Review 1 Review 2 Complete - Image
+    TC_E_dataset_name = "AUT_Dataset_Image_{i}"
+    TC_E_template_name = "AUT_Template_Image_{i}"
+    TC_E_workflow_name = "AUT_Workflow_Image_{i}"
+    TC_E_project_name = "AUT_Project_Image_{i}"
+    TC_E_dataset_type_name = "Image"
+    TC_E_Dataset_files_upload = ["image/Testing Image.jpg", "image/web_optimized_1200x800_97kb.bmp"]
+    TC_E_Template_files_upload = ["template/Image Template.zip"]
+    TC_E_nodes_list = ["Start", "Annotate", "Review", "Review", "Complete"]
+    TC_E_Annotation_1 = ["100", "150"]

@@ -88,7 +88,7 @@ class ProjectsActions:
         else:
             raise Exception(f"Delete popup not found when attempting to delete project: {project_name}")
 
-    def export_and_validate_transcription_json(self, expected_files=None, expected_texts=None, unexpected_texts=None, fields=None):
+    def export_and_validate_transcription_json(self, expected_files=None, expected_texts=None, unexpected_texts=None, fields=None, allow_empty=False):
         import json, zipfile
         self.ui_utils.click_element(self.page_factory.projects_page.tasks_table_master_checkbox)
         with self.page_factory.projects_page.page.expect_download() as download_info:
@@ -127,7 +127,13 @@ class ProjectsActions:
         exp_texts = [expected_texts] if isinstance(expected_texts, str) else (expected_texts or [])
         unexp_texts = [unexpected_texts] if isinstance(unexpected_texts, str) else (unexpected_texts or [])
 
-        missing = [f for f in exp_files if f not in transcriptions]
+        if allow_empty:
+            for f in exp_files:
+                transcriptions.setdefault(f, [])
+            missing = []
+        else:
+            missing = [f for f in exp_files if f not in transcriptions]
+
         failed_exp = [f"'{f}' missing '{t}'" for f in exp_files if f in transcriptions for t in exp_texts if not any(t in act for act in transcriptions[f])]
         failed_unexp = [f"'{f}' contains unexpected '{t}'" for f in exp_files if f in transcriptions for t in unexp_texts if any(t in act for act in transcriptions[f])]
 
@@ -155,3 +161,16 @@ class ProjectsActions:
         self.ui_utils.select_option(self.page_factory.projects_page.modal_pagination_select.last, "50")
         self.ui_utils.click_element(self.page_factory.projects_page.return_Dataset_checkbox_addsync(dataset_name))
         self.ui_utils.click_element(self.page_factory.projects_page.add_sync_btn)
+
+    def changeStatus_ofProject(self, file_name, changeSts_option):
+        if isinstance(file_name, list) and file_name:
+            file_name = file_name[0]
+        self.ui_utils.click_element(self.page_factory.projects_page.return_changeStatus_button(file_name))
+        self.ui_utils.hover_element(self.page_factory.projects_page.change_status_btn)
+        self.ui_utils.click_element(self.page_factory.projects_page.return_changeStatus_option(changeSts_option))
+        self.ui_utils.element_wait_for(self.page_factory.projects_page.validate_changeStatus_Toast(changeSts_option), timeout=3000)
+        toast_visible = self.ui_utils.is_element_visible(self.page_factory.projects_page.validate_changeStatus_Toast(changeSts_option), timeout=3000)
+        if toast_visible:
+            return True
+        else:
+            return False

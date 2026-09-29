@@ -15,7 +15,7 @@ class ProjectsPage:
         self.create_project_page = page.get_by_text('PlaceholderProject Name*:')
         self.heading_create_project = page.get_by_role('heading', name= 'Create Project' )
         self.project_names_list = page.locator('div[class*="medium text"]')
-        self.task_panel = page.get_by_role('tabpanel', name= 'Tasks' )
+        self.task_panel = page.get_by_role('tab', name= 'Tasks' )
         self.teams_tab = page.get_by_role('tab', name= 'Teams' )
         self.teams_panel = page.get_by_text('TeamsAdd UsersRemove Selected')
         self.add_user_btn = page.get_by_role('button', name= 'Add Users' )
@@ -57,6 +57,7 @@ class ProjectsPage:
         self.remove_btn = page.get_by_test_id('remove-users-confirmation-modal-submit-btn')
         self.removed_user_toast = page.get_by_text('Successfully Removed Users')
         self.select_dataset_type = page.get_by_test_id('create-project-modal-type-dropdown-btn')
+        self.change_status_btn = page.locator("button[data-testid*='change-stage-menu-btn']")
 
 
     def select_dropdowns(self, dropdown_name):
@@ -71,6 +72,8 @@ class ProjectsPage:
         ).locator("..").locator("td.px-6").first
 
     def get_file_status(self, file_name):
+        if isinstance(file_name, list) and file_name:
+            file_name = file_name[0]
         return self.page.locator(
             f"td[title='{file_name}'] ~ td div"
         )
@@ -95,3 +98,12 @@ class ProjectsPage:
 
     def get_dataset_type_option_project(self, dataset_type_name):
         return self.page.get_by_test_id(f"create-project-modal-type-option-{dataset_type_name.lower()}")
+
+    def return_changeStatus_button(self, file_name):
+        return self.page.locator(f'td[title*="{file_name}"] ~ td button[data-testid*="project-tasks-actions-btn"]')
+
+    def return_changeStatus_option(self, changeSts_option):
+        return self.page.locator(f'button[data-testid*="tasks-stage-option"][title*="{changeSts_option}"]')
+
+    def validate_changeStatus_Toast(self, changeSts_option):
+        return self.page.locator("project-tasks-success-toast-message").filter(has_text=f"The task is successfully moved to {changeSts_option} stage")

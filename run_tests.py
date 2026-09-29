@@ -23,7 +23,7 @@ VIDEO = True
 
 
 TEST_FILES = [
-            "tests/newCompanySanity/TC_A_03*.py"
+            "tests/changeState/TC_01_Check_change_state.py"
             ]
 
 if __name__ == "__main__":
