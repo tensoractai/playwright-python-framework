@@ -1,0 +1,3 @@
+Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("td[data-testid='companies-col-name']:has-text('AUT_Company_2')").first
