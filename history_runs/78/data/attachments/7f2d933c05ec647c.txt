@@ -1,0 +1,11 @@
+INFO     utils.ui_utils:ui_utils.py:181 Smart wait completed successfully.
+INFO     utils.ui_utils:ui_utils.py:55 Input filled with value: reviewer11@autcompany.com
+INFO     utils.ui_utils:ui_utils.py:55 Input filled with value: AutomationTest@123
+INFO     utils.ui_utils:ui_utils.py:22 Element clicked successfully.
+ERROR    utils.ui_utils:ui_utils.py:141 Element did not reach state 'visible' after 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">. Error: Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('Back to Login')") to be visible
+
+ERROR    utils.ui_utils:ui_utils.py:106 Element did not become visible after 30000ms → <Locator frame=<Frame name= url='https://fmn-staging.tensoract.com/login?next=%2F'> selector="button:has-text('Back to Login')">. Error: Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("button:has-text('Back to Login')") to be visible
