@@ -26,9 +26,13 @@ class AnnotatorPage:
         self.step_forward = self.frame.locator("i[class*='step-forward']")
         self.step_backward = self.frame.locator("i[class*='step-backward']")
         self.auto_save_toast = self.page.get_by_text('Auto-saved successfully')
-        self.main_video_image = self.frame.locator('img[id="mainVideo"]')
-
-
+        self.main_video_image = self.frame.get_by_role('img', name='Main Image')
+        self.brush_button = self.frame.get_by_role("button", name="Brush (F)")
+        self.eraser_button = self.frame.get_by_role("button", name="Eraser (E)")
+        self.image_submit_annotation = self.frame.get_by_role("button", name="Submit")
+        self.yes_button = self.frame.get_by_role("button", name="Yes")
+        self.close_button = page.get_by_role("button", name="Close")
+        self.labels_header_bar = self.frame.locator("#labelsHeaderBar")
 
     def click_project_name(self, project_name):
         return self.page.get_by_text(project_name, exact=True)
@@ -38,3 +42,9 @@ class AnnotatorPage:
 
     def return_objects_click(self, objects):
         return self.frame.locator(f'div[data-classname="{objects}"]')
+
+    def get_label_item(self, object_name):
+        return self.frame.locator("#labelsSection").get_by_text(object_name, exact=False).first
+
+    def get_feedback_comment(self, text=None):
+        return self.page.get_by_text(text)

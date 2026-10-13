@@ -27,6 +27,8 @@ class ReviewerPage:
         self.approve_button = page.get_by_role("button", name="Approve").first
         self.approve_task_btn = page.get_by_role("button", name="Approve task")
         self.reject_button = page.get_by_role('button', name= 'Reject' )
+        self.reject_test_id = page.get_by_test_id('ptt-reject-btn')
+        self.feedback_input = page.get_by_role('textbox', name='Add feedback for the')
         self.submit_button = page.get_by_role('button', name= 'Submit' )
         self.annotation_dropdown = page.locator("div[id*='task-annotator']")
         self.loading_spinner = page.get_by_text(re.compile(r"^(Loading\.\.\.|Loading image and annotations…)$"))

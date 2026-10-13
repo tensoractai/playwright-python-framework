@@ -7,6 +7,7 @@ class AnnotatorActions:
         self.page_factory = PageFactory(page)
         self.ui_utils = UIUtils(page)
         self.helpers = Helpers(page)
+        self.frame = self.page_factory.annotator_page.frame
 
     def annontate_files(self, input_text, fast_forward = 0):
         self.ui_utils.element_wait_for(self.page_factory.annotator_page.begin_recording, timeout = 10000)
@@ -56,7 +57,7 @@ class AnnotatorActions:
 
     def draw_bounding_box(self, from_coords, to_coords):
         """
-        Draws a bounding box on the image inside the Annotator iframe.
+        Draws a bounding box or line on the image inside the Annotator iframe.
 
         :param from_coords: Tuple/list (x1, y1) or dict {"x": x1, "y": y1} for start position.
         :param to_coords: Tuple/list (x2, y2) or dict {"x": x2, "y": y2} for end position.
@@ -78,15 +79,136 @@ class AnnotatorActions:
         img_element = self.page_factory.annotator_page.main_video_image
         img_element.wait_for(state="visible", timeout=10000)
 
-        # Move to start position, press mouse down, drag to end position, and release
-        img_element.hover(position={"x": start_x, "y": start_y})
-        self.ui_utils.page.mouse.down()
-        img_element.hover(position={"x": end_x, "y": end_y})
-        self.ui_utils.page.mouse.up()
-        self.ui_utils.smart_wait()
+        box = img_element.bounding_box()
+        if box:
+            start_page_x = box["x"] + start_x
+            start_page_y = box["y"] + start_y
+            end_page_x = box["x"] + end_x
+            end_page_y = box["y"] + end_y
+
+            # Perform mouse drag with intermediate mousemove steps (draws line once)
+            self.ui_utils.page.mouse.move(start_page_x, start_page_y)
+            self.ui_utils.page.mouse.down()
+            self.ui_utils.page.mouse.move(end_page_x, end_page_y, steps=20)
+            self.ui_utils.page.mouse.up()
+            self.ui_utils.smart_wait()
+        else:
+            img_element.click(position={"x": start_x, "y": start_y}, force=True)
+            self.ui_utils.smart_wait()
+            img_element.click(position={"x": end_x, "y": end_y}, force=True)
+            self.ui_utils.smart_wait()
 
     def perform_annotation_for_image_files(self, objects, from_coords, to_coords):
-        self.ui_utils.click_element(self.page_factory.annotator_page.return_objects_click(objects))
+        target_object = self.page_factory.annotator_page.return_objects_click(objects)
+        target_object.wait_for(state="visible", timeout=10000)
+        self.ui_utils.click_element(target_object)
         self.ui_utils.smart_wait()
         self.draw_bounding_box(from_coords, to_coords)
+        self.ui_utils.keyboard_press('Enter')
+        self.ui_utils.smart_wait()
+
+    def edit_old_annotation(self, object_name, edit_coords=None):
+        labels_section = self.frame.locator("#labelsSection")
+        if not self.ui_utils.is_element_visible(labels_section, timeout=2000):
+            labels_bar = self.page_factory.annotator_page.labels_header_bar
+            if self.ui_utils.is_element_visible(labels_bar, timeout=3000):
+                self.ui_utils.click_element(labels_bar)
+                self.ui_utils.smart_wait()
+
+        label_item = self.page_factory.annotator_page.get_label_item(object_name)
+        label_item.wait_for(state="visible", timeout=10000)
+        label_item.click(force=True)
+        self.ui_utils.smart_wait()
+
+        img_element = self.page_factory.annotator_page.main_video_image
+        img_element.wait_for(state="visible", timeout=10000)
+
+        # Activate Brush tool: try brush button, floating toolbar icon at (79, 38), and keyboard shortcut 'f'
+        brush_btn = self.page_factory.annotator_page.brush_button
+        brush_loc = self.frame.locator("button[title*='Brush'], [aria-label*='Brush'], button:has-text('Brush')")
+        if self.ui_utils.is_element_visible(brush_btn, timeout=1000):
+            self.ui_utils.click_element(brush_btn)
+        elif self.ui_utils.is_element_visible(brush_loc.first, timeout=1000):
+            self.ui_utils.click_element(brush_loc.first)
+        else:
+            img_element.click(position={"x": 79, "y": 38}, force=True)
+        self.ui_utils.keyboard_press('f')
+        self.ui_utils.smart_wait()
+
+        box = img_element.bounding_box()
+
+        if edit_coords:
+            if isinstance(edit_coords, (list, tuple)):
+                if len(edit_coords) > 0 and isinstance(edit_coords[0], (list, tuple)):
+                    if box:
+                        start_page_x = box["x"] + edit_coords[0][0]
+                        start_page_y = box["y"] + edit_coords[0][1]
+                        self.ui_utils.page.mouse.move(start_page_x, start_page_y)
+                        self.ui_utils.page.mouse.down()
+                        for coord in edit_coords[1:]:
+                            pt_x = box["x"] + coord[0]
+                            pt_y = box["y"] + coord[1]
+                            self.ui_utils.page.mouse.move(pt_x, pt_y, steps=25)
+                        self.ui_utils.page.mouse.up()
+                        self.ui_utils.smart_wait()
+                else:
+                    img_element.click(position={"x": edit_coords[0], "y": edit_coords[1]}, force=True)
+        else:
+            img_element.click(force=True)
+
+        self.ui_utils.keyboard_press('Enter')
+        self.ui_utils.smart_wait()
+
+    def erase_annotation(self, object_name, erase_coords=None):
+        labels_section = self.frame.locator("#labelsSection")
+        if not self.ui_utils.is_element_visible(labels_section, timeout=2000):
+            labels_bar = self.page_factory.annotator_page.labels_header_bar
+            if self.ui_utils.is_element_visible(labels_bar, timeout=3000):
+                self.ui_utils.click_element(labels_bar)
+                self.ui_utils.smart_wait()
+
+        label_item = self.page_factory.annotator_page.get_label_item(object_name)
+        label_item.wait_for(state="visible", timeout=10000)
+        label_item.click(force=True)
+        self.ui_utils.smart_wait()
+
+        img_element = self.page_factory.annotator_page.main_video_image
+        img_element.wait_for(state="visible", timeout=10000)
+
+        # Activate Eraser tool: try eraser button, floating toolbar icon at (117, 37), and keyboard shortcut 'e'
+        eraser_btn = self.page_factory.annotator_page.eraser_button
+        eraser_loc = self.frame.locator("button[title*='Eraser'], [aria-label*='Eraser'], button:has-text('Eraser')")
+        if self.ui_utils.is_element_visible(eraser_btn, timeout=1000):
+            self.ui_utils.click_element(eraser_btn)
+        elif self.ui_utils.is_element_visible(eraser_loc.first, timeout=1000):
+            self.ui_utils.click_element(eraser_loc.first)
+        else:
+            img_element.click(position={"x": 117, "y": 37}, force=True)
+        self.ui_utils.keyboard_press('e')
+        self.ui_utils.smart_wait()
+
+        box = img_element.bounding_box()
+
+        if erase_coords:
+            if isinstance(erase_coords, (list, tuple)):
+                if len(erase_coords) > 0 and isinstance(erase_coords[0], (list, tuple)):
+                    if box:
+                        start_page_x = box["x"] + erase_coords[0][0]
+                        start_page_y = box["y"] + erase_coords[0][1]
+                        self.ui_utils.page.mouse.move(start_page_x, start_page_y)
+                        self.ui_utils.page.mouse.down()
+                        for coord in erase_coords[1:]:
+                            pt_x = box["x"] + coord[0]
+                            pt_y = box["y"] + coord[1]
+                            self.ui_utils.page.mouse.move(pt_x, pt_y, steps=25)
+                        self.ui_utils.page.mouse.up()
+                        self.ui_utils.smart_wait()
+                else:
+                    img_element.click(position={"x": erase_coords[0], "y": erase_coords[1]}, force=True)
+        else:
+            img_element.click(force=True)
+
+        self.ui_utils.keyboard_press('Enter')
+        self.ui_utils.smart_wait()
+
         

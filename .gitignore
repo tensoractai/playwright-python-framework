@@ -7,3 +7,5 @@ allure-results
 screenshots
 .agents/
 videos/
+ScreenshotValidation/actual_screenshots/
+ScreenshotValidation/diff_screenshots/

@@ -12,8 +12,16 @@ import re
 import pytest
 import requests
 import msal
+from PIL import Image, ImageChops, ImageEnhance
 
 class Helpers:
+    _screenshot_failures = []
+
+    def assert_screenshot_comparisons(self):
+        if Helpers._screenshot_failures:
+            failures = "\n".join(Helpers._screenshot_failures)
+            Helpers._screenshot_failures.clear()
+            raise AssertionError(f"Screenshot comparison failures:\n{failures}")
 
     def __init__(self, page):
         self.page = page
@@ -56,17 +64,11 @@ class Helpers:
         self.logger.error(f"Test failed: {message}")
 
         try:
-            self.attach_screenshot(
-                name="Last Seen Screenshot",
-                full_page=True
-            )
+            self.attach_screenshot(name="Last Seen Screenshot", full_page=True)
         except Exception as screenshot_error:
             self.logger.error(f"Failed to capture failure screenshot: {screenshot_error}")
         try:
-            self.attach_allure(
-                name="Failure Stack Trace",
-                text=message
-            )
+            self.attach_allure(name="Failure Stack Trace", text=message)
         except Exception as allure_error:
             self.logger.error(f"Failed to attach failure log to Allure: {allure_error}")
 
@@ -94,6 +96,98 @@ class Helpers:
         except Exception as e:
             self.logger.error(f"Failed to capture screenshot. Error: {e}")
             raise
+
+    def compare_screenshot(self, name, locator=None, threshold=0.01):
+        """
+        Validates screenshot comparison against a base screenshot.
+        Folder pattern:
+          Base:   ScreenshotValidation/Base_Screenshots/<folder>/<testcase>/<name>.png
+          Actual: ScreenshotValidation/Actual_Screenshots/<folder>/<testcase>/<name>.png
+          Diff:   ScreenshotValidation/Diff_Screenshots/<folder>/<testcase>/<name>.png
+
+        - If Base screenshot does not exist, saves current screenshot as Base screenshot and logs to allure.
+        - If Base screenshot exists, compares Actual vs Base screenshot. If mismatch exceeds threshold,
+          generates Diff image, attaches Base, Actual, and Diff images to Allure report, and fails test.
+        """
+        folder_name = getattr(pytest, "current_test_folder", "") or "default_folder"
+        testcase_name = getattr(pytest, "current_test_file", "") or "default_testcase"
+
+        safe_name = re.sub(r'[^\w\-_\. ]', '_', name)
+        if not safe_name.endswith(".png"): filename = f"{safe_name}.png"
+        else: filename = safe_name
+
+        base_dir = os.path.join("ScreenshotValidation", "Base_Screenshots", folder_name, testcase_name)
+        actual_dir = os.path.join("ScreenshotValidation", "Actual_Screenshots", folder_name, testcase_name)
+        diff_dir = os.path.join("ScreenshotValidation", "Diff_Screenshots", folder_name, testcase_name)
+
+        os.makedirs(base_dir, exist_ok=True)
+        os.makedirs(actual_dir, exist_ok=True)
+        os.makedirs(diff_dir, exist_ok=True)
+
+        base_path = os.path.join(base_dir, filename)
+        actual_path = os.path.join(actual_dir, filename)
+        diff_path = os.path.join(diff_dir, filename)
+
+        # Capture current screenshot
+        if locator is not None:
+            locator.wait_for(state="visible", timeout=10000)
+            screenshot_bytes = locator.screenshot(path=actual_path)
+        else:
+            screenshot_bytes = self.page.screenshot(path=actual_path, full_page=True)
+
+        # 1. Base screenshot creation if not existing
+        if not os.path.exists(base_path):
+            with open(base_path, "wb") as f:
+                f.write(screenshot_bytes)
+            self.logger.info(f"Base screenshot created at: {base_path}")
+            allure.attach.file(
+                base_path,
+                name=f"Base Screenshot Created - {safe_name}", attachment_type=allure.attachment_type.PNG)
+            return True
+
+        # 2. Compare Base vs Actual screenshot
+        base_img = Image.open(base_path).convert("RGB")
+        actual_img = Image.open(actual_path).convert("RGB")
+
+        if base_img.size != actual_img.size:
+            actual_img = actual_img.resize(base_img.size)
+
+        diff = ImageChops.difference(base_img, actual_img)
+        bbox = diff.getbbox()
+
+        if bbox is None:
+            self.logger.info(f"Screenshot comparison PASSED for '{name}' (0 diff pixels).")
+            allure.attach.file(actual_path, name=f"Screenshot Comparison PASSED - {safe_name}", attachment_type=allure.attachment_type.PNG)
+            return True
+
+        diff_bytes = diff.tobytes()
+        non_zero_bytes = sum(1 for b in diff_bytes if b > 10)
+        total_bytes = len(diff_bytes)
+        diff_ratio = non_zero_bytes / total_bytes if total_bytes > 0 else 0.0
+
+        if diff_ratio <= threshold:
+            self.logger.info(f"Screenshot comparison PASSED for '{name}' (diff ratio: {diff_ratio:.4f} <= threshold {threshold}).")
+            allure.attach.file(actual_path, name=f"Screenshot Comparison PASSED - {safe_name}", attachment_type=allure.attachment_type.PNG)
+            return True
+
+        # Generate Diff image highlighting differences
+        diff_enhanced = ImageEnhance.Brightness(diff).enhance(3.0)
+        diff_enhanced.save(diff_path)
+
+        # Attach Base, Actual, and Diff screenshots to Allure Report
+        allure.attach.file(base_path, name=f"BASE Screenshot - {safe_name}", attachment_type=allure.attachment_type.PNG)
+        allure.attach.file(actual_path, name=f"ACTUAL Screenshot - {safe_name}", attachment_type=allure.attachment_type.PNG)
+        allure.attach.file(diff_path, name=f"DIFF Screenshot (Mismatch: {diff_ratio:.2%}) - {safe_name}", attachment_type=allure.attachment_type.PNG)
+
+        error_msg = f"Screenshot comparison FAILED for '{name}'. Base and Actual screenshots do not match (Diff Ratio: {diff_ratio:.2%})."
+        self.logger.error(error_msg)
+        allure.attach(
+            error_msg,
+            name=f"Screenshot Comparison FAILED - {safe_name}",
+            attachment_type=allure.attachment_type.TEXT
+        )
+        self._screenshot_failures.append(error_msg)
+        return False
 
     def attach_allure(self, name="Attachment", text=""):
         try:

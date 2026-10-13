@@ -20,3 +20,11 @@ class ReviewerActions:
         if visible:
             self.ui_utils.element_wait_for(loading, state="hidden", timeout=timeout)
             message = "Iframe loaded successfully."
+
+    def reject_task(self, feedback_text="Need Correction"):
+        self.ui_utils.click_element(self.page_factory.reviewer_page.reject_test_id)
+        self.ui_utils.click_element(self.page_factory.reviewer_page.feedback_input)
+        self.page_factory.reviewer_page.feedback_input.fill(feedback_text)
+        self.ui_utils.click_element(self.page_factory.reviewer_page.submit_button)
+        self.ui_utils.smart_wait()
+
