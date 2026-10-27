@@ -32,6 +32,7 @@ class TemplatesActions:
                 files.append(str(full_path))
             self.page_factory.templates_page.file_upload.set_input_files(files)
             self.ui_utils.click_element(self.page_factory.templates_page.upload_button)
+            self.ui_utils.smart_wait()
 
     def upload_template_files_without_uploadBtn(self, *file_paths):
             files = []

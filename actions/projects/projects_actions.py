@@ -56,6 +56,7 @@ class ProjectsActions:
     def add_users(self, role, email_address):
         self.ui_utils.click_element(self.page_factory.projects_page.add_user_btn)
         self.ui_utils.select_option(self.page_factory.projects_page.assign_user_dropdown, role.upper())
+        self.ui_utils.select_option(self.page_factory.projects_page.modal_pagination_select.last, "50")
         self.ui_utils.click_element(self.page_factory.projects_page.get_user_checkbox(email_address))
         self.ui_utils.click_element(self.page_factory.projects_page.add_btn)
         add_user_btn_visible = self.ui_utils.is_element_visible(self.page_factory.projects_page.add_user_btn)

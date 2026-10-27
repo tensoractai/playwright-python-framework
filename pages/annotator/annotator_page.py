@@ -1,4 +1,5 @@
 from utils.ui_utils import UIUtils
+import re
 
 class AnnotatorPage:
     def __init__(self, page):
@@ -27,11 +28,12 @@ class AnnotatorPage:
         self.step_backward = self.frame.locator("i[class*='step-backward']")
         self.auto_save_toast = self.page.get_by_text('Auto-saved successfully')
         self.main_video_image = self.frame.get_by_role('img', name='Main Image')
-        self.brush_button = self.frame.get_by_role("button", name="Brush (F)")
-        self.eraser_button = self.frame.get_by_role("button", name="Eraser (E)")
+        self.brush_button = self.frame.locator("#btnBrushTool").or_(self.frame.get_by_role("button", name=re.compile(r"Brush", re.IGNORECASE)))
+        self.eraser_button = self.frame.locator("#btnEraserTool").or_(self.frame.get_by_role("button", name=re.compile(r"Eraser", re.IGNORECASE)))
         self.image_submit_annotation = self.frame.get_by_role("button", name="Submit")
         self.yes_button = self.frame.get_by_role("button", name="Yes")
-        self.close_button = page.get_by_role("button", name="Close")
+        self.close_button = page.get_by_role("button", name="Close").first
+        self.comments_button = page.locator("button:has-text('Comments')")
         self.labels_header_bar = self.frame.locator("#labelsHeaderBar")
 
     def click_project_name(self, project_name):
@@ -47,4 +49,4 @@ class AnnotatorPage:
         return self.frame.locator("#labelsSection").get_by_text(object_name, exact=False).first
 
     def get_feedback_comment(self, text=None):
-        return self.page.get_by_text(text)
+        return self.page.get_by_text(text).first

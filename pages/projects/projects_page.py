@@ -20,7 +20,7 @@ class ProjectsPage:
         self.teams_panel = page.get_by_text('TeamsAdd UsersRemove Selected')
         self.add_user_btn = page.get_by_role('button', name= 'Add Users' )
         self.remove_selected_btn = page.get_by_role('button', name='Remove Selected')
-        self.assign_user_dropdown = page.get_by_role("combobox").first
+        self.assign_user_dropdown = page.get_by_test_id('add-users-to-project-modal-role-select')
         self.add_btn = page.get_by_role('button', name='Add' )
         self.assigners_list = page.locator("div[class*='truncate']")
         self.project_delete_success = page.get_by_text('Successfully Deleted Project')
@@ -67,9 +67,8 @@ class ProjectsPage:
         return self.page.get_by_text(dataset_type_name, exact=True)
 
     def get_user_checkbox(self, email):
-        return self.page.locator(
-            f"td[title='{email}']"
-        ).locator("..").locator("td.px-6").first
+        row = self.page.get_by_role("row").filter(has_text=email)
+        return row.locator("input[data-testid*='add-users-to-project-modal-col-checkbox'], input[type='checkbox']").first
 
     def get_file_status(self, file_name):
         if isinstance(file_name, list) and file_name:
@@ -107,3 +106,6 @@ class ProjectsPage:
 
     def validate_changeStatus_Toast(self, changeSts_option):
         return self.page.locator("project-tasks-success-toast-message").filter(has_text=f"The task is successfully moved to {changeSts_option} stage")
+
+    def click_task_file_name(self, file_name):
+        return self.page.get_by_test_id('project-tasks-col-name').get_by_text(file_name)

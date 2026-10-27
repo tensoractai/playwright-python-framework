@@ -7,7 +7,7 @@ class datasetsPage:
 
         self.datasets_menu          = page.get_by_role("link", name="Datasets")
         self.create_dataset_button  = page.get_by_role("button", name="Create Dataset")
-        self.enter_dataset_name = page.get_by_role('textbox', name='Enter Dataset Name' )
+        self.enter_dataset_name = page.locator("input[data-testid*='create-dataset-modal-name-input']")
         self.select_dataset_type = page.get_by_role('button', name='Select Type' )
         self.create_button = page.get_by_role('button', name='Create' )
         self.dataset_names_list = page.locator('span[data-testid*="col-name"]')

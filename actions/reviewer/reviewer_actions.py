@@ -24,7 +24,7 @@ class ReviewerActions:
     def reject_task(self, feedback_text="Need Correction"):
         self.ui_utils.click_element(self.page_factory.reviewer_page.reject_test_id)
         self.ui_utils.click_element(self.page_factory.reviewer_page.feedback_input)
-        self.page_factory.reviewer_page.feedback_input.fill(feedback_text)
+        self.ui_utils.fill_input(self.page_factory.reviewer_page.feedback_input, feedback_text)
         self.ui_utils.click_element(self.page_factory.reviewer_page.submit_button)
         self.ui_utils.smart_wait()
 

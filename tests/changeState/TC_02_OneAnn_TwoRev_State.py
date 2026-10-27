@@ -1,3 +1,4 @@
+from asyncio import timeout
 import allure
 import pytest
 from actions.action_factory import ActionFactory
@@ -31,14 +32,22 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
     action_factory = before_each
     active_action_factory = action_factory
     try: 
-        Dataset_Name = test_data_inputs.Dataset_changeState_02
+        # Project Creation Step :
+        # 1. Dataset Creation Functionality
+        action_factory.datasets_actions.click_datasets_menu()
+        action_factory.ui_utils.smart_wait()
+
+        dataset_names_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.datasets_page.dataset_names_list)
+        i = action_factory.helpers.resolve_next_index(dataset_names_list, test_data_inputs.Dataset_changeState_02)
+
+        Dataset_Name = test_data_inputs.Dataset_changeState_02.format(i=i) if "{i}" in test_data_inputs.Dataset_changeState_02 else test_data_inputs.Dataset_changeState_02
         Dataset_Type = test_data_inputs.Dataset_changeState_Type_02        
         Dataset_Files = test_data_inputs.Dataset_Files_02
-        Template_Name = test_data_inputs.Template_changeState_02
+        Template_Name = test_data_inputs.Template_changeState_02.format(i=i) if "{i}" in test_data_inputs.Template_changeState_02 else test_data_inputs.Template_changeState_02
         Template_Image = test_data_inputs.Template_Image_02
-        workflow_Name = test_data_inputs.workflow_Name_02
+        workflow_Name = test_data_inputs.workflow_Name_02.format(i=i) if "{i}" in test_data_inputs.workflow_Name_02 else test_data_inputs.workflow_Name_02
         workflow_Nodes = test_data_inputs.workflow_Nodes_02
-        project_Name = test_data_inputs.project_Name_02
+        project_Name = test_data_inputs.project_Name_02.format(i=i) if "{i}" in test_data_inputs.project_Name_02 else test_data_inputs.project_Name_02
         
         url = action_factory.helpers.fetch_dotenv("Execution_url")
         company_Name = action_factory.helpers.fetch_dotenv("company_Name")
@@ -48,11 +57,6 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
         reviewer_email = action_factory.helpers.fetch_dotenv("reviewer_Username")
         reviewer_password = action_factory.helpers.fetch_dotenv("reviewer_Password")
 
-        # ...................................................................................................................................................................................................
-        # Project Creation Step :
-        # 1. Dataset Creation Functionality
-        action_factory.datasets_actions.click_datasets_menu()
-        action_factory.ui_utils.smart_wait()
         action_factory.datasets_actions.create_dataset(dataset_name=Dataset_Name, dataset_type_name=Dataset_Type)
         action_factory.ui_utils.smart_wait()
         action_factory.ui_utils.click_element(action_factory.page_factory.datasets_page.click_dataset_file_name(Dataset_Name))
@@ -81,7 +85,7 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
         action_factory.templates_actions.upload_new_template(template_name=Template_Name)
         action_factory.templates_actions.upload_template_files(*Template_Image)
         action_factory.ui_utils.smart_wait()
-        action_factory.ui_utils.element_wait_for(action_factory.page_factory.templates_page.template_names_list.nth(0))
+        action_factory.ui_utils.element_wait_for(action_factory.page_factory.templates_page.template_names_list.nth(0), timeout=5000)
         template_name_list = action_factory.ui_utils.grab_text_from_all(action_factory.page_factory.templates_page.template_names_list)
         print(f"Template names list: {template_name_list}")
         if Template_Name in template_name_list:
@@ -299,10 +303,10 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
 
             annotator_action_factory.reviewer_actions.wait_for_iframe_ready()
 
-            # Validate feedback comment "Need Correction" is visible
+            # Validate feedback comment "Need Correction" is visible (open comments modal if needed)
             feedback_comment = annotator_action_factory.page_factory.annotator_page.get_feedback_comment("Need Correction")
-            is_feedback_visible = annotator_action_factory.ui_utils.wait_for_visible_if_exists(feedback_comment, timeout=5000)
-
+            is_feedback_visible = annotator_action_factory.ui_utils.wait_for_visible_if_exists(feedback_comment, timeout=3000)
+            
             if is_feedback_visible:
                 status = "Pass"
                 message = "Feedback comment 'Need Correction' is visible."
@@ -322,9 +326,8 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
 
             # Drop 1 new segment vertically (Motorcycle)
             annotator_action_factory.annotator_actions.perform_annotation_for_image_files("Motorcycle", (330, 230), (330, 470))
-            # Edit Reviewer 2 segment (Bus: draw vertical line downwards from X=660, Y=215 down to Y=480)
-            bus_vert_coords = [(660, 215), (660, 280), (660, 350), (660, 420), (660, 480)]
-            annotator_action_factory.annotator_actions.edit_old_annotation("Bus", edit_coords=bus_vert_coords)
+            # Edit Reviewer 2 segment (Bus: draw 1 vertical line downwards from center of Bus horizontal line)
+            annotator_action_factory.annotator_actions.edit_old_annotation("Bus", from_coords=(680, 165), to_coords=(680, 470))
             annotator_action_factory.helpers.compare_screenshot(name=f"03_Annotator_{target_file}_Drop1_Edit1_Reviewer_Segment", locator=annotator_action_factory.page_factory.annotator_page.main_video_image)
             # Submit the file
             annotator_action_factory.ui_utils.click_element(annotator_action_factory.page_factory.annotator_page.image_submit_annotation)
@@ -364,19 +367,20 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
 
             reviewer_action_factory.reviewer_actions.wait_for_iframe_ready()
 
-            # Edit Annotator old segment (Person: add horizontal line to the left)
+            # Edit Annotator old segment (Person: add horizontal line to the left from (180, 470) to (20, 470))
             person_horiz_coords = [(180, 470), (140, 470), (100, 470), (60, 470), (20, 470)]
             reviewer_action_factory.annotator_actions.edit_old_annotation("Person", edit_coords=person_horiz_coords)
             reviewer_action_factory.ui_utils.smart_wait()
 
-            # Erase half space of Reviewer 2 segment (Bus horizontal line from X=680 to X=800)
-            bus_erase_coords = [(680, 215), (710, 215), (740, 215), (770, 215), (800, 215)]
+            # Erase half space of Reviewer 2 segment (Bus horizontal line right half from X=680 to X=790 at Y=165)
+            bus_erase_coords = [(680, 165), (710, 165), (740, 165), (770, 165), (790, 165)]
             reviewer_action_factory.annotator_actions.erase_annotation("Bus", erase_coords=bus_erase_coords)
             reviewer_action_factory.ui_utils.smart_wait()
 
             reviewer_action_factory.helpers.compare_screenshot(name=f"04_Reviewer1_{target_file}_Edit1_Annotator_Erase1_Reviewer2_Segment", locator=reviewer_action_factory.page_factory.annotator_page.main_video_image)
 
             # Approve Task
+            reviewer_action_factory.ui_utils.click_element(reviewer_action_factory.page_factory.reviewer_page.approve_button)
             reviewer_action_factory.ui_utils.click_element(reviewer_action_factory.page_factory.reviewer_page.approve_button)
             reviewer_action_factory.ui_utils.smart_wait()
             claim_after = reviewer_action_factory.ui_utils.wait_for_visible_if_exists(
@@ -415,14 +419,15 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
 
             reviewer2_action_factory.reviewer_actions.wait_for_iframe_ready()
 
-            # Click erased segment and re-apply horizontal line segment for Bus
-            bus_reapply_coords = [(660, 215), (700, 215), (740, 215), (780, 215), (810, 215)]
+            # Click erased segment and re-apply horizontal line segment for Bus (right half from X=680 to X=790 at Y=165)
+            bus_reapply_coords = [(710, 165), (840, 165), (870, 195), (800, 195)]
             reviewer2_action_factory.annotator_actions.edit_old_annotation("Bus", edit_coords=bus_reapply_coords)
             reviewer2_action_factory.ui_utils.smart_wait()
 
             reviewer2_action_factory.helpers.compare_screenshot(name=f"05_Reviewer2_{target_file}_Edit_Erased_Segment_Reapply1", locator=reviewer2_action_factory.page_factory.annotator_page.main_video_image)
 
             # Approve Task
+            reviewer2_action_factory.ui_utils.click_element(reviewer2_action_factory.page_factory.reviewer_page.approve_button)
             reviewer2_action_factory.ui_utils.click_element(reviewer2_action_factory.page_factory.reviewer_page.approve_button)
             reviewer2_action_factory.ui_utils.smart_wait()
             claim_after = reviewer2_action_factory.ui_utils.wait_for_visible_if_exists(
@@ -433,9 +438,14 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
                 reviewer2_action_factory.ui_utils.smart_wait()
 
         # ......................................................................................................................................................................
-        # Comback to Company Admin and Validate File is in Complete Status :
+        # Comeback to Company Admin and Validate File is in Complete Status :
         action_factory.page.bring_to_front()
         active_action_factory = action_factory
+        action_factory.datasets_actions.click_datasets_menu()
+        action_factory.ui_utils.click_element(action_factory.page_factory.projects_page.project_menu)
+        action_factory.ui_utils.smart_wait()
+        action_factory.ui_utils.click_element(action_factory.page_factory.projects_page.click_projects_name(project_Name))
+        action_factory.ui_utils.smart_wait()
         action_factory.ui_utils.click_element(action_factory.page_factory.projects_page.task_panel)
         action_factory.ui_utils.smart_wait()
 
@@ -454,6 +464,23 @@ def test_change_state_oneAnn_TwoRev_State(before_each):
                 action_factory.helpers.attach_screenshot(name="File Status Not Changed to Complete")
                 action_factory.helpers.attach_allure(name="File not complete Status", text=target_fname)
                 assert False, message
+
+            # Click the file name and wait for Iframe load and use compare screenshot
+            action_factory.ui_utils.click_element(action_factory.page_factory.projects_page.click_task_file_name(target_fname))
+            action_factory.ui_utils.smart_wait()
+            claim_visible = action_factory.ui_utils.wait_for_visible_if_exists(
+                action_factory.page_factory.annotator_page.claim_button, timeout=5000
+            )
+            if claim_visible:
+                action_factory.ui_utils.click_element(action_factory.page_factory.annotator_page.claim_button)
+                action_factory.ui_utils.smart_wait()
+
+            action_factory.reviewer_actions.wait_for_iframe_ready()
+            action_factory.helpers.compare_screenshot(name=f"06_Admin_{target_fname}_Completed_Segment", locator=action_factory.page_factory.annotator_page.main_video_image)
+            back_btn = action_factory.page_factory.annotator_page.back_button
+            if action_factory.ui_utils.is_element_visible(back_btn, timeout=3000):
+                action_factory.ui_utils.click_element(back_btn)
+                action_factory.ui_utils.smart_wait()
 
         # Validate deferred screenshot comparison failures after executing the full flow
         action_factory.helpers.assert_screenshot_comparisons()
