@@ -115,69 +115,69 @@ class AnnotatorActions:
                 self.ui_utils.click_element(labels_bar)
                 self.ui_utils.smart_wait()
 
+        # If the specific annotation row is not visible, expand the class folder if collapsed
+        label_item = self.page_factory.annotator_page.get_label_item(object_name)
+        if not self.ui_utils.is_element_visible(label_item, timeout=2000):
+            folder_header = self.frame.locator("#instructionContainer").get_by_text(object_name, exact=True).first
+            if self.ui_utils.is_element_visible(folder_header, timeout=2000):
+                self.ui_utils.click_element(folder_header)
+                self.ui_utils.smart_wait()
+
+        # Click label row for object in labelsSection
+        label_item.wait_for(state="visible", timeout=10000)
+        self.ui_utils.click_element(label_item)
+        self.ui_utils.smart_wait()
+
         img_element = self.page_factory.annotator_page.main_video_image
         img_element.wait_for(state="visible", timeout=10000)
 
-        # Click label row for object in labelsSection
-        label_item = self.page_factory.annotator_page.get_label_item(object_name)
-        label_item.wait_for(state="visible", timeout=10000)
-        label_item.click(force=True)
-        self.ui_utils.smart_wait()
-
-        # Activate Brush tool: click Brush button (or fallback to keyboard shortcut 'f')
+        # Activate Brush tool: click Brush button (or fallback to window.app.selectTool('brush'))
         brush_btn = self.page_factory.annotator_page.brush_button
         if self.ui_utils.is_element_visible(brush_btn, timeout=2000):
             self.ui_utils.click_element(brush_btn)
         else:
-            self.ui_utils.keyboard_press('f')
+            self.frame.evaluate("() => { if (window.app && window.app.selectTool) window.app.selectTool('brush'); }")
         self.ui_utils.smart_wait()
 
-        # Determine start and end coordinates
+        # Determine coordinates to draw
         if from_coords and to_coords:
             start_x, start_y = from_coords[0], from_coords[1]
             end_x, end_y = to_coords[0], to_coords[1]
-        elif edit_coords and len(edit_coords) >= 2:
-            start_x, start_y = edit_coords[0][0], edit_coords[0][1]
-            end_x, end_y = edit_coords[-1][0], edit_coords[-1][1]
-        elif edit_coords and len(edit_coords) == 1:
-            start_x, start_y = edit_coords[0][0], edit_coords[0][1]
-            end_x, end_y = start_x, start_y
-        else:
-            start_x, start_y = 680, 165
-            end_x, end_y = 680, 470
-
-        # Perform mouse drag from start to end point on Main Image to draw line
-        box = img_element.bounding_box()
-        if box:
-            if edit_coords and isinstance(edit_coords, (list, tuple)) and len(edit_coords) > 1 and isinstance(edit_coords[0], (list, tuple)):
-                start_page_x = box["x"] + edit_coords[0][0]
-                start_page_y = box["y"] + edit_coords[0][1]
-                self.ui_utils.page.mouse.move(start_page_x, start_page_y)
-                self.ui_utils.page.mouse.down()
-                for coord in edit_coords[1:]:
-                    pt_x = box["x"] + coord[0]
-                    pt_y = box["y"] + coord[1]
-                    self.ui_utils.page.mouse.move(pt_x, pt_y, steps=25)
-                self.ui_utils.page.mouse.up()
-                self.ui_utils.smart_wait()
+            num_pts = 10
+            coords_to_draw = [
+                (int(start_x + (end_x - start_x) * i / (num_pts - 1)),
+                 int(start_y + (end_y - start_y) * i / (num_pts - 1)))
+                for i in range(num_pts)
+            ]
+        elif edit_coords and isinstance(edit_coords, (list, tuple)) and len(edit_coords) > 0:
+            if isinstance(edit_coords[0], (list, tuple)):
+                coords_to_draw = edit_coords
             else:
-                start_page_x = box["x"] + start_x
-                start_page_y = box["y"] + start_y
-                end_page_x = box["x"] + end_x
-                end_page_y = box["y"] + end_y
-
-                self.ui_utils.page.mouse.move(start_page_x, start_page_y)
-                self.ui_utils.page.mouse.down()
-                self.ui_utils.page.mouse.move(end_page_x, end_page_y, steps=25)
-                self.ui_utils.page.mouse.up()
-                self.ui_utils.smart_wait()
+                coords_to_draw = [edit_coords]
         else:
-            img_element.click(position={"x": start_x, "y": start_y}, force=True)
+            coords_to_draw = [(680, y) for y in range(165, 471, 30)]
+
+        # Perform mouse drag through coords on Main Image to draw line
+        box = img_element.bounding_box()
+        if box and len(coords_to_draw) > 1:
+            start_page_x = box["x"] + coords_to_draw[0][0]
+            start_page_y = box["y"] + coords_to_draw[0][1]
+            self.ui_utils.page.mouse.move(start_page_x, start_page_y)
+            self.ui_utils.page.mouse.down()
+            for coord in coords_to_draw[1:]:
+                pt_x = box["x"] + coord[0]
+                pt_y = box["y"] + coord[1]
+                self.ui_utils.page.mouse.move(pt_x, pt_y, steps=10)
+            self.ui_utils.page.mouse.up()
             self.ui_utils.smart_wait()
-            img_element.click(position={"x": end_x, "y": end_y}, force=True)
+        elif box and len(coords_to_draw) == 1:
+            img_element.click(position={"x": coords_to_draw[0][0], "y": coords_to_draw[0][1]}, force=True)
+            self.ui_utils.smart_wait()
+        else:
+            img_element.click(force=True)
             self.ui_utils.smart_wait()
 
-        # Press Enter to finalize annotation line
+        # Press Enter to finalize annotation
         self.ui_utils.keyboard_press('Enter')
         self.ui_utils.smart_wait()
 
@@ -190,19 +190,25 @@ class AnnotatorActions:
                 self.ui_utils.smart_wait()
 
         label_item = self.page_factory.annotator_page.get_label_item(object_name)
+        if not self.ui_utils.is_element_visible(label_item, timeout=2000):
+            folder_header = self.frame.locator("#instructionContainer").get_by_text(object_name, exact=True).first
+            if self.ui_utils.is_element_visible(folder_header, timeout=2000):
+                self.ui_utils.click_element(folder_header)
+                self.ui_utils.smart_wait()
+
         label_item.wait_for(state="visible", timeout=10000)
-        label_item.click(force=True)
+        self.ui_utils.click_element(label_item)
         self.ui_utils.smart_wait()
 
         img_element = self.page_factory.annotator_page.main_video_image
         img_element.wait_for(state="visible", timeout=10000)
 
-        # Activate Eraser tool: try eraser button, or keyboard shortcut 'h' (Eraser is 'H', never 'e' which selects Fire Hydrant)
+        # Activate Eraser tool: try eraser button, or fallback to window.app.selectTool('eraser')
         eraser_btn = self.page_factory.annotator_page.eraser_button
         if self.ui_utils.is_element_visible(eraser_btn, timeout=2000):
             self.ui_utils.click_element(eraser_btn)
         else:
-            self.ui_utils.keyboard_press('h')
+            self.frame.evaluate("() => { if (window.app && window.app.selectTool) window.app.selectTool('eraser'); }")
         self.ui_utils.smart_wait()
 
         box = img_element.bounding_box()
@@ -218,7 +224,7 @@ class AnnotatorActions:
                         for coord in erase_coords[1:]:
                             pt_x = box["x"] + coord[0]
                             pt_y = box["y"] + coord[1]
-                            self.ui_utils.page.mouse.move(pt_x, pt_y, steps=25)
+                            self.ui_utils.page.mouse.move(pt_x, pt_y, steps=10)
                         self.ui_utils.page.mouse.up()
                         self.ui_utils.smart_wait()
                 else:
@@ -226,6 +232,7 @@ class AnnotatorActions:
         else:
             img_element.click(force=True)
 
+        # Press Enter to finalize erase
         self.ui_utils.keyboard_press('Enter')
         self.ui_utils.smart_wait()
 
@@ -238,8 +245,14 @@ class AnnotatorActions:
                 self.ui_utils.smart_wait()
 
         label_item = self.page_factory.annotator_page.get_label_item(object_name)
+        if not self.ui_utils.is_element_visible(label_item, timeout=2000):
+            folder_header = self.frame.locator("#instructionContainer").get_by_text(object_name, exact=True).first
+            if self.ui_utils.is_element_visible(folder_header, timeout=2000):
+                self.ui_utils.click_element(folder_header)
+                self.ui_utils.smart_wait()
+
         label_item.wait_for(state="visible", timeout=10000)
-        label_item.click(force=True)
+        self.ui_utils.click_element(label_item)
         self.ui_utils.smart_wait()
 
         # Press Delete to delete selected annotation
