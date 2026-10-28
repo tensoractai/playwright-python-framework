@@ -1,4 +1,3 @@
-
 # If you want to run testcases you can use the following command in the terminal:
 # python run_tests.py
 # Generate allure reports after test execution using the following command in the terminal:
@@ -23,14 +22,26 @@ VIDEO = True
 
 
 TEST_FILES = [
-            "tests/changeState/TC_01_Check_change_state.py"
+            "tests/changeState/TC_02*.py"
             ]
 
 if __name__ == "__main__":
     # Delete old reports and videos
     for folder in ["allure-results", "allure-report", "reports", "videos"]:
         if os.path.exists(folder):
-            shutil.rmtree(folder)
+            for f in os.listdir(folder):
+                fp = os.path.join(folder, f)
+                try:
+                    if os.path.isfile(fp):
+                        os.unlink(fp)
+                    elif os.path.isdir(fp):
+                        shutil.rmtree(fp)
+                except Exception:
+                    pass
+        else:
+            os.makedirs(folder, exist_ok=True)
+    os.makedirs("allure-results", exist_ok=True)
+    os.makedirs("videos", exist_ok=True)
     # Run tests
     test_files = []
     for test_path in TEST_FILES:
